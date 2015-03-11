@@ -10,7 +10,7 @@ return {
     -- Web server framework
     "creationix/weblit-app@0.1.0",
     -- Core plugin for proper http headers
-    "creationix/weblit-auto-headers@@1.0",
+    "creationix/weblit-auto-headers@0.1.0",
     -- In-memory caching of http responses
     "creationix/weblit-etag-cache@0.1.0",
     -- Basic logger to stdout
