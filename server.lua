@@ -10,6 +10,11 @@ require('weblit-app')
 
   .use(require('weblit-etag-cache'))
 
+  .route({
+    method = "GET",
+    path = "/",
+  }, require('controllers/index'))
+
   .use(require('weblit-static')(pathJoin(module.dir, "static")))
 
   .start()
