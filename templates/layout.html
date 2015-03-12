@@ -4,8 +4,24 @@
     <meta charset="utf8">
     <title><?=title?></title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="highlightjs/styles/sunburst.css">
+    <script src="highlightjs/highlight.pack.js"></script>
+    <script>window.hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
-<?=body?>
+    <header>
+      <h1>Luvit Blog</h1>
+      <nav>
+        <ul>
+          <li>Blog</li>
+          <li>Home</li>
+          <li>Lit</li>
+        </ul>
+      </nav>
+    </header>
+    <?=body?>
+    <footer>
+      Powered by Luvit
+    </footer>
   </body>
 </html>
