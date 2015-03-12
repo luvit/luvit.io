@@ -1,0 +1,146 @@
+/*
+	Striped by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
+	body
+	{
+		min-width: 1200px;
+	}
+	
+	body,input,textarea,select
+	{
+		font-size: 12pt;
+	}
+
+	/* Box */
+
+		.box
+		{
+		}
+
+			.box.post
+			{
+			}
+			
+				.box.post h2
+				{
+					font-size: 3.25em;
+					line-height: 1.25em;
+				}
+
+				.box.post header
+				{
+					padding: 2.75em 0 0 0;
+					margin: 0 0 3em 0;
+				}
+
+					.box.post header > p
+					{
+						font-size: 2.25em;
+						line-height: 1.5em;
+						position: relative;
+						top: -0.65em;
+						margin-bottom: -0.65em;
+					}
+
+				.box.post .info
+				{
+					position: absolute;
+					width: 5.5em;
+					overflow: hidden;
+					background-color: #fff;
+					background-image: url('images/bg02.png');
+					left: -10.5em;
+					top: 0;
+					padding: 1.5em 1em 1.5em 1em;
+					border-top-left-radius: 0.4em;
+					border-bottom-left-radius: 0.4em;
+					box-shadow: 0.25em 0 0 0 #fbfbfb, 0 0 0.25em 0em rgba(0,0,0,0.25);
+				}
+
+					.box.post .info .date
+					{
+						position: relative;
+						z-index: 1;
+						font-family: 'Open Sans Condensed', sans-serif;
+						font-weight: 400;
+						text-align: center;
+						display: block;
+						font-size: 1.5em;
+						color: #999;
+						border-bottom: solid 1px #ddd;
+						padding: 0 0 1em 0;
+						margin: 0 0 0.75em 0;
+					}
+
+						.box.post .info .date .year,
+						.box.post .info .date .month span
+						{
+							display: none;
+						}
+					
+						.box.post .info .date .day
+						{
+							display: block;
+							margin: 0.25em 0 0 0;
+							font-size: 1.5em;
+							font-weight: 700;
+							color: #1b252a;
+						}
+				
+					.box.post .info .stats
+					{
+						position: relative;
+						z-index: 1;
+					}
+					
+						.box.post .info .stats li
+						{
+							margin: 1.25em 0 0 0;
+						}
+						
+						.box.post .info .stats li a
+						{
+							position: relative;
+							display: block;
+							text-align: right;
+							padding: 0 0.5em 0 0.5em;
+						}
+						
+							.box.post .info .stats li a:before
+							{
+								position: absolute;
+								left: 0;
+								top: 50%;
+								margin-top: -0.5em;
+								font-size: 16px;
+								width: 1.5em;
+								text-align: center;
+								opacity: 0.35;
+							}
+
+/*********************************************************************************/
+/* Content                                                                       */
+/*********************************************************************************/
+		
+	#content
+	{
+		padding: 3em 5em 8em 5em;
+	}
+
+		body.left-sidebar #content
+		{
+			margin-left: 21em; /* = sidebar width + 7 */
+		}
+		
+		body.right-sidebar #content
+		{
+			margin-right: 14em; /* = sidebar width */
+			margin-left: 7em;
+		}
