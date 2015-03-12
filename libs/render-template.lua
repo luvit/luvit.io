@@ -42,17 +42,18 @@ local function compile(name)
   local getText, getPrint, getCode
 
   function getText(first)
-    local a, b = data:find("<%?= *", first)
+    local a, b, pre, eq, post = data:find("([ \t]*)<%?(=?)( *)", first)
     local mode
     if a then
-      mode = getPrint
-    else
-      a, b = data:find(" *<%?", first)
-      if a then
-        mode = getCode
+      if #eq > 0 then
+        mode = getPrint
+        a = a + #pre
       else
-        a = last + 1
+        mode = getCode
+        b = b - #post
       end
+    else
+      a = last + 1
     end
     local part = data:sub(first, a - 1)
     if #part > 0 then
@@ -93,7 +94,6 @@ local function compile(name)
 
   parts[#parts + 1] = "return table.concat(_P)"
   local code = table.concat(parts, "\n")
-  print(code)
   return assert(loadstring(code, "compiled template: " .. name))
 end
 
@@ -132,7 +132,6 @@ metatable = {
 return function (name, data)
   local layout = load("layout")
   data.body = partial(name, data)
-  p(data)
   setfenv(layout, setmetatable(data, metatable))
   return layout()
 end
