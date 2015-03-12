@@ -10,7 +10,7 @@
 }
 
 
-[![](pic01.jpg)](#)
+[![](/luvit-reborn/pic01.jpg)](#)
 
 **Hello!** You're looking at **Striped**, a fully responsive HTML5 site
 template designed by [AJ](http://n33.co) for [HTML5 UP](http://html5up.net) It

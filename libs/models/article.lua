@@ -10,5 +10,6 @@ return function (name)
   setfenv(fn, {})
   local article = fn()
   article.content = markdown
+  article.name = name
   return article
 end

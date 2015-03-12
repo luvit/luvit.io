@@ -94,7 +94,9 @@ local function compile(name)
 
   parts[#parts + 1] = "return table.concat(_P)"
   local code = table.concat(parts, "\n")
-  return assert(loadstring(code, "compiled template: " .. name))
+  local fn, err = loadstring(code, "compiled template: " .. name)
+  if fn then return fn end
+  error(err .. "\n" .. code)
 end
 
 local function load(name)
