@@ -122,6 +122,7 @@ end
 
 metatable = {
   __index = {
+    os = os,
     markdown = renderMarkdown,
     tostring = tostring,
     var = var,
