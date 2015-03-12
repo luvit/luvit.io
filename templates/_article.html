@@ -20,7 +20,7 @@
       the entire "date" element.
 
     -->
-    <?
+    <? if published then
       local mon = os.date("%b", published)
       local month = os.date("%B", published)
       local tail = month:sub(#mon + 1)
@@ -28,6 +28,7 @@
       local year = os.date("%Y", published)
     ?>
     <span class="date"><span class="month"><?=mon?><span><?=tail?></span></span> <span class="day"><?=day?></span><span class="year">, <?=year?></span></span>
+    <? end ?>
     <!--
       Note: You can change the number of list items in "stats" to whatever you want.
     -->
