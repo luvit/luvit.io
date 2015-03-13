@@ -1,0 +1,92 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+* { box-sizing: border-box }
+body {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6em;
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+}
+h1, h2, h3, h4, h5 {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 700;
+}
+pre code {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+.page-header, footer {
+  text-align: center;
+}
+.page-header {
+  background-color: #333;
+  color: #fff;
+}
+.page-header h1 {
+  color: #FFB300;
+  text-shadow: 3pt 3pt 6pt rgba(0,0,0,.3);
+}
+.page-header h1 {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+}
+.body h1, .body h2 {
+  font-family: Ubuntu, sans-serif;
+  /*font-weight: 700;*/
+}
+.body a {
+  color: #02556C;
+}
+.body a:hover, .body a:active {
+  color: #FFB300;
+}
+.body h1 {
+  color: #FF2300;
+}
+.body h2 {
+  color: #036C8A;
+  border-bottom: 1px solid #AD1800;
+}
+
+.body h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.body h1 { font-size: 2em; }
+.body h2 {
+  font-size: 1.5em;
+}
+footer {
+  background-color: #ff6d56;
+  color: #ad1800;
+}
+body {
+  background-color: #02556C;
+}
+img {
+  width: 100%;
+}
+.body {
+  overflow: hidden;
+}
+pre code {
+  box-shadow: inset .1em .1em 0.3em rgba(0,0,0,0.3);
+  white-space: pre-wrap;
+}
+.body .wrapper {
+  background-color: #eee;
+  color: #333;
+  box-shadow: 0 0 1em rgba(0,0,0,0.5);
+}
+.body img {
+  width: 100%;
+}
+.wrapper {
+  padding: 24px;
+}
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}

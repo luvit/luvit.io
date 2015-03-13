@@ -10,44 +10,61 @@
   published = 1426173913
 }
 
-
-![](/luvit-reborn/a-new-era.jpg)
-
-**Hello!** You're looking at **Striped**, a fully responsive HTML5 site
-template designed by [AJ](http://n33.co) for [HTML5 UP](http://html5up.net) It
-features a clean, minimalistic design, styling for all basic page elements
-(including blockquotes, tables and lists), a repositionable sidebar (left or
-right), and HTML5/CSS3 code designed for quick and easy customization (see
-code comments for details).
-
-Striped is released for free under the [Creative Commons Attribution
-license](http://html5up.net/license) so feel free to use it for personal
-projects or even commercial ones &ndash; just be sure to credit [HTML5
-UP](http://html5up.net) for the design. If you like what you see here, be sure
-to check out [HTML5 UP](http://html5up.net) for more cool designs or follow me
-on [Twitter](http://twitter.com/n33co) for new releases and updates.
-
 The original luvit (started 2011 by Tim Caswell) was a node.js-like programming
 environment, but using Luajit instead of V8. Luvit 1.0 found it's niche in
 places like cloud monitoring and scripting on slower devices like Raspberry PIs.
 It had nearly identical APIs to node and thus was easy to learn for developers
 looking for something like node, but less memory hungry.
 
+![](/luvit-reborn/a-new-era.jpg)
+
 Luvit 2.0 is a reboot of this idea but far more flexible and configurable. The
 new system consists of many parts that can be used with or without the new luvit
 framework.
+
+## Getting Lit
+
+To build lit, simply enter the following commands depending on your terminal type.
+
+For unix shell users, this should work:
 
 ```sh
 curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
 ```
 
+If you're on windows and using `cmd.exe`, the following is advised:
+
 ```bat
 PowerShell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://github.com/luvit/lit/raw/master/get-lit.ps1'))"
 ```
 
+If you're a powershell user, you can type the powershell script directly:
+
 ```powershell
 iex ((new-object net.webclient).DownloadString('https://github.com/luvit/lit/raw/master/get-lit.ps1'))
 ```
+
+All of these will give you a `lit` command in your current directory.  Make sure to put it somewhere in your path (like `/usr/local/bin`) so it can be used anywhere.
+
+## Making Luvit
+
+Once you have `lit`, making luvit is trivial.  Simply run:
+
+```sh
+# For latest stable version of lit
+lit make lit://luvit/luvit
+
+# Or if you prefer master in git
+lit make github://luvit/luvit
+```
+
+Now you'll have a `luvit` executible in your current folder.  Put in the same place as your lit executible.
+
+## Luvit in Action
+
+Luvit can be used for a great many things, the original HTTP server ported from the old node.js days and luvit 1.0 still works, try it!
+
+First create a file containing the following:
 
 ```lua
 local http = require("http")
@@ -68,3 +85,12 @@ end):listen(8080)
 
 print("Server listening at http://localhost:8080/")
 ```
+
+
+Then run this file (assuming you named it `http-server.lua`) with the command:
+
+```sh
+luvit http-server.lua
+```
+
+And point your browser to http://localhost:8080/ to see your creation.
