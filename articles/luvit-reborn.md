@@ -11,7 +11,7 @@
 }
 
 The original luvit (started 2011 by Tim Caswell) was a node.js-like programming
-environment, but using Luajit instead of V8. Luvit 1.0 found it's niche in
+environment, but using Luajit instead of V8. Luvit 1.0 found its niche in
 places like cloud monitoring and scripting on slower devices like Raspberry PIs.
 It had nearly identical APIs to node and thus was easy to learn for developers
 looking for something like node, but less memory hungry.
