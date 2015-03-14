@@ -1,4 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,700);
+
 * { box-sizing: border-box }
 body {
   margin: 0;
@@ -11,9 +12,13 @@ h1, h2, h3, h4, h5 {
   font-family: Ubuntu, sans-serif;
   font-weight: 700;
 }
-pre code {
+pre.cm-s-notebook {
   font-size: 16px;
   line-height: 1.5em;
+  white-space: pre-wrap;
+  padding: 10px 24px;
+  margin-left: -24px;
+  margin-right: -24px;
 }
 .page-header, footer {
   text-align: center;
@@ -71,12 +76,8 @@ img {
 .body {
   overflow: hidden;
 }
-pre code {
-  box-shadow: inset .1em .1em 0.3em rgba(0,0,0,0.3);
-  white-space: pre-wrap;
-}
 .body .wrapper {
-  background-color: #eee;
+  background-color: #f8f8f8;
   color: #333;
   box-shadow: 0 0 1em rgba(0,0,0,0.5);
 }

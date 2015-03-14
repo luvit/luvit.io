@@ -1,0 +1,60 @@
+/* theme based on set of InkJoy colored pens and a little notbook */
+/* Created by Tim Caswell <tim@creationix.com> */
+
+.cm-s-notebook {
+  background-color:#fefcee; /* paper */
+  color:#403238;            /* black */
+  font-family: Menlo, Vera Sans Mono, Ubuntu Mono, Consolas, Monaco, monospace;
+}
+.cm-s-notebook .CodeMirror-gutters {background: #fff;border-right:none;}
+.cm-s-notebook .CodeMirror-linenumber {color: #312f2b;opacity:0.8;}
+
+
+div.cm-s-notebook span.CodeMirror-matchingbracket {
+  color: #c80b12;
+  font-weight: bold;
+}
+.cm-s-notebook .CodeMirror-ruler {
+  border-color: #FF898D;
+}
+.cm-s-notebook div.CodeMirror-cursor {
+  border-color: #c80b12;
+  border-width: 2px;
+}
+
+.cm-s-notebook .CodeMirror-activeline-background,
+.cm-s-notebook .CodeMirror-selected {background: #f7f5e1}
+.cm-s-notebook.CodeMirror-focused .CodeMirror-selected {background: #f0ebc5}
+
+/* dark-blue - symbols */
+.cm-s-notebook .cm-property {color: #2d229c}
+
+/* light-blue - library variables */
+.cm-s-notebook .cm-qualifier,
+.cm-s-notebook .cm-variable {color: #16b05b}
+
+/* dark-green - user variables */
+.cm-s-notebook .cm-def,
+.cm-s-notebook .cm-variable-2,
+.cm-s-notebook .cm-variable-3 {color:#029dba}
+
+/* light-green */
+.cm-s-notebook .cm-builtin,
+.cm-s-notebook .cm-tag,
+.cm-s-notebook .cm-keyword {color:#6ac21d}
+
+/* red */
+.cm-s-notebook .cm-operator {color:#f61941}
+
+/* orange */
+.cm-s-notebook .cm-string {color:#e05909}
+.cm-s-notebook .cm-string-2 {color:#BF8D00}
+
+/* pink */
+.cm-s-notebook .cm-number {color:#ea1b8d}
+
+/* purple */
+.cm-s-notebook .cm-atom {color:#6b1994}
+
+/* brown */
+.cm-s-notebook .cm-comment {color:#97694C}
