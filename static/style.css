@@ -26,11 +26,11 @@ pre.cm-s-notebook {
   text-align: center;
 }
 .page-header {
-  background-color: #282828;
+  background-color: #0594BD;
   color: #fff;
 }
 .page-header p {
-  color: #FFB300;
+  color: #fff;
   text-shadow: 3pt 3pt 6pt rgba(0,0,0,.3);
   font-family: Ubuntu, sans-serif;
   font-weight: 700;
