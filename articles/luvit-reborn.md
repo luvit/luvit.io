@@ -16,7 +16,7 @@ places like cloud monitoring and scripting on slower devices like Raspberry PIs.
 It had nearly identical APIs to node and thus was easy to learn for developers
 looking for something like node, but less memory hungry.
 
-![](/luvit-reborn/a-new-era.jpg)
+![](luvit-reborn/a-new-era.jpg)
 
 Luvit 2.0 is a reboot of this idea but far more flexible and configurable. The
 new system consists of many parts that can be used with or without the new luvit

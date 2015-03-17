@@ -1,7 +1,8 @@
 local hd = require('hoedown')
 local ffi = require('ffi')
 
-local renderer = hd.hoedown_html_renderer_new(hd.HOEDOWN_HTML_ESCAPE, 0)
+--hd.HOEDOWN_HTML_ESCAPE
+local renderer = hd.hoedown_html_renderer_new(0, 0)
 local extensions = bit.bor(hd.HOEDOWN_EXT_BLOCK, hd.HOEDOWN_EXT_SPAN)
 local document = hd.hoedown_document_new(renderer, extensions, 16);
 

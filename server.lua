@@ -1,24 +1,24 @@
 local pathJoin = require('luvi').path.join
+local static = require('weblit-static')
 
 require('weblit-app')
 
   .bind({host = "0.0.0.0", port = 8080})
 
+  -- Configure weblit server
   .use(require('weblit-logger'))
-
   .use(require('weblit-auto-headers'))
-
   .use(require('weblit-etag-cache'))
 
-  -- Serve dynamic content and static assets for front page
-  .route({ method = "GET", path = "/" }, require('controllers/index'))
-  .use(require('weblit-static')(pathJoin(module.dir, "static")))
+  -- Serve non-blog content pages
+  .route({ method = "GET", path = "/" }, require('controllers/page'))
+  .route({ method = "GET", path = "/:name" }, require('controllers/page'))
 
-  -- Serve dynamic content and static assets for article pages
-  .route({ method = "GET", path = "/:name" }, require('controllers/article'))
-  .route({ method = "GET", path = "/:name/" }, require('controllers/article'))
-  .use(require('weblit-static')(pathJoin(module.dir, "articles")))
+  -- Serve blog articles
+  .route({ method = "GET", path = "/blog/index.html" }, require('controllers/articles'))
+  .route({ method = "GET", path = "/blog/:name.html" }, require('controllers/article'))
 
-
+  .route({ method = "GET", path = "/blog/:path:"}, static(pathJoin(module.dir, "articles")))
+  .use(static(pathJoin(module.dir, "static")))
 
   .start()

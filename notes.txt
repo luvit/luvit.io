@@ -1,0 +1,19 @@
+likes logos
+
+larger main text on luvit.io
+
+no space around text when on small screen
+
+code isn't responsive
+
+lones are too long
+
+call to action needs to be easier to find
+
+needs use cases more prominent
+
+License needs to be on home page
+
+
+
+80 chars max width

@@ -1,0 +1,131 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,700);
+
+* { box-sizing: border-box }
+
+/* http://paletton.com/#uid=33o0u0kCZF4l9IQr2F+FxrNHZlJ */
+@luvit-blue: #0594BD;
+@luvit-blue-light: #48ACC8;
+@luvit-blue-bright: #239DC0;
+@luvit-blue-dim: #036C8A;
+@luvit-blue-dark: #02546C;
+@luvit-yellow: #FFB300;
+@luvit-yellow-light: #FFCD56;
+@luvit-yellow-bright: #FFBF28;
+@luvit-yellow-dim: #DD9B00;
+@luvit-yellow-dark: #AD7900;
+@luvit-red: #FF2300;
+@luvit-red-light: #FF6D56;
+@luvit-red-bright: #FF4528;
+@luvit-red-dim: #DD1E00;
+@luvit-red-dark: #AD1800;
+
+html {
+  height: 100%;
+}
+body {
+  margin: 35pt 0 0 0;
+  font-family: "Ubuntu", sans-serif;
+  height: 100%;
+  font-size: 12pt;
+  line-height: 1.5em;
+}
+#githubRibbon {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+.row {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: auto;
+  zoom: 1;
+  .third {
+    padding: 0 30px;
+    text-align: center;
+    width: 33.333%;
+    float: left;
+    overflow: auto;
+    zoom: 1;
+  }
+  .single {
+    padding: 30px;
+    margin: 0 auto;
+  }
+}
+hr {
+  height: 0;
+  border: 0;
+  margin: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.menubar {
+  background-color: @luvit-blue;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  ul { .row; }
+  li {
+    list-style-type: none;
+    a {
+      float: left;
+      padding: 10px 10px;
+      line-height: 20pt;
+      font-size: 12pt;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        background-color: @luvit-blue-bright;
+      }
+    }
+    img {
+      height: 12pt;
+    }
+  }
+}
+footer {
+  background-color: @luvit-yellow;
+  text-align: center;
+  color: #fff;
+}
+.page-header {
+  background-color: @luvit-blue;
+  color: #fff;
+}
+.hero {
+  text-align: center;
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 10% 0;
+  font-size: 20pt;
+  img { width: 100%;  }
+  button {
+    border: 1px solid #fff;
+    text-transform: uppercase;
+    border-radius: 2px;
+    padding: 10pt;
+    background-color: @luvit-blue;
+    &:hover {
+      background-color: @luvit-blue-bright;
+    }
+  }
+}
+.main {
+  min-height: 100%;
+}
+
+  /*<nav class="menubar">
+    <ul>
+      <li><a href="#"><img src="/tiny-white.svg" alt="Luvit <3"></a></li>
+      <li><a href="#">Docs</a></li>
+      <li><a href="#">Contribute</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+  </nav>
+*/

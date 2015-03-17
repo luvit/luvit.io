@@ -1,58 +1,51 @@
 <!doctype html>
-<html>
-  <head>
-    <title><?=title?></title>
-    <meta charset="utf8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/notebook.css">
-    <link rel="stylesheet" href="/style.css">
-    <script src="/cm/lib/codemirror.js"></script>
-    <script src="/cm/addon/runmode/runmode.js"></script>
-    <script src="/cm/addon/runmode/runmode.js"></script>
-    <script src="/cm/mode/lua/lua.js"></script>
-    <script src="/cm/mode/shell/shell.js"></script>
-    <link rel="stylesheet" href="/cm/lib/codemirror.css">
-  </head>
-  <body>
-    <header class="page-header">
-      <div class="wrapper">
-        <img class="hero" src="/logo-white.svg" alt="Luvit" />
-        <p>Asynchronous I/O&nbsp;for&nbsp;Lua</p>
-      </div>
-    </header>
-    <div class="body">
-      <div class="wrapper">
-      <?=body?>
-      </div>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title><?=title?></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu+Mono' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/normalize.css">
+  <link rel="stylesheet" href="/cm/lib/codemirror.css">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="stylesheet/less" type="text/css" href="style.less">
+</head>
+
+<body>
+  <nav class="menubar">
+    <ul>
+      <li><a href="/"><img src="/tiny-white.svg" alt="Luvit <3"></a></li>
+      <li><a href="/docs/index.html">Docs</a></li>
+      <li><a href="https://github.com/luvit">Contribute</a></li>
+      <li><a href="/blog/luvit-reborn.html">Blog</a></li>
+    </ul>
+  </nav>
+  <a href="http://github.com/luvit/luvit">
+      <img id="githubRibbon" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+  <div class="main">
+    <?=body?>
+  </div>
+  <footer>
+    <div class="row">
+      <p>Copyright 2015 The Luvit Authors</p>
     </div>
-    <footer>
-      <div class="wrapper">
-        <p>Copyright 2015 The Luvit Authors</p>
-      </div>
-    </footer>
-    <script>
-      window.addEventListener("load", function () {
-        "use strict";
-        var map = {
-          lua: "text/x-lua",
-          sh: "text/x-sh",
-        };
-        var codes = document.querySelectorAll("pre code");
-        for (var i = 0, l = codes.length; i < l; i++) {
-          var code = codes[i];
-          var mode = code.getAttribute("class");
-          if (mode) {
-            mode = mode.match("^language-(.*)$");
-            if (mode) {
-              mode = map[mode[1]];
-            }
-          }
-          if (!mode) { mode = "text/plain"; }
-          var pre = code.parentElement;
-          window.CodeMirror.runMode(code.textContent, mode, pre);
-          pre.setAttribute("class", "cm-s-notebook");
-        }
-      });
-    </script>
-  </body>
+  </footer>
+</body>
+<script src="less.min.js"></script>
+<script src="/cm/lib/codemirror.js"></script>
+<script src="/cm/addon/runmode/runmode.js"></script>
+<script src="/cm/lib/codemirror.js"></script>
+<script src="/cm/lib/codemirror.js"></script>
+<script src="/cm/mode/lua/lua.js"></script>
+<script src="/cm/mode/shell/shell.js"></script>
+<script src="main.js"></script>
 </html>

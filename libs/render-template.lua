@@ -31,8 +31,7 @@ local function stringify(data)
 end
 
 
-local function compile(name)
-  local data = assert(fs.readFile(name .. ".html"))
+local function compile(data, name)
   local parts = {
     "local _P = {}",
     "local function print(t) _P[#_P+1]=t end",
@@ -102,7 +101,8 @@ end
 local function load(name)
   local template = cache[name]
   if not template then
-    template = compile(name)
+    local source = assert(fs.readFile(name .. ".html"))
+    template = compile(source, name)
     cache[name] = template
   end
   return template
@@ -110,8 +110,10 @@ end
 
 local metatable
 
-local function partial(name, data)
-  local template = load(name)
+local function partial(name, data, source)
+  name = name or "unknown"
+  local template = source and compile(source, name) or load(name)
+  data.self = data
   setfenv(template, setmetatable(data, metatable))
   return template()
 end
@@ -132,9 +134,9 @@ metatable = {
   }
 }
 
-return function (name, data)
-  local layout = load("layout")
+return function (res, name, data)
   data.body = partial(name, data)
-  setfenv(layout, setmetatable(data, metatable))
-  return layout()
+  res.body = partial("layout", data)
+  res.code = 200
+  res.headers["Content-Type"] = "text/html"
 end
