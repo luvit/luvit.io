@@ -26,7 +26,7 @@ body {
   margin: 35pt 0 0 0;
   font-family: "Ubuntu", sans-serif;
   height: 100%;
-  font-size: 12pt;
+  font-size: 13pt;
   line-height: 1.5em;
 }
 #githubRibbon {
@@ -37,7 +37,7 @@ body {
 }
 
 .row {
-  max-width: 960px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 0;
   overflow: auto;
@@ -119,16 +119,75 @@ footer {
     }
   }
 }
+pre {
+  font-family: Ubuntu Mono, monospace;
+}
 .main {
   min-height: 100%;
 }
 
-  /*<nav class="menubar">
-    <ul>
-      <li><a href="#"><img src="/tiny-white.svg" alt="Luvit <3"></a></li>
-      <li><a href="#">Docs</a></li>
-      <li><a href="#">Contribute</a></li>
-      <li><a href="#">Blog</a></li>
-    </ul>
-  </nav>
-*/
+
+/* theme based on set of InkJoy colored pens and a little notbook */
+/* modified to use luvit theme colors */
+/* Created by Tim Caswell <tim@creationix.com> */
+
+.cm-s-luvit {
+  background-color:#fafafa;
+  border: 1px solid @luvit-blue-dim;
+  border-radius: 2px;
+  padding: 10px;
+  color:#403238;            /* black */
+  font-family: Ubuntu Mono, Menlo, Vera Sans Mono, Consolas, Monaco, monospace;
+}
+.cm-s-luvit .CodeMirror-gutters {background: #fff;border-right:none;}
+.cm-s-luvit .CodeMirror-linenumber {color: #312f2b;opacity:0.8;}
+
+
+div.cm-s-luvit span.CodeMirror-matchingbracket {
+  color: #c80b12;
+  font-weight: bold;
+}
+.cm-s-luvit .CodeMirror-ruler {
+  border-color: #FF898D;
+}
+.cm-s-luvit div.CodeMirror-cursor {
+  border-color: #c80b12;
+  border-width: 2px;
+}
+
+.cm-s-luvit .CodeMirror-activeline-background,
+.cm-s-luvit .CodeMirror-selected {background: #f7f5e1}
+.cm-s-luvit.CodeMirror-focused .CodeMirror-selected {background: #f0ebc5}
+
+/* dark-blue - symbols */
+.cm-s-luvit .cm-property {color: @luvit-blue-dark}
+
+/* light-blue - library variables */
+.cm-s-luvit .cm-qualifier,
+.cm-s-luvit .cm-variable {color: @luvit-blue-light}
+
+/* dark-green - user variables */
+.cm-s-luvit .cm-def,
+.cm-s-luvit .cm-variable-2,
+.cm-s-luvit .cm-variable-3 {color:@luvit-blue-bright}
+
+/* light-green */
+.cm-s-luvit .cm-builtin {color: @luvit-red-bright}
+.cm-s-luvit .cm-tag     {color: @luvit-red-dim}
+.cm-s-luvit .cm-keyword {color: @luvit-yellow-dark}
+
+/* red */
+.cm-s-luvit .cm-operator {color:@luvit-red}
+
+/* orange */
+.cm-s-luvit .cm-string {color:@luvit-blue}
+.cm-s-luvit .cm-string-2 {color:@luvit-blue-dim}
+
+/* pink */
+.cm-s-luvit .cm-number {color:@luvit-red-bright}
+
+/* purple */
+.cm-s-luvit .cm-atom {color:@luvit-yellow-dim}
+
+/* brown */
+.cm-s-luvit .cm-comment {color:#555}

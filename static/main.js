@@ -1,12 +1,10 @@
-
-(function () {
+window.addEventListener("load", function () {
   "use strict";
   var map = {
     lua: "text/x-lua",
     sh: "text/x-sh",
   };
   var codes = document.querySelectorAll("pre code");
-  console.log(codes);
   for (var i = 0, l = codes.length; i < l; i++) {
     var code = codes[i];
     var mode = code.getAttribute("class");
@@ -21,5 +19,5 @@
     window.CodeMirror.runMode(code.textContent, mode, pre);
     pre.setAttribute("class", "cm-s-luvit");
   }
-})();
 
+});
