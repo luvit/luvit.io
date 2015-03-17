@@ -12,7 +12,7 @@ require('weblit-app')
 
   -- Serve non-blog content pages
   .route({ method = "GET", path = "/" }, require('controllers/page'))
-  .route({ method = "GET", path = "/:name" }, require('controllers/page'))
+  .route({ method = "GET", path = "/:name.html" }, require('controllers/page'))
 
   -- Serve blog articles
   .route({ method = "GET", path = "/blog/index.html" }, require('controllers/articles'))
