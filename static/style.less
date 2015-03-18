@@ -29,11 +29,21 @@ body {
   font-size: 12pt;
   line-height: 1.5em;
 }
-#githubRibbon {
+#github-ribbon {
   position: fixed;
-  top: 0;
-  right: 0;
-  border: 0;
+  top: 2.5em;
+  right: -3.9em;
+  transform: rotate(45deg);
+  color:#000;
+  display: block;
+  padding: .3em 3.5em;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  background-color: @luvit-yellow-bright;
+  font-size: 9pt;
+  border-top: 1px dotted @luvit-yellow-dark;
+  border-bottom: 1px dotted @luvit-yellow-dark;
 }
 
 @media (min-width: 600px) {
@@ -47,7 +57,7 @@ body {
   }
 }
 @media (max-width: 450px) {
-  #githubRibbon {
+  #github-ribbon {
     display: none;
   }
 }
