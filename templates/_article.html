@@ -4,7 +4,7 @@
       <?=os.date("%B %d, %Y", published)?><br>
     <? end ?>
     <? if author.email then ?>
-      <img src="http://www.gravatar.com/avatar/<?=md5(author.email:lower())?>">
+      <img src="//www.gravatar.com/avatar/<?=md5(author.email:lower())?>">
       <br>
     <? end ?>
     by <?=author.name?>
