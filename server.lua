@@ -1,5 +1,6 @@
 local pathJoin = require('luvi').path.join
 local static = require('weblit-static')
+local blog = require('controllers/blog')
 
 require('weblit-app')
 
@@ -18,6 +19,8 @@ require('weblit-app')
   .route({ method = "GET", path = "/blog/index.html" }, require('controllers/articles'))
   .route({ method = "GET", path = "/blog/:name.html" }, require('controllers/article'))
 
+  .route({ method = "GET", path = "/blog/"}, blog.index)
+  .route({ method = "GET", path = "/blog/tags/:tag"}, blog.tags)
   .route({ method = "GET", path = "/blog/:path:"}, static(pathJoin(module.dir, "articles")))
   .use(static(pathJoin(module.dir, "static")))
 
