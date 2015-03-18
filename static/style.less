@@ -36,6 +36,21 @@ body {
   border: 0;
 }
 
+@media (min-width: 600px) {
+  .row {
+    .third {
+      width: 33.333%;
+      float: left;
+      overflow: auto;
+      zoom: 1;
+    }
+  }
+}
+@media (max-width: 450px) {
+  #githubRibbon {
+    display: none;
+  }
+}
 .row {
   max-width: 860px;
   margin: 0 auto;
@@ -44,17 +59,12 @@ body {
   zoom: 1;
   .third {
     padding: 0 30px;
-    text-align: left;
     h2 {
       text-align: center;
     }
     ul {
       padding-left: 20px;
     }
-    width: 33.333%;
-    float: left;
-    overflow: auto;
-    zoom: 1;
   }
   .single {
     padding: 30px;
@@ -92,6 +102,9 @@ p, ul {
   border-bottom: 1px solid #fff;
   position: fixed;
   width: 100%;
+  height: 48px;
+  overflow-x: auto;
+  overflow-y: hidden;
   top: 0;
   ul { .row; }
   li {
@@ -132,6 +145,7 @@ a {
   margin: 0 auto;
   padding: 10% 0;
   font-size: 20pt;
+  p{line-height: 1.2em; }
   img { width: 100%;  }
   .button {
     display: inline-block;
