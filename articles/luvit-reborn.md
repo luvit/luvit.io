@@ -7,7 +7,7 @@
     github = "creationix"
   },
   tags = { "news", "tutorial" },
-  published = 1426709250
+  --published = 1426709250
 }
 
 The original luvit (started 2011 by Tim Caswell) was a node.js-like programming
