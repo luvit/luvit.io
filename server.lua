@@ -1,10 +1,11 @@
 local pathJoin = require('luvi').path.join
 local static = require('weblit-static')
 local blog = require('controllers/blog')
+local env = require('env')
 
 require('weblit-app')
 
-  .bind({host = "0.0.0.0", port = 8080})
+  .bind({host = "0.0.0.0", port = env.get("PORT") or 8080})
 
   -- Configure weblit server
   .use(require('weblit-logger'))
