@@ -33,7 +33,9 @@ end
 function exports.index(req, res, go)
   local articles = loadArticles()
   if #articles == 0 then
-    return go()
+    return renderTemplate(res, "empty", {
+      title = "Blog - Luvit.io",
+    })
   end
 
   -- Redirect to the newest published article
@@ -51,10 +53,9 @@ function exports.article(req, res, go)
   local name = req.params.name
   local articles = loadArticles()
   local article = articles[name] or loadContent("articles", name)
-  p(article)
   if not article then return go() end
   return renderTemplate(res, "article", {
-    title = article.title .. " - Luvit.io Blog",
+    title = article.title .. "Blog - Luvit.io",
     article = article
   })
 end
