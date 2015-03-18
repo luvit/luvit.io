@@ -5,7 +5,7 @@ return function (req, res, go)
   local article = loadContent("articles", req.params.name)
   if not article then return go() end
   return renderTemplate(res, "article", {
-    title = article.title,
+    title = article.title .. " - Luvit.io Blog",
     article = article
   })
 end

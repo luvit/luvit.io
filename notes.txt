@@ -6,7 +6,7 @@ no space around text when on small screen
 
 code isn't responsive
 
-lones are too long
+lines are too long
 
 call to action needs to be easier to find
 
