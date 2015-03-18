@@ -3,6 +3,7 @@ local templateDir = pathJoin(module.dir, "../templates")
 local fs = require('coro-fs').chroot(templateDir)
 local uv = require('uv')
 local renderMarkdown = require('markdown')
+local digest = require('openssl').digest.digest
 
 local cache = {}
 
@@ -122,9 +123,14 @@ local function var(value, name)
   return value == nil and "{" .. name .. "}" or tostring(value)
 end
 
+local function md5(string)
+  return digest("md5", string)
+end
+
 metatable = {
   __index = {
     os = os,
+    md5 = md5,
     markdown = renderMarkdown,
     tostring = tostring,
     var = var,

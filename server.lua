@@ -16,11 +16,10 @@ require('weblit-app')
   .route({ method = "GET", path = "/:name.html" }, require('controllers/page'))
 
   -- Serve blog articles
-  .route({ method = "GET", path = "/blog/index.html" }, require('controllers/articles'))
-  .route({ method = "GET", path = "/blog/:name.html" }, require('controllers/article'))
-
   .route({ method = "GET", path = "/blog/"}, blog.index)
   .route({ method = "GET", path = "/blog/tags/:tag"}, blog.tags)
+  .route({ method = "GET", path = "/blog/:name.html" }, blog.article)
+
   .route({ method = "GET", path = "/blog/:path:"}, static(pathJoin(module.dir, "articles")))
   .use(static(pathJoin(module.dir, "static")))
 

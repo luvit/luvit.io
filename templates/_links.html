@@ -1,0 +1,17 @@
+<div class="article-nav">
+  <div class="row">
+    <nav class="single">
+      <? if published then ?>
+        <? if before then ?>
+          <p class="link left"><a href="/blog/<?=before.name?>.html">Previous - <?=before.title?></a></p>
+        <? end ?>
+        <? if after then ?>
+          <p class="link right"><a href="/blog/<?=after.name?>.html">Next - <?=after.title?></a></p>
+        <? end ?>
+      <? else ?>
+        <p>This article is unpublished, add a <code>published</code> field to the metadata to make live.</p>
+        <p>This value can be calculated by running <code>os.time()</code> in a luvit repl.</p>
+      <? end?>
+    </nav>
+  </div>
+</div>
