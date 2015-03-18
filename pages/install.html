@@ -1,22 +1,86 @@
-{ main = [[
+{  title = "Installing Luvit - Luvit.io",
+  main = [[
+
+# Installing Luvit
+
+Installing Luvit is a multi-step process currently.  But fear not, it's still quite simple.
+
+## Get Lit
+
+If you're on Linux, FreeBSD, or OSX, run the following command to download and package a `lit` binary for your platform:
+
+```sh
+curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
+```
+
+If you're on windows, run the sister command in your `cmd.exe` command prompt.
+
+```bat
+PowerShell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://github.com/luvit/lit/raw/master/get-lit.ps1'))"
+```
+
+## Make Luvit
+
+Once you have lit, use it to build luvit.  This is the same for all platforms.
+
+The latest published lit release of luvit can be built with:
+
+```sh
+lit make lit://luvit/luvit
+```
+
+If you'd rather test the master branch on github, use:
+
+```sh
+lit make github://luvit/luvit
+```
+
+Both these commands will create a `luvit` executable in the current directory.
+
+Put both `lit` and `luvit` in your path somewhere.  We recommend `/usr/local/bin` or `$HOME/bin` if that's in your path.
+
+To test your install run `luvit` to enter the repl.  This has readline-like capabilities implemented in lua and has tab completion of expressions for interactive exploring the runtime.
 
 ## Prebuilt Binaries
 
-We maintain pre-built binaries for various popular platforms to reduce barrier
-to entry.  If you're running one of these, you're in luck!
+While the lit method is quick and easy, we're working on an even easier with pre-bundled `luvit` and `lit` binaries for popular platforms.
 
-### Windows x64
+Watch this space for updates.
+
+ - Windows x64 - TODO: publish
+ - Linux x64 - TODO: publish
+ - OSX x64 - TODO: publish
+ - FreeBSD x64 - TODO: publish
+ - Raspberry PI - TODO: publish
+
+## Compile From Source
+
+If you system is not one of the platforms for which we publish [pre-built luvi binaries](https://github.com/luvit/luvi/releases), you can still build lit from a manually compiled `luvi`.
+
+This requires a C compiler such as gcc, clang, or Visual Studio.  You also need to have [cmake](http://www.cmake.org/) installed and in your path.
+
+```sh
+git clone --recursive https://github.com/luvit/luvi.git
+cd luvi
+make static
+make test
+```
+
+The final binary will be at `build/luvi` on most platforms (cmake decides this path).  Once you have this, build lit manually using this luvi.
 
 
+```sh
+curl -L https://github.com/luvit/lit/archive/master.zip > lit.zip
+LUVI_APP=lit.zip ./build/luvi make lit.zip
+```
 
-### Linux x64
+This will create a `lit` executable in your current directory.  Then you can continue to build luvit normally with:
 
-### OSX x64
+```sh
+lit make github://luvit/luvit
+```
 
-### FreeBSD x64
-
-### Raspberry PI
-
+And put `lit` and `luvit` in your system path.
 ]]}
 <div class="row">
   <section class="single">
