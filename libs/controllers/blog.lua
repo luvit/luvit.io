@@ -55,7 +55,7 @@ function exports.article(req, res, go)
   local article = articles[name] or loadContent("articles", name)
   if not article then return go() end
   return renderTemplate(res, "article", {
-    title = article.title .. "Blog - Luvit.io",
+    title = article.title .. " - Blog - Luvit.io",
     article = article
   })
 end
