@@ -143,32 +143,6 @@ return {
 }
 ```
 
-## Hacking on Luvit Core
-
-First you need to clone and build luvit, this is easy and works cross-platform thanks to `Makefile` and `make.bat`.
-
-```sh
-git clone https://github.com/luvit/luvit.git
-cd luvit
-make
-```
-
-If you want to test luvit without constantly building, set the magic `LUVI_APP` variable that makes **all** luvi binaries use a certain folder for the app bundle.  This is best done with a bash alias so as to not break other luvi based apps like `lit`.
-
-```sh
-alias luvit=LUVI_APP=`pwd`" "luvit
-```
-
-Also you can use `lit run` in the luvit root folder.
-
-Always make sure to run `make test` before submitting a PR.
-
-## Binary Modules
-
-Luvit supports FFI and Lua based binary modules. There is a wiki entry
-explaining how to manage and include a binary module within a bundled
-application. [Publishing Compiled Code][]
-
 [cloud monitoring]: https://github.com/virgo-agent-toolkit
 [Tim Caswell]: https://github.com/creationix
 [libuv]: http://docs.libuv.org/en/v1.x/
@@ -181,4 +155,3 @@ application. [Publishing Compiled Code][]
 [openssl]: https://www.openssl.org/
 [zlib]: http://www.zlib.net/
 [node.js]: http://nodejs.org/
-[Publishing Compiled Code]: https://github.com/luvit/lit/wiki/Publishing-Compiled-Code
