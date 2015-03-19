@@ -52,8 +52,7 @@ create the `luvit` command-line tool that mimics the `node` tool and
 lets you run arbitrary lua scripts.
 
 ```sh
-curl -L https://github.com/luvit/luvit/archive/luvi-up.zip > luvit.zip
-lit make luvit.zip
+lit make github://luvit/luvit
 sudo install luvit /usr/local/bin
 luvit
 ```
