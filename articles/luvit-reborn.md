@@ -71,11 +71,6 @@ And the luvit bootstrap in your app's `main.lua` will look something
 like:
 
 ```lua
--- Bootstrap the require system
-local luvi = require('luvi')
-luvi.bundle.register('require', "deps/require.lua")
-local require = require('require')("bundle:main.lua")
-
 -- Create a luvit powered main
 return require('luvit')(function (...)
   -- Your app main logic starts here
