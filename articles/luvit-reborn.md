@@ -44,6 +44,22 @@ Luvit 2.0 is one more layer on top of this that implements the
 [node.js][] [APIs](http://nodejs.org/api/) in lua as a collection of
 standalone [lit libraries][].  Luvit can be used several different
 ways from lit.
+
+## Luvit 2.0 the Platform
+
+You can build the `luvit/luvit` metapackage as an app directly to
+create the `luvit` command-line tool that mimics the `node` tool and
+lets you run arbitrary lua scripts.
+
+```sh
+curl -L https://github.com/luvit/luvit/archive/luvi-up.zip > luvit.zip
+lit make luvit.zip
+sudo install luvit /usr/local/bin
+luvit
+```
+
+This works much like the original luvit platform which works like node.
+
 ## Luvit 2.0 the Framework
 
 You can use luvit as a metapackage that includes the luvit runtime as
@@ -90,21 +106,6 @@ be included in the `deps` folder.
 You app will have it's own custom main, but will have all the same
 builtins and globals as luvit (plus whatever other globals and
 builtins you added).
-
-## Luvit 2.0 the Platform
-
-You can build the `luvit/luvit` metapackage as an app directly to
-create the `luvit` command-line tool that mimics the `node` tool and
-lets you run arbitrary lua scripts.
-
-```sh
-curl -L https://github.com/luvit/luvit/archive/luvi-up.zip > luvit.zip
-lit make luvit.zip
-sudo install luvit /usr/local/bin
-luvit
-```
-
-This works much like the original luvit platform.
 
 ## Luvit 2.0 the Library
 
