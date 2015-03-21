@@ -92,9 +92,9 @@ return require('luvit')(function (...)
 end, ...)
 ```
 
-Then when you build your app with `lit make`, luvit and all it's
+Then when you build your app with `lit make`, luvit and all its
 libraries will be included in your app.  Also if you install your
-app's deps to disk using `lit install`, luvit and all it's deps will
+app's deps to disk using `lit install`, luvit and all its deps will
 be included in the `deps` folder.
 
 ```sh
@@ -102,7 +102,7 @@ be included in the `deps` folder.
 ~/my-cool-app $ ./my-cool-app
 ```
 
-You app will have it's own custom main, but will have all the same
+You app will have its own custom main, but will have all the same
 builtins and globals as luvit (plus whatever other globals and
 builtins you added).
 
@@ -117,7 +117,7 @@ component of the luvit metapackage can be used directly and will
 automatically pull in any inter-dependencies it needs.
 
 For example, the `creationix/rye` app uses parts of luvit, but not
-it's globals and full set of modules.
+its globals and full set of modules.
 
 ```lua
 return {
