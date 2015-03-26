@@ -7,7 +7,7 @@
     github = "creationix"
   },
   tags = { "hardware", "tutorial", "raspberry pi" },
-  --published = 1427323354
+  published = 1427336309
 }
 
 I've been learning all about embedded programming for the last few years.  I especially enjoy working with arduino style systems because of their simplicity.  I write some C code and run it directly without a pesky OS getting in the way and mucking up the gears.
