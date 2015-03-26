@@ -20,7 +20,7 @@ But what about more powerful devices like the [Raspberry PI][]?  Their latest ed
 
 Luvit runs great on these devices and thanks to the low-level primitives in libuv combined with the raw access luajit's FFI provides, it's fairly trivial to access this low-level stuff from lua.
 
-Sourcecode can be found on github: <https://github.com/creationix/hardware-demo>
+Source code can be found on github: <https://github.com/creationix/hardware-demo>
 
 ## Inputs and Outputs
 
@@ -125,7 +125,7 @@ req("nb " .. index .. " " .. bit.bor(
 ))
 ```
 
-Data in the pipe is a series of 12 byte structs.  We can easily decode these using LuaJit's FFI.
+Events in the pipe come as a series of 12 byte structs.  We can easily decode these using LuaJit's FFI.
 
 ```lua
 ffi.cdef[[
@@ -238,7 +238,7 @@ That's all for today.  My goal is to show that with enough information about the
  - ffi.cast (parsing strings to structs)
  - ffi.C (calling C builtins like `open`)
 
-Let me know what you think and give me ideas for out next exploration.
+Let me know what you think and give me ideas for our next exploration.
 
 [Raspberry PI]: http://www.raspberrypi.org/
 [pigpio]: http://abyz.co.uk/rpi/pigpio/
