@@ -37,9 +37,9 @@ We want button presses on the gamepad and tactile switches to trigger events in 
 
 Interfacing with the switches and small LEDs is obviously going to be easiest with a breadboard and using the Raspberry PIs GPIO (General Purpose Input Output) ports.
 
-![Photo of Wireing](hardware-control/breadboard.jpg)
+![Photo of Wiring](hardware-control/breadboard.jpg)
 
-We use GPIO ports 4, 5, 17, and 27 for the button inputs using internal pull-down resistors through software and wireing the other end of the switches to 3v power.
+We use GPIO ports 4, 5, 17, and 27 for the button inputs using internal pull-down resistors through software and wiring the other end of the switches to 3v power.
 
 The LEDs are wired to ports 6, 13, 19, and 26 with inline 220Ω resistors going to ground.
 
