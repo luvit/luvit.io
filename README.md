@@ -8,7 +8,7 @@ This is a typical luvit app, to run, first [install luvit and lit](https://githu
 
 ```sh
 git clone https://github.com/luvit/luvit.io.git
-cd blog.luvit.io
+cd luvit.io
 lit install
 luvit server
 ```
