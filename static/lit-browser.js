@@ -25,7 +25,7 @@ function SearchApp(emit, refresh) {
     evt.preventDefault();
     querying = true;
     refresh();
-    var xhr = createCORSRequest("GET", "http://lit.luvit.io/search/" + window.escape(text));
+    var xhr = createCORSRequest("GET", "//lit.luvit.io/search/" + window.escape(text));
     if (!xhr) { throw new Error("Your browser doesn't appear to support CORS requests"); }
     xhr.send();
     xhr.onerror = function () {
