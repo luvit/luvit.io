@@ -25,11 +25,13 @@ function SearchApp(emit, refresh) {
     evt.preventDefault();
     querying = true;
     refresh();
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://lit.luvit.io/search/" + window.escape(text), true);
+    var xhr = createCORSRequest("GET", "http://lit.luvit.io/search/" + window.escape(text));
+    if (!xhr) { throw new Error("Your browser doesn't appear to support CORS requests"); }
     xhr.send();
-    xhr.onreadystatechange = function () {
-      if (this.readyState !== 4) { return; }
+    xhr.onerror = function () {
+      throw new Error("There was a problem making the request");
+    };
+    xhr.onload = function () {
       var result = JSON.parse(xhr.responseText);
       matches.length = 0;
       querying = false;
@@ -49,7 +51,6 @@ function SearchApp(emit, refresh) {
   }
 }
 
-
 function SearchResults() {
   return { render: render };
   function render(matches) {
@@ -62,5 +63,30 @@ function SearchResults() {
 var container = document.getElementById("lit-browser");
 container.textContent = "";
 domChanger(SearchApp, container).update();
+
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest !== "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
 
 }, false);
