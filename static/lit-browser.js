@@ -55,7 +55,7 @@ function SearchResults() {
   return { render: render };
   function render(matches) {
     return ["ul", matches.map(function (match) {
-      return ["li", match.name];
+      return ["li", ["a", {href: match.url}, match.name]];
     })];
   }
 }
