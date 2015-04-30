@@ -55,7 +55,24 @@ function SearchResults() {
   return { render: render };
   function render(matches) {
     return ["ul", matches.map(function (match) {
-      return ["li", ["a", {href: match.url}, match.name]];
+      var props = [];
+      if (match.description) {
+        props.push([match.description]);
+      }
+      if (match.license) {
+        props.push([match.license + " licensed"]);
+      }
+      if (match.tagger) {
+        props.push(["Published by ",
+          ["a", {href: "mailto:" + match.tagger.email},match.tagger.name],
+          " on " + (new Date(match.tagger.date.seconds * 1000)).toDateString()
+        ]);
+      }
+      return ["li", ["a", {href: match.homepage || match.url}, match.name], " v" + match.version,
+        ["ul", props.map(function (prop) {
+          return ["li"].concat(prop);
+        })]
+      ];
     })];
   }
 }
