@@ -42,7 +42,10 @@ function SearchApp(emit, refresh) {
       }
       matches.sort(function (a, b) {
         if (a.type !== b.type) {
-          return a.type.localeCompare(b.type);
+          return b.type.localeCompare(a.type);
+        }
+        if (a.tagger) {
+          return b.tagger.date.seconds - a.tagger.date.seconds;
         }
         return a.name.localeCompare(b.name);
       });
