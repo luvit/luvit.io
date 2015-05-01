@@ -1,4 +1,17 @@
-{  title = "Lit Package Search - Luvit.io" }
+{
+  title = "Lit Package Search - Luvit.io",
+  main = [[
+
+# Lit Package Search
+
+Here you can search for packages that are published to the public package repository at lit.luvit.io.
+
+The search term is a lua pattern and currently only matches author names or package names.
+
+Soon more advanced matches will come.  Try searches like `.*`, `coro`, `luvit`, or `msgpack`.
+
+]]
+}
 <link rel="stylesheet" href="icomoon/style.css">
 <style>
 .card.clear {
@@ -37,8 +50,13 @@
   margin: 0 2px;
 }
 </style>
+<div class="row">
+  <section class="single">
+    <?=markdown(main)?>
+  </section>
+</div>
 <div class="row" id="lit-browser">
-  <section class="single" >
+  <section class="single">
     <p>Loading...</p>
   </section>
 </div>

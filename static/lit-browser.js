@@ -9,7 +9,6 @@ function SearchApp(emit, refresh) {
 
   function render() {
     return [["section.single",
-      ["h3", "Lit Package Search"],
       ["form", { onsubmit: handleSubmit },
         ["input", {
           onchange: onChange,
