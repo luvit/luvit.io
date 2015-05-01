@@ -1,8 +1,47 @@
 {  title = "Lit Package Search - Luvit.io" }
-<div class="row">
-  <section class="single" id="lit-browser">
+<link rel="stylesheet" href="icomoon/style.css">
+<style>
+.card.clear {
+  clear: left;
+}
+
+.row .card {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.card p {
+  color: #777;
+  margin: 0;
+  font-size: 90%;
+}
+.card ul {
+  margin: 5px 0;
+}
+.card ul li {
+  list-style-type: none
+}
+[class^="icon-"], [class*=" icon-"] {
+  margin-right: 5px;
+  color: #02556C;
+}
+.icon-library {
+  color: #AD1800;
+}
+.icon-book {
+  color: #DD9B00;
+}
+.keyword {
+  background-color: #f8f8f8;
+  border-radius: 2px;
+  padding: 1px 3px;
+  margin: 0 2px;
+}
+</style>
+<div class="row" id="lit-browser">
+  <section class="single" >
     <p>Loading...</p>
   </section>
 </div>
+<script src="moment.js"></script>
 <script src="domchanger.js"></script>
 <script src="lit-browser.js"></script>

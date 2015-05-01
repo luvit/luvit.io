@@ -1,4 +1,4 @@
-/*globals domChanger*/
+/*globals domChanger, moment*/
 window.addEventListener("load", function () {
 "use strict";
 
@@ -8,23 +8,22 @@ function SearchApp(emit, refresh) {
   return { render: render };
 
   function render() {
-    return ["div",
+    return [["section.single",
       ["h3", "Lit Package Search"],
       ["form", { onsubmit: handleSubmit },
         ["input", {
           onchange: onChange,
           value: text
         }],
-        ["button", "Search"]
-      ],
+        ["button", "Search"],
+          matches.length === 0 ? "" :
+            ["span", " " + matches.length + " matche" + (matches.length === 1 ? "" : "s")]
+      ]],
       (querying ? ["p", "Querying..."] : [SearchResults, matches])
     ];
   }
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    querying = true;
-    refresh();
+  function search() {
     var xhr = createCORSRequest("GET", "//lit.luvit.io/search/" + window.escape(text));
     if (!xhr) { throw new Error("Your browser doesn't appear to support CORS requests"); }
     xhr.send();
@@ -42,8 +41,21 @@ function SearchApp(emit, refresh) {
         match.name = key;
         matches[i] = match;
       }
+      matches.sort(function (a, b) {
+        if (a.type !== b.type) {
+          return a.type.localeCompare(b.type);
+        }
+        return a.name.localeCompare(b.name);
+      });
       refresh();
     };
+  }
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    querying = true;
+    refresh();
+    search();
   }
 
   function onChange(evt) {
@@ -54,26 +66,140 @@ function SearchApp(emit, refresh) {
 function SearchResults() {
   return { render: render };
   function render(matches) {
-    return ["ul", matches.map(function (match) {
-      var props = [];
-      if (match.description) {
-        props.push([match.description]);
+    var type;
+    var start = 0;
+    return [matches.map(function (match, i) {
+      if (match.type !== type) {
+        type = match.type;
+        start = i % 3;
       }
-      if (match.license) {
-        props.push([match.license + " licensed"]);
+      var tag = "section.third.card";
+      if (i % 3 === start) {
+        tag += ".clear";
       }
-      if (match.tagger) {
-        props.push(["Published by ",
-          ["a", {href: "mailto:" + match.tagger.email},match.tagger.name],
-          " on " + (new Date(match.tagger.date.seconds * 1000)).toDateString()
-        ]);
+      if (match.type === "package") {
+        return [tag, [PackageCard, match]];
       }
-      return ["li", ["a", {href: match.homepage || match.url}, match.name], " v" + match.version,
-        ["ul", props.map(function (prop) {
-          return ["li"].concat(prop);
-        })]
-      ];
+      else if (match.type === "author") {
+        return [tag, [PersonCard, match]];
+      }
     })];
+  }
+}
+
+function PersonCard() {
+  return { render: render };
+  function render(item) {
+    var body = [["span.icon-library"], ["strong", item.name]];
+    var rows = [];
+    if (item.url) {
+      rows.push([["span.icon-earth"], ["a", {href: item.url}, "Published Packages"]]);
+    }
+    body.push(["ul", rows.map(function (row) {
+      return ["li"].concat(row);
+    })]);
+
+    return body;
+  }
+}
+
+function PackageCard() {
+  return { render: render };
+  function render(item) {
+    var matches = item.name.match(/(.*\/)([^\/]*)/);
+    var body = [["span.icon-book"], matches[1], ["strong", matches[2]]];
+    if (item.description) {
+      body.push(["p", item.description]);
+    }
+    var rows = [];
+    if (item.private) {
+      rows.push([["span.icon-eye-blocked"], "Private Module"]);
+    }
+    if (item.homepage) {
+      rows.push([["span.icon-earth"], ["a", {href: item.homepage}, "Homepage"]]);
+    }
+    if (item.version) {
+      rows.push([["span.icon-price-tag"], "v" + item.version]);
+    }
+    if (item.tagger) {
+      var tagger = item.tagger;
+      var date = moment.unix(tagger.date.seconds).utcOffset(tagger.date.offset);
+      var details = date.toString() + "\n" +
+        tagger.name + " <" + tagger.email + ">";
+      rows.push([["span.icon-calendar"], ["span",
+        {title: details}, date.fromNow()]]);
+    }
+    if (item.license) {
+      rows.push([["span.icon-hammer2"], item.license + " licenced"]);
+    }
+    if (item.author) {
+      rows.push([["span.icon-user"], [Person, item.author]]);
+    }
+    if (item.contributors) {
+      rows.push([["span.icon-users"], "Contributors:", ["ul", item.contributors.map(function (person) {
+        return ["li", [Person, person]];
+      })]]);
+    }
+    if (item.luvi) {
+      var luvi = "Luvi: ";
+      if (item.luvi.flavor) {
+        luvi += " " + item.luvi.flavor;
+      }
+      if (item.luvi.version) {
+        luvi += " v" + item.luvi.version;
+      }
+      rows.push([["span.icon-cog"], luvi]);
+    }
+    if (item.keywords) {
+      rows.push([["span.icon-price-tags"], item.keywords.map(function (keyword) {
+        var line = ["a.keyword", {href: "#" + keyword}, keyword];
+        return line;
+      })]);
+    }
+    if (item.dependencies) {
+      rows.push([["span.icon-books"], "Dependencies:", ["ul", item.dependencies.map(function (dependency) {
+        var match = dependency.match(/^(.*\/)([^\/@]+)(?:@(.*))?$/);
+        var name = match[2];
+        var line = ["li", ["a", {href: "#" + name, title:dependency}, name]];
+        if (match[3]) {
+          line.push(" v" + match[3]);
+        }
+        return line;
+      })]]);
+    }
+    body.push(["ul", rows.map(function (row) {
+      return ["li"].concat(row);
+    })]);
+
+    return body;
+
+  }
+}
+
+function Person() {
+  return { render: render };
+  function render(person) {
+    if (typeof person === "string") {
+      var match = person.match(/^(.*?) *(?:<([^>]+)>)?$/);
+      if (match) {
+        person = {
+          name: match[1],
+          email: match[2],
+        };
+      }
+    }
+    var line = person.name;
+    if (person.email && !person.url) {
+      person.url = "mailto:" + person.email;
+    }
+    if (person.url) {
+      var attribs = {href: person.url};
+      if (person.email) {
+        attribs.title = person.email;
+      }
+      return ["a", attribs, line];
+    }
+    return ["span", line];
   }
 }
 
