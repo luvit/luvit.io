@@ -16,7 +16,7 @@ function SearchApp(emit, refresh) {
         }],
         ["button", "Search"],
           matches.length === 0 ? "" :
-            ["span", " " + matches.length + " matche" + (matches.length === 1 ? "" : "s")]
+            ["span", " " + matches.length + " match" + (matches.length === 1 ? "" : "es")]
       ]],
       (querying ? ["p", "Querying..."] : [SearchResults, matches])
     ];
