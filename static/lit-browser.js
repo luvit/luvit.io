@@ -3,7 +3,18 @@ window.addEventListener("load", function () {
 "use strict";
 
 function SearchApp(emit, refresh) {
-  var matches = [], text = "", querying = false;
+  var matches = null, text = "", querying = false, xhr = null;
+
+  var initialSearch = ".*/";
+  if (window.location.hash) {
+    initialSearch = window.location.hash.substring(1);
+  }
+  search(initialSearch);
+
+  window.onhashchange = function(evt) {
+    var query = window.location.hash.substring(1);
+    search(query);
+  }
 
   return { render: render };
 
@@ -15,15 +26,22 @@ function SearchApp(emit, refresh) {
           value: text
         }],
         ["button", "Search"],
-          matches.length === 0 ? "" :
-            ["span", " " + matches.length + " matche" + (matches.length === 1 ? "" : "s")]
+          matches === null ? "" :
+            ["span", " " + matches.length + " match" + (matches.length === 1 ? "" : "es")]
       ]],
-      (querying ? ["p", "Querying..."] : [SearchResults, matches])
+      (querying ? ["p", "Querying..."] : [SearchResults, matches, search])
     ];
   }
 
-  function search() {
-    var xhr = createCORSRequest("GET", "//lit.luvit.io/search/" + window.escape(text));
+  function search(query) {
+    if (!query || query.trim() === "") { query = ".*" }
+    if (xhr !== null) { xhr.onload = function() {} }
+    querying = true;
+    text = query
+    matches = null;
+    window.location.hash = query
+    refresh();
+    xhr = createCORSRequest("GET", "//lit.luvit.io/search/" + window.escape(text));
     if (!xhr) { throw new Error("Your browser doesn't appear to support CORS requests"); }
     xhr.send();
     xhr.onerror = function () {
@@ -31,7 +49,7 @@ function SearchApp(emit, refresh) {
     };
     xhr.onload = function () {
       var result = JSON.parse(xhr.responseText);
-      matches.length = 0;
+      matches = [];
       querying = false;
       var keys = Object.keys(result.matches);
       for (var i = 0, l = keys.length; i < l; i++) {
@@ -55,9 +73,7 @@ function SearchApp(emit, refresh) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    querying = true;
-    refresh();
-    search();
+    search(text);
   }
 
   function onChange(evt) {
@@ -95,7 +111,7 @@ function PersonCard() {
     var body = [["span.icon-library"], ["strong", item.name]];
     var rows = [];
     if (item.url) {
-      rows.push([["span.icon-earth"], ["a", {href: item.url}, "Published Packages"]]);
+      rows.push([["span.icon-earth"], ["a", {href: "#" + item.name + "/"}, "Published Packages"]]);
     }
     body.push(["ul", rows.map(function (row) {
       return ["li"].concat(row);
@@ -109,7 +125,7 @@ function PackageCard() {
   return { render: render };
   function render(item) {
     var matches = item.name.match(/(.*\/)([^\/]*)/);
-    var body = [["span.icon-book"], matches[1], ["strong", matches[2]]];
+    var body = [["span.icon-book"], ["a", {href: "#" + matches[1]}, matches[1]], ["a", {href: "#" + item.name}, ["strong", matches[2]]]];
     if (item.description) {
       body.push(["p", item.description]);
     }
@@ -162,7 +178,7 @@ function PackageCard() {
       rows.push([["span.icon-books"], "Dependencies:", ["ul", item.dependencies.map(function (dependency) {
         var match = dependency.match(/^(.*\/)([^\/@]+)(?:@(.*))?$/);
         var name = match[2];
-        var line = ["li", ["a", {href: "#" + name, title:dependency}, name]];
+        var line = ["li", ["a", {href: "#" + match[1] + match[2], title:dependency}, name]];
         if (match[3]) {
           line.push(" v" + match[3]);
         }
