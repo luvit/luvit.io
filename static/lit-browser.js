@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
 function SearchApp(emit, refresh) {
   var matches = null, text = "", querying = false, xhr = null;
 
-  var initialSearch = ".*/";
+  var initialSearch = "*/";
   if (window.location.hash) {
     initialSearch = window.location.hash.substring(1);
   }
@@ -34,7 +34,7 @@ function SearchApp(emit, refresh) {
   }
 
   function search(query) {
-    if (!query || query.trim() === "") { query = ".*" }
+    if (!query || query.trim() === "") { query = "*" }
     if (xhr !== null) { xhr.onload = function() {} }
     querying = true;
     text = query
