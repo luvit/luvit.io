@@ -32,8 +32,8 @@ function SearchApp(emit, refresh) {
         }],
         ["button", "Search"],
       ]],
-      (querying ? ["p", "Querying..."] :
-       error ? ["p", error] :
+      (querying ? ["section.single", "Querying..."] :
+       error ? ["section.single", error] :
         [SearchResults, matches])
     ];
   }
@@ -90,11 +90,11 @@ function SearchResults() {
   function render(matches) {
     var start = 0;
     if (matches.length === 0) {
-      return ["p", "No matches, try making a broader search."];
+      return ["section.single", "No matches, try making a broader search."];
     }
 
     return [
-      ["span", " " + matches.length + " match" + (matches.length === 1 ? "" : "es")],
+      ["section.single", "Found " + matches.length + " match" + (matches.length === 1 ? "" : "es")],
       matches.map(function (match, i) {
         var tag = "section.third.card";
         if (i % 3 === start) {
@@ -177,9 +177,9 @@ function PackageCard(emit, refresh) {
       ];
       if (open) {
         row.push(["ul", item.dependencies.map(function (dependency) {
-          var match = dependency.match(/^(.*\/)([^\/@]+)(?:@(.*))?$/);
+          var match = dependency.match(/^(.*)\/([^\/@]+)(?:@(.*))?$/);
           var name = match[2];
-          var line = ["li", ["a", {href: "#name:" + name, title:dependency}, name]];
+          var line = ["li", ["a", {href: "#author:" + match[1] + " name:" + name, title:dependency}, name]];
           if (match[3]) {
             line.push(" v" + match[3]);
           }
