@@ -3,11 +3,27 @@ window.addEventListener("load", function () {
 "use strict";
 
 function SearchApp(emit, refresh) {
-  var matches = [], text = "", querying = false;
+  var matches = [], text = "", querying = false, error = false;
+
+  window.addEventListener("hashchange", function (evt) {
+    evt.preventDefault();
+    console.log("hashChange");
+    refresh();
+  }, false);
 
   return { render: render };
 
+  function checkHash() {
+    var match = window.location.hash.match("#?(.*)")[1];
+    console.log(match);
+    if (match !== text) {
+      text = match;
+      search();
+    }
+  }
+
   function render() {
+    checkHash();
     return [["section.single",
       ["form", { onsubmit: handleSubmit },
         ["input", {
@@ -15,24 +31,29 @@ function SearchApp(emit, refresh) {
           value: text
         }],
         ["button", "Search"],
-          matches.length === 0 ? "" :
-            ["span", " " + matches.length + " matche" + (matches.length === 1 ? "" : "s")]
       ]],
-      (querying ? ["p", "Querying..."] : [SearchResults, matches])
+      (querying ? ["p", "Querying..."] :
+       error ? ["p", error] :
+        [SearchResults, matches])
     ];
   }
 
   function search() {
+    querying = true;
+    refresh();
     var xhr = createCORSRequest("GET", "//lit.luvit.io/search/" + window.escape(text));
     if (!xhr) { throw new Error("Your browser doesn't appear to support CORS requests"); }
     xhr.send();
     xhr.onerror = function () {
-      throw new Error("There was a problem making the request");
+      querying = false;
+      error = "There was a problem making the request";
+      refresh();
     };
     xhr.onload = function () {
       var result = JSON.parse(xhr.responseText);
       matches.length = 0;
       querying = false;
+      error = false;
       var keys = Object.keys(result.matches);
       for (var i = 0, l = keys.length; i < l; i++) {
         var key = keys[i];
@@ -55,8 +76,7 @@ function SearchApp(emit, refresh) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    querying = true;
-    refresh();
+    window.location.hash = text;
     search();
   }
 
@@ -69,21 +89,29 @@ function SearchResults() {
   return { render: render };
   function render(matches) {
     var start = 0;
-    return [matches.map(function (match, i) {
-      var tag = "section.third.card";
-      if (i % 3 === start) {
-        tag += ".clear";
-      }
-        return [tag, [PackageCard, match]];
-    })];
+    if (matches.length === 0) {
+      return ["p", "No matches, try making a broader search."];
+    }
+
+    return [
+      ["span", " " + matches.length + " match" + (matches.length === 1 ? "" : "es")],
+      matches.map(function (match, i) {
+        var tag = "section.third.card";
+        if (i % 3 === start) {
+          tag += ".clear";
+        }
+          return [tag, [PackageCard, match]];
+      })
+    ];
   }
 }
 
-function PackageCard() {
+function PackageCard(emit, refresh) {
+  var open = false;
   return { render: render };
   function render(item) {
-    var matches = item.name.match(/(.*\/)([^\/]*)/);
-    var body = [["span.icon-book"], matches[1], ["strong", matches[2]]];
+    var matches = item.name.match(/(.*)\/([^\/]*)/);
+    var body = [["span.icon-book"], ["a", {href:"#author:" + matches[1]}, matches[1]], "/", ["strong", matches[2]]];
     if (item.description) {
       body.push(["p", item.description]);
     }
@@ -132,16 +160,33 @@ function PackageCard() {
         return line;
       })]);
     }
-    if (item.dependencies) {
-      rows.push([["span.icon-books"], "Dependencies:", ["ul", item.dependencies.map(function (dependency) {
-        var match = dependency.match(/^(.*\/)([^\/@]+)(?:@(.*))?$/);
-        var name = match[2];
-        var line = ["li", ["a", {href: "#" + name, title:dependency}, name]];
-        if (match[3]) {
-          line.push(" v" + match[3]);
-        }
+    if (item.tags) {
+      rows.push([["span.icon-price-tags"], item.tags.map(function (tag) {
+        var line = ["a.keyword", {href: "#tag:" + tag}, tag];
         return line;
-      })]]);
+      })]);
+    }
+    if (item.dependencies) {
+      var count = item.dependencies.length;
+      var row = [
+        ["span.icon-books"],
+        ["a", {href:"#", onclick: toggleDeps},
+          (open ? "Hide " : "Show ") +
+          count + " dependenc" + (count === 1 ? "y" : "ies")
+        ]
+      ];
+      if (open) {
+        row.push(["ul", item.dependencies.map(function (dependency) {
+          var match = dependency.match(/^(.*\/)([^\/@]+)(?:@(.*))?$/);
+          var name = match[2];
+          var line = ["li", ["a", {href: "#name:" + name, title:dependency}, name]];
+          if (match[3]) {
+            line.push(" v" + match[3]);
+          }
+          return line;
+        })]);
+      }
+      rows.push(row);
     }
     body.push(["ul", rows.map(function (row) {
       return ["li"].concat(row);
@@ -149,6 +194,12 @@ function PackageCard() {
 
     return body;
 
+  }
+
+  function toggleDeps(evt) {
+    evt.preventDefault();
+    open = !open;
+    refresh();
   }
 }
 
