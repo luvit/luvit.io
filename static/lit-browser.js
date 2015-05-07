@@ -41,10 +41,10 @@ function SearchApp(emit, refresh) {
         matches[i] = match;
       }
       matches.sort(function (a, b) {
-        if (a.type !== b.type) {
-          return b.type.localeCompare(a.type);
+        if (a.score !== b.score) {
+          return a.score - b.score;
         }
-        if (a.tagger) {
+        if (a.tagger && b.tagger) {
           return b.tagger.date.seconds - a.tagger.date.seconds;
         }
         return a.name.localeCompare(b.name);
@@ -68,40 +68,14 @@ function SearchApp(emit, refresh) {
 function SearchResults() {
   return { render: render };
   function render(matches) {
-    var type;
     var start = 0;
     return [matches.map(function (match, i) {
-      if (match.type !== type) {
-        type = match.type;
-        start = i % 3;
-      }
       var tag = "section.third.card";
       if (i % 3 === start) {
         tag += ".clear";
       }
-      if (match.type === "package") {
         return [tag, [PackageCard, match]];
-      }
-      else if (match.type === "author") {
-        return [tag, [PersonCard, match]];
-      }
     })];
-  }
-}
-
-function PersonCard() {
-  return { render: render };
-  function render(item) {
-    var body = [["span.icon-library"], ["strong", item.name]];
-    var rows = [];
-    if (item.url) {
-      rows.push([["span.icon-earth"], ["a", {href: item.url}, "Published Packages"]]);
-    }
-    body.push(["ul", rows.map(function (row) {
-      return ["li"].concat(row);
-    })]);
-
-    return body;
   }
 }
 
