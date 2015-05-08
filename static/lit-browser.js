@@ -3,11 +3,10 @@ window.addEventListener("load", function () {
 "use strict";
 
 function SearchApp(emit, refresh) {
-  var matches = [], text = "", querying = false, error = false;
+  var matches = [], query = [], text = "", querying = false, error = false;
 
   window.addEventListener("hashchange", function (evt) {
     evt.preventDefault();
-    console.log("hashChange");
     refresh();
   }, false);
 
@@ -15,7 +14,6 @@ function SearchApp(emit, refresh) {
 
   function checkHash() {
     var match = window.location.hash.match("#?(.*)")[1];
-    console.log(match);
     if (match !== text) {
       text = match;
       search();
@@ -24,24 +22,50 @@ function SearchApp(emit, refresh) {
 
   function render() {
     checkHash();
-    return [["section.single",
+
+    var searchBox = ["section.single",
       ["form", { onsubmit: handleSubmit },
         ["input", {
           onchange: onChange,
           value: text
-        }],
-        ["button", "Search"],
-      ]],
-      (querying ? ["section.single", "Querying..."] :
-       error ? ["section.single", error] :
-        [SearchResults, matches])
+        }], ["button", "Search"],
+      ]
     ];
+    var summary = ["section.single", query.map(function (term, i) {
+      return ["span.term",
+        ["a", {href:"#solo",onclick:solo,title:"Single out this term"}, term],
+        " ",
+        ["a.close", {href:"#remove",onclick:remove,title:"Remove this term"}, "×"]
+      ];
+      function solo(evt) {
+        evt.preventDefault();
+        query.length = 0;
+        query.push(term);
+        window.location.hash = term;
+      }
+      function remove(evt) {
+        evt.preventDefault();
+        query.splice(i, 1);
+        window.location.hash = query.join(' ');
+      }
+    })];
+
+    if (!(error || querying)) {
+      return [searchBox, summary, [SearchResults, matches]];
+    }
+    if (error) {
+      summary.push(["p", error]);
+    }
+    else if (querying) {
+      summary.push(["p", "Querying..."]);
+    }
+    return [searchBox, summary];
   }
 
   function search() {
     querying = true;
     refresh();
-    var xhr = createCORSRequest("GET", "//lit.luvit.io/search/" + window.escape(text));
+    var xhr = createCORSRequest("GET", "//lit.luvit.io/search/" + window.escape(text || "*"));
     if (!xhr) { throw new Error("Your browser doesn't appear to support CORS requests"); }
     xhr.send();
     xhr.onerror = function () {
@@ -51,12 +75,13 @@ function SearchApp(emit, refresh) {
     };
     xhr.onload = function () {
       var result = JSON.parse(xhr.responseText);
-      matches.length = 0;
       querying = false;
       error = false;
+      matches.length = 0;
       var keys = Object.keys(result.matches);
+      var key;
       for (var i = 0, l = keys.length; i < l; i++) {
-        var key = keys[i];
+        key = keys[i];
         var match = result.matches[key];
         match.name = key;
         matches[i] = match;
@@ -70,6 +95,22 @@ function SearchApp(emit, refresh) {
         }
         return a.name.localeCompare(b.name);
       });
+      query.length = 0;
+      keys = Object.keys(result.query);
+      for (i = 0, l = keys.length; i < l; i++) {
+        key = keys[i];
+        if (key === "raw") { continue; }
+        var terms = result.query[key];
+        for (var j = 0, end = terms.length; j < end; j++) {
+          var term = terms[j].replace(/%./, function (match) {
+            return match[1];
+          }).replace(".*", "*");
+          if (key !== "search") {
+            term = key + ":" + term.substring(1, term.length - 1);
+          }
+          query.push(term);
+        }
+      }
       refresh();
     };
   }
