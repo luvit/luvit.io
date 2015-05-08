@@ -102,13 +102,14 @@ function SearchApp(emit, refresh) {
         if (key === "raw") { continue; }
         var terms = result.query[key];
         for (var j = 0, end = terms.length; j < end; j++) {
-          var term = terms[j].replace(/%./, function (match) {
+          var term = terms[j]
+          .replace(/%f\[@\]$/, '')
+          .replace(/%./, function (match) {
             return match[1];
           })
           .replace(".*", "*")
           .replace(/^\^/, '')
-          .replace(/\$$/, '')
-          .replace(/%f\[@\]$/, '');
+          .replace(/\$$/, '');
           if (key !== "search") {
             term = key + ":" + term;
           }
