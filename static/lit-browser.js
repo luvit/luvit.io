@@ -13,7 +13,15 @@ function SearchApp(emit, refresh) {
   return { render: render };
 
   function checkHash() {
-    var match = window.location.hash.match("#?(.*)")[1];
+    var href = window.location.href;
+    var index = href.indexOf("#");
+    var match;
+    if (index >= 0) {
+      match = decodeURIComponent(href.substring(index + 1));
+    }
+    else {
+      match = "";
+    }
     if (match !== text) {
       text = match;
       search();
