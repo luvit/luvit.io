@@ -104,9 +104,13 @@ function SearchApp(emit, refresh) {
         for (var j = 0, end = terms.length; j < end; j++) {
           var term = terms[j].replace(/%./, function (match) {
             return match[1];
-          }).replace(".*", "*");
+          })
+          .replace(".*", "*")
+          .replace(/^\^/, '')
+          .replace(/\$$/, '')
+          .replace(/%f\[@\]$/, '');
           if (key !== "search") {
-            term = key + ":" + term.substring(1, term.length - 1);
+            term = key + ":" + term;
           }
           query.push(term);
         }
@@ -152,7 +156,13 @@ function PackageCard(emit, refresh) {
   return { render: render };
   function render(item) {
     var matches = item.name.match(/(.*)\/([^\/]*)/);
-    var body = [["span.icon-book"], ["a", {href:"#author:" + matches[1]}, matches[1]], "/", ["strong", matches[2]]];
+    var author = matches[1];
+    var name = matches[2];
+    var tag = author + "/" + name;
+    var body = [["span.icon-book"],
+      ["a", {href:"#author:" + author}, author],
+      "/",
+      ["a", {href:"#depends:" + tag}, ["strong", name]]];
     if (item.description) {
       body.push(["p", item.description]);
     }
@@ -196,10 +206,13 @@ function PackageCard(emit, refresh) {
       rows.push([["span.icon-cog"], luvi]);
     }
     if (item.keywords) {
-      rows.push([["span.icon-price-tags"], item.keywords.map(function (keyword) {
-        var line = ["a.keyword", {href: "#" + keyword}, keyword];
-        return line;
-      })]);
+      if (item.tags) {
+        item.tags.push.apply(item.tags, item.keywords);
+      }
+      else {
+        item.tags = item.keywords;
+      }
+      delete item.keywords;
     }
     if (item.tags) {
       rows.push([["span.icon-price-tags"], item.tags.map(function (tag) {
@@ -219,8 +232,9 @@ function PackageCard(emit, refresh) {
       if (open) {
         row.push(["ul", item.dependencies.map(function (dependency) {
           var match = dependency.match(/^(.*)\/([^\/@]+)(?:@(.*))?$/);
+          var author = match[1];
           var name = match[2];
-          var line = ["li", ["a", {href: "#author:" + match[1] + " name:" + name, title:dependency}, name]];
+          var line = ["li", ["a", {href: "#author:" + author + " name:" + name, title:dependency}, name]];
           if (match[3]) {
             line.push(" v" + match[3]);
           }
