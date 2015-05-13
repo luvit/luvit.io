@@ -8,9 +8,9 @@ require('weblit-app')
   .bind({host = "0.0.0.0", port = env.get("PORT") or 8080})
 
   -- Configure weblit server
-  -- .use(require('weblit-logger'))
+  .use(require('weblit-logger'))
   .use(require('weblit-auto-headers'))
-  -- .use(require('weblit-etag-cache'))
+  .use(require('weblit-etag-cache'))
 
   -- Serve non-blog content pages
   .route({ method = "GET", path = "/" }, require('controllers/page'))
