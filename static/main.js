@@ -3,6 +3,7 @@ window.addEventListener("load", function () {
   var map = {
     lua: "text/x-lua",
     sh: "text/x-sh",
+    c: "text/x-c",
   };
   var codes = document.querySelectorAll("pre code");
   for (var i = 0, l = codes.length; i < l; i++) {

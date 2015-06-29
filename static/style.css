@@ -261,6 +261,10 @@ div.cm-s-luvit span.CodeMirror-matchingbracket {
 .cm-s-luvit.CodeMirror-focused .CodeMirror-selected {
   background: #f0ebc5;
 }
+/* gray - meta */
+.cm-s-luvit .cm-meta {
+  color: #aaa;
+}
 /* dark-blue - symbols */
 .cm-s-luvit .cm-property {
   color: #02546c;
@@ -307,5 +311,5 @@ div.cm-s-luvit span.CodeMirror-matchingbracket {
 }
 /* brown */
 .cm-s-luvit .cm-comment {
-  color: #555555;
+  color: #777;
 }
