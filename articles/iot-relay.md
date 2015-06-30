@@ -13,13 +13,20 @@ As some of you know, I Joined Rackspace's monitoring team about 10 months ago.  
 
 Recently I decided to try and find a way to incorporate this free monitoring service with my garden sensor project. I'm happy to report is actually works really well.  The key is to deploy a simple relay server somewhere on the lan. I'm using a Raspberry PI in my home office.
 
-IoT sensors tend to be very low powered devices.  I've had most success recently with the particle lineup and the esp8266 chips.  The ESP chips are cheaper, but a little rougher on the edges.  Both of these feature 32-bit microcontrollers with WIFI capability built-in.
+![Raspberry Pi Servers](iot-relay/rpi-server-rack.jpg)
+
+IoT sensors tend to be very low powered devices.  I've had most success recently with the [Particle](https://www.particle.io/) boards and the [Esp8266](http://www.esp8266.com/) chips.  The ESP chips are cheaper, but a little rougher on the edges.  Both of these feature 32-bit microcontrollers with WIFI capability built-in.
+
+## Recording Sensor Data
 
 Since I wish to eventually deploy several of these throughout my yard and run them on batteries, power use is a huge concern.  They can run as TCP servers or clients, but to be in an always listening state is a recipe for power drain.  It's better to deep-sleep most the time and wake up on some interval, measure the environment, and report the data to some other machine.
+
+![Moisture Sensor](iot-relay/dirt-moisture.jpg)
 
 The monitoring agent typically sits inside VMs hosted by Rackspace and polls the system for things like CPU usage, load average, free disk space, memory pressure, etc.  Users of the monitoring service configure the agents via the monitoring service and tell them what and when to poll for data.
 
 There is also a custom plugin interface that lets you poll for data not found in the pre-programmed set of host info.  Basically you just spawn any subprocess (bash, ruby, node, whatever) and have it output metrics data in a simple text format.  Your process will be called on a user defined schedule.
+
 
 So we now have a mismatch problem.  The sensor node can't be listening all the time and the agent can't be listening for new events either.  We need some relay in the middle that accepts data from the sensor, buffers it internally, and then dumps it out to the subprocess on demand.
 
@@ -52,6 +59,9 @@ end)
 ```
 
 Ok, now our sensors simply need to connect, write metrics to the socket and close.
+
+![Light Sensor](iot-relay/light-sensor.jpg)
+
 We'll forward the data to the agent when it connects.  The core logic of my sensor client consist of:
 
 ```c
