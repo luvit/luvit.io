@@ -7,6 +7,7 @@
     github = "creationix"
   },
   tags = { "iot", "rackspace", "monitor", "sensor" },
+  published = 1435700462
 }
 
 As some of you know, I Joined Rackspace's monitoring team about 10 months ago.  They have been very gracious to let me spend large amounts of my work time building and maintaining Luvit. (Which is used in production by the monitoring agent.)
