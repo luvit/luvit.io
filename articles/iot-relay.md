@@ -9,9 +9,9 @@
   tags = { "iot", "rackspace", "monitor", "sensor" },
 }
 
-As some of you know, I Joined Rackspace's monitoring team about 10 months ago.  They have been very gracious to let me spend large amounts of my work time building and maintaining Luvit. (Luvit is used in production by the monitoring agent.)
+As some of you know, I Joined Rackspace's monitoring team about 10 months ago.  They have been very gracious to let me spend large amounts of my work time building and maintaining Luvit. (Which is used in production by the monitoring agent.)
 
-Recently I decided to try and find a way to incorporate this free monitoring service with my garden sensor project. I'm happy to report is actually works really well.  The key is to deploy a simple relay server somewhere on the lan. I'm using a Raspberry PI in my home office.
+Recently I decided to try and find a way to incorporate this free monitoring service with my garden sensor project. I'm happy to report this actually works really well.  The key is to deploy a simple relay server somewhere on the LAN. I'm using a Raspberry PI in my home office. (These are also my luvi build boxes for armv6 and armv7.)
 
 ![Raspberry Pi Servers](iot-relay/rpi-server-rack.jpg)
 
@@ -27,7 +27,7 @@ For now we'll assume there is some service running on the lan that accepts senso
 
 ![Light Sensor](iot-relay/light-sensor.jpg)
 
-We'll forward the data to the agent when it connects.  The core logic of my sensor client consist of:
+This microcontroller above is a Spark Core with a single LDR sensor measuring ambient light.  I wish to report this data to the relay server.
 
 ```c
 if (client.connect(server, port)) {
@@ -36,16 +36,15 @@ if (client.connect(server, port)) {
   client.print(data);
   delay(1000);
   client.stop();
-  Spark.sleep(SLEEP_MODE_DEEP, 30);
+  Spark.sleep(SLEEP_MODE_DEEP, 300);
 }
 ```
-
 
 ## Relay Process
 
 The monitoring agent works by polling the system on a schedule, not by listening for events to get pushed to it form the system.  This is obviously not a good match for the sensors that need to fire and forget their data to save their precious battery life.
 
-We will create an in-between process in luvit that listens for data from the field and reports it to the agent on demand (listening two ways).
+We will create an in-between process using luvit that listens for data from the field and reports it to the agent on demand (listening two ways).
 
 First we need to create a TCP server that listens for sensor reports from the field.  It will buffer this data in memory and wait for the agent to ask for it.
 
@@ -75,7 +74,7 @@ createServer({ host = "0.0.0.0", port = 11000 }, function (read, write, socket)
 end)
 ```
 
-This brings up a great question, what interface should we expose to the agent?  At first I thought to use another TCP service, but it's fun to write agent plugins in shell and tcp clients aren't easy there.  But dumping a socket is simply `cat /path/to/socket` or `socat - UNIX:/path/to/socket` depending on your OS.
+What interface should we now expose to the monitoring agent?  At first I thought to use another TCP service, but it's fun to write agent plugins in shell.  TCP clients aren't easy in bash, but dumping the contents of a unix socket is trivially `cat /path/to/socket` or `socat - UNIX:/path/to/socket` depending on your OS.
 
 To create the socket, we use the same `coro-net` library, but with a string path.
 
@@ -93,19 +92,19 @@ end)
 
 ## Deploy It!
 
-I integrated this into the Rackspace system by creating an entity for my raspberry PI (named plum), and adding a new custom check that runs the `gardener` plugin.  The plugin itself simple contains:
+I integrated this into the Rackspace system by creating an entity for my raspberry PI (named `plum`), and adding a new custom check that runs the `gardener` plugin.  The plugin itself contains:
 
 ```sh
 #!/bin/sh
 socat - UNIX:/var/run/gardener
 ```
 
-The rackspace monitoring agent is also running on this machine.  When it connects it's told the schedule to poll the plugin.  It then reports the data up to the processing pipeline and we get a pretty graph showing data.  This particular data is a light dependent resistor I have sitting in the window-sill of my office.  You can see the time the sun rises and sets.
+The rackspace monitoring agent is also running on this machine.  When it connects it's told the schedule to poll the plugin.  It then reports the data up to the processing pipeline and we get a pretty graph showing data.  This particular metric is the light sensor on my office window-sill.  You can see the time the sun rises and sets.
 
 ![Light Chart](iot-relay/graph.png)
 
-I purposely left out some details to keep this readable.  If you wich to see the full source code with error handling and data validation, check out my [gardener project](https://github.com/creationix/gardener) on github.
+I purposely left out some details to keep this readable.  If you wish to see the full source code with error handling and data validation, check out my [gardener project](https://github.com/creationix/gardener) on github.
 
-If you have questions about the rackspace side of things like how exactly to create the entities and checks, I used the [raxmon tool](https://github.com/racker/rackspace-monitoring-cli).
+If you have questions about the rackspace side of things like how exactly to create the entities and checks, I used the [raxmon tool](https://github.com/racker/rackspace-monitoring-cli).  Also the monitoring system has a fully featured alarms system that allows sending out emails or other alerts based on watches for certain conditions.  I could have a moisture sensor in my garden send me emails when it's time to water the garden, for example.
 
 Happy hacking!
