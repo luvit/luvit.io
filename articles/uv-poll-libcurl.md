@@ -7,7 +7,7 @@
     github = "rphillips"
   },
   tags = { "tutorial", "libuv" },
-  published = nil
+  published = 1435769029
 }
 
 In Tim's previous blog post titled [Hardware Control][] he introduced 
