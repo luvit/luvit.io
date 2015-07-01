@@ -20,12 +20,12 @@ To show off more on how Luvit and the FFI can work together, I have taken
 libcurl and bound the libcurl event loop to Luvit's libuv event loop. The advantage 
 is that both libraries work in harmony with each other.
 
-*libcurl just celebrated it's 17 year birthday - Happy Birthday!*
+<center>![libuv](uv-poll-libcurl/uv.jpg)</center>
 
 ## libuv
 
 libcurl handles the socket management for us and exposes a smart API to expose
-the file descriptor(s) needed to add them to the libuv event loop.
+the file descriptor needed to add them to the libuv event loop.
 
 libuv contains a `uv_poll_t` data structure that watches a file descriptor for
 read and write events ([External I/O][]). 
@@ -41,95 +41,55 @@ uv.poll_stop(poll)
 uv.close(poll)
 ```
 
-## libcurl
+<center>![libcurl](uv-poll-libcurl/curl-refined.jpg)</center>
+
+## The binding
+
+The latest version of the example is located within Luvit repository [poll-libcurl.lua][].
+
+To start out the binding we:
+
+  1. Create a libcurl multi handle
+  2. hook libcurl's socket and timer callback within the constructor `initialize` of the `Multi`
+class.
 
 ```lua
-local ffi = require('ffi')
-local libcurl = ffi.load('libcurl')
-ffi.cdef[[
-  enum CURLMSG {
-    CURLMSG_NONE,
-    CURLMSG_DONE,
-    CURLMSG_LAST
-  };
-
-  struct CURLMsg {
-    enum CURLMSG msg;
-    void *easy_handle;
-    union {
-      void *whatever;
-      int result;
-    } data;
-  };
-
-  enum curl_global_option
-  {
-    CURL_GLOBAL_ALL = 2,
-  };
-
-  enum curl_multi_option
-  {
-    CURLMOPT_SOCKETFUNCTION = 20000 + 1,
-    CURLMOPT_TIMERFUNCTION = 20000 + 4
-  };
-
-  enum curl_socket_option
-  {
-    CURL_SOCKET_TIMEOUT = -1
-  };
-
-  enum curl_poll_option
-  {
-    CURL_POLL_IN = 1,
-    CURL_POLL_OUT = 2,
-    CURL_POLL_REMOVE = 4
-  };
-
-  enum curl_option
-  {
-    CURLOPT_CAINFO    = 10065,
-    CURLOPT_CONNECTTIMEOUT  = 78,
-    CURLOPT_COOKIE    = 10022,
-    CURLOPT_FOLLOWLOCATION  = 52,
-    CURLOPT_HEADER    = 42,
-    CURLOPT_HTTPHEADER  = 10023,
-    CURLOPT_INTERFACE   = 10062,
-    CURLOPT_POST    = 47,
-    CURLOPT_POSTFIELDS  = 10015,
-    CURLOPT_REFERER   = 10016,
-    CURLOPT_SSL_VERIFYPEER  = 64,
-    CURLOPT_URL   = 10002,
-    CURLOPT_USERAGENT   = 10018,
-    CURLOPT_WRITEFUNCTION = 20011
-  };
-
-  enum curl_cselect_option
-  {
-    CURL_CSELECT_IN = 0x01,
-    CURL_CSELECT_OUT = 0x02
-  };
-
-  void *curl_easy_init();
-  int   curl_easy_setopt(void *curl, enum curl_option option, ...);
-  int   curl_easy_perform(void *curl);
-  void  curl_easy_cleanup(void *curl);
-  char *curl_easy_strerror(int code);
-
-  int   curl_global_init(enum curl_global_option option);
-
-  void *curl_multi_init();
-  int   curl_multi_setopt(void *curlm, enum curl_multi_option option, ...);
-  int   curl_multi_add_handle(void *curlm, void *curl_handle);
-  int   curl_multi_socket_action(void *curlm, int s, int ev_bitmask, int *running_handles);
-  int   curl_multi_assign(void *curlm, int sockfd, void *sockp);
-  int   curl_multi_remove_handle(void *curlm, void *curl_handle);
-  struct CURLMsg *curl_multi_info_read(void *culm, int *msgs_in_queue);
-
-  typedef int (*curlm_socketfunction_ptr_t)(void *curlm, int sockfd, int ev_bitmask, int *running_handles);
-  typedef int (*curlm_timeoutfunction_ptr_t)(void *curlm, long timeout_ms, int *userp);
-  typedef size_t (*curl_datafunction_ptr_t)(char *ptr, size_t size, size_t nmemb, void *userdata);
-]]
+self.socketWrapper = ffi.cast('curlm_socketfunction_ptr_t', utils.bind(Multi._onSocket, self))
+self.timeoutWrapper = ffi.cast('curlm_timeoutfunction_ptr_t', utils.bind(Multi._onTimeout, self))
+self.multi = libcurl.curl_multi_init()
+libcurl.curl_multi_setopt(self.multi, ffi.C.CURLMOPT_SOCKETFUNCTION, self.socketWrapper)
+libcurl.curl_multi_setopt(self.multi, ffi.C.CURLMOPT_TIMERFUNCTION, self.timeoutWrapper)
 ```
+
+When libcurl wants the event loop to trigger an action, it will call the `_onSocket` callback. This callback 
+receives three parameters:
+
+  1. the easy handle
+  2. the socket file descriptor
+  3. the action (in, out, or remove).
+
+Depending on the type of the action, we will read, write, or remove the event.
+
+```lua
+if action == ffi.C.CURL_POLL_IN then
+  uv.poll_start(poll, 'r', perform)
+elseif action == ffi.C.CURL_POLL_OUT then
+  uv.poll_start(poll, 'w', perform)
+elseif action == ffi.C.CURL_POLL_REMOVE then
+  uv.poll_stop(poll)
+  uv.close(poll)
+  self.polls[sockfd] = nil -- remove from map
+end
+```
+
+## Dig it
+
+Luajit's FFI interface is extremely powerful and easy to use. Many [Luajit
+Bindings][] have been created and are in use today. Remember to keep in mind
+that some bindings may use blocking APIs and block the libuv event loop.
+
+[Luajit Bindings]: http://wiki.luajit.org/FFI-Bindings
+[poll-libcurl.lua]: https://github.com/luvit/luvit/blob/master/examples/poll-libcurl.lua
 [libcurl]: http://curl.haxx.se/libcurl/
 [LuaJit's FFI]: http://luajit.org/ext_ffi.html
 [Hardware Control]: https://luvit.io/blog/hardware-control.html
