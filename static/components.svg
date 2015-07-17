@@ -839,7 +839,7 @@
          id="tspan3775-6-97-1-6-7-8-4"
          x="300.56534"
          y="256.73645">openssl bindings</tspan></text>
-    <a xlink:href="https://github.com/luvit/luvi/releases">
+    <a xlink:href="https://github.com/luvit/luvi/releases" target="_parent">
     <g
        id="group-luvi-bin"
        transform="translate(80.610173,82.024387)">
@@ -907,7 +907,7 @@
        id="path-luvi-lib-to-luvi-bin"
        d="m 136.07464,510.4168 -15,0 c -9.66667,-0.33334 -12,2 -11.5,11.5 l 0,69.75 c 0.0528,11.2724 1.56572,12.97402 11.5,12.75 l 11.28553,0"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Mend-6)" />
-    <a xlink:href="https://github.com/luvit/lit">
+    <a xlink:href="https://github.com/luvit/lit" target="_parent">
     <g
        id="group-lit-lib"
        transform="translate(80.610173,82.024387)">
@@ -966,7 +966,7 @@
          id="tspan3775-6-97-1-6-7-8-8"
          x="522.06805"
          y="564.67267">Development toolkit</tspan></text>
-    <a xlink:href="https://github.com/luvit/luvit">
+    <a xlink:href="https://github.com/luvit/luvit" target="_parent">
     <g
        id="group-luvit-lib"
        transform="translate(80.610173,82.024387)">
@@ -1025,7 +1025,7 @@
          id="tspan3775-6-97-1-6-7-8-8-6"
          x="522.81525"
          y="761.13715">Fully powered runtime</tspan></text>
-    <a xlink:href="https://luvit.io/install.html">
+    <a xlink:href="https://luvit.io/install.html" target="_parent">
     <g
        id="group-lit-bin"
        transform="translate(80.610173,82.024387)">
@@ -1112,7 +1112,7 @@
        id="path-luvi-group-to-luvi-lib"
        d="m 109.54977,439.85446 0,47.5 c -0.5,9.5 1.83333,11.83334 11.5,11.5 l 11,0"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend-6)" />
-    <a xlink:href="https://github.com/luvit/luvi">
+    <a xlink:href="https://github.com/luvit/luvi" target="_parent">
     <g
        id="group-luvi-lib"
        transform="translate(80.610173,82.024387)">
@@ -1171,7 +1171,7 @@
          id="tspan3775-6-97-1-2-7-2"
          x="198.77684"
          y="468.22281">Basic application core</tspan></text>
-    <a xlink:href="https://github.com/luvit/luv">
+    <a xlink:href="https://github.com/luvit/luv" target="_parent">
     <g
        id="group-luv">
       <rect
@@ -1247,7 +1247,7 @@
          y="749.44067"
          x="250.00623"
          sodipodi:role="line">(lit make)</tspan></text>
-    <a xlink:href="https://luvit.io/install.html">
+    <a xlink:href="https://luvit.io/install.html" target="_parent">
     <g
        id="group-luvit-bin"
        transform="translate(80.610173,82.024387)">
