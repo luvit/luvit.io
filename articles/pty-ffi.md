@@ -7,7 +7,7 @@
     github = "creationix"
   },
   tags = { "tutorial", "libuv", "tty" },
-  --published = 1446764824
+  published = 1446764824
 }
 
 Several years ago I worked at Cloud9 IDE and was tasked with implementing a
