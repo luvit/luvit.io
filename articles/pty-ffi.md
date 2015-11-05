@@ -10,7 +10,7 @@
   published = 1446764824
 }
 
-Several years ago I worked at Cloud9 IDE and was tasked with implementing a
+Some years ago I worked at [Cloud9 IDE][] and was tasked with implementing a
 terminal in the browser.  The task is fairly basic and involves a few components.
 
  - A terminal emulator running in the browser.
@@ -220,3 +220,4 @@ A fully runnable example can be found at <https://github.com/creationix/lshell>.
 Vim in a browser, using WebSockets, served by Luvit!
 
 [term.js]: https://github.com/chjj/term.js/
+[Cloud9 IDE]: https://c9.io/
