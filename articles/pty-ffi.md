@@ -33,7 +33,7 @@ is painful at best, and impossible to do cleanly.
 
 ## Creating Pseudo Terminals
 
-On most desktop unix systems, there is a system API known as `openpty()`.  It
+On most [desktop](https://developer.apple.com/library/ios/documentation/System/Conceptual/ManPages_iPhoneOS/man3/openpty.3.html) [unix](https://www.freebsd.org/cgi/man.cgi?query=openpty) [systems](http://man7.org/linux/man-pages/man3/openpty.3.html), there is a system API known as `openpty()`.  It
 looks something like this:
 
 ```c
