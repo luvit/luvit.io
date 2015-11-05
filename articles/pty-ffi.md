@@ -7,7 +7,7 @@
     github = "creationix"
   },
   tags = { "tutorial", "libuv", "tty" },
-  --published =
+  --published = 1446764824
 }
 
 Several years ago I worked at Cloud9 IDE and was tasked with implementing a
@@ -30,11 +30,6 @@ websockets.
 The third step is tricky because Luvit doesn't provide an API for creating
 pseudo terminals.  It's not part of libuv because implementing it in windows
 is painful at best, and impossible to do cleanly.
-
-I started writing this article as a way to show how to mix C code with luvit
-code for the time when you need a system API not included with luvit.  It turns
-out that if you're only supporting Linux and OSX, the FFI built into LuaJIT is
-plenty powerful.
 
 ## Creating Pseudo Terminals
 
