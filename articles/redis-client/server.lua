@@ -32,6 +32,7 @@ local function handleSocket(req, read, write)
       }
     end
   end
+  send()
 end
 
 require('weblit-websocket')
@@ -52,6 +53,5 @@ require('weblit-app')
 }, handleSocket)
 
 .use(require('weblit-static')(module.dir .. "/www"))
-
 
 .start()

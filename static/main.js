@@ -4,6 +4,7 @@ window.addEventListener("load", function () {
     lua: "text/x-lua",
     sh: "text/x-sh",
     c: "text/x-c",
+    js: "text/javascript",
   };
   var codes = document.querySelectorAll("pre code");
   for (var i = 0, l = codes.length; i < l; i++) {

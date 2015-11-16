@@ -9,7 +9,7 @@ window.onload = function () {
   };
 
   function update() {
-    connection.send("ZREVRANGEBYSCORE frequency inf 40 WITHSCORES LIMIT 0 200");
+    connection.send("ZREVRANGEBYSCORE frequency inf 5 WITHSCORES LIMIT 0 200");
   }
 
   connection.onerror = function (evt) {

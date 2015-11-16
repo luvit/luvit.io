@@ -1,12 +1,11 @@
 local redisConnect = require('redis-client')
-
 local websocketConnect = require('websocket-client')
 local jsonParse = require('json').parse
 
-coroutine.wrap(function ()
+local function process()
   -- Connect to redis
   local send = redisConnect { host = "localhost", port = 6379 }
-
+  -- Connect to event stream
   local read, write = websocketConnect "ws://stream.meetup.com/2/rsvps"
 
   for message in read do
@@ -24,12 +23,6 @@ coroutine.wrap(function ()
   end
   write()
 
-  -- -- Send some commands
-  -- p(send("set", "name", "Tim"))
-  -- p(send("get", "name"))
-  -- local name = send("get", "name")
-  -- assert(name == "Tim")
-  --
-  -- -- Close the connection
-  -- send()
-end)()
+end
+
+coroutine.wrap(process)()
