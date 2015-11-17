@@ -9,13 +9,13 @@
   tags = { "redis", "websocket", "data" },
 }
 
-Have you ever wanted to use Redis with Luvit?  Now you can with the new
+Have you ever wanted to use [Redis][] with Luvit?  Now you can with the new
 [`creationix/redis-client`](https://luvit.io/lit.html#author:creationix%20redis-client) package in lit!
 
-One luvit program will consume a public [websocket based API][] to get live
-RSVPs for meetup.com and write some data to redis.
+One Luvit program will consume a public [websocket based API][] to get live
+RSVPs for Meetup and write some data to Redis.
 
-Another luvit program will serve a webpage with a live leaderboard of most
+Another Luvit program will serve a webpage with a live leaderboard of most
 popular group topics (also via websockets) to the browser.
 
 ![Sample Output](redis-client/sample.png)
@@ -215,6 +215,7 @@ response in JSON form for easy consumption.
 I hope this opens up doors to new possibilities for using Luvit and Redis
 together.  Let me know what you think.
 
+[Redis]: http://redis.io/
 [websocket based API]: http://www.meetup.com/meetup_api/docs/stream/2/rsvps/#websockets
 [www]: https://github.com/luvit/luvit.io/tree/master/articles/redis-client/www
 [server.lua]: https://github.com/luvit/luvit.io/blob/master/articles/redis-client/server.lua
