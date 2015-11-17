@@ -16,15 +16,16 @@ One luvit program will consume a public [websocket based API][] to get live
 RSVPs for meetup.com and write some data to redis.
 
 Another luvit program will serve a webpage with a live leaderboard of most
-popular group topics (also via websockets to the browser).
+popular group topics (also via websockets) to the browser.
 
 ![Sample Output](redis-client/sample.png)
 
 ## Processing the Event stream
 
-Luvit is really good at speaking various TCP based network protocols, we've been
-especially happy with the websocket protocol that's used by lit itself.
-Naturally, connecting to a websocket based event stream is a piece of cake.
+Luvit is really good at speaking various TCP based network protocols. We've been
+especially happy with the WebSocket protocol that's used by lit itself.
+
+Naturally, connecting to a WebSocket based event stream is a piece of cake.
 
 ```lua
 local redisConnect = require('redis-client')
@@ -40,11 +41,15 @@ local function process()
 end
 ```
 
-That's it!  With `send`, `read`, and `write` we have a simple API for reading
-from the websocket stream and writing commands to redis.
+ - `send(query) -> response` - Send Redis a command and get back the response.
+ - `read() -> message` - Read a WebSocket message.
+ - `write(message)` - Write a WebSocket message.
+
+With `send`, `read`, and `write` we have a simple API for reading from the
+WebSocket stream and writing commands to Redis.
 
 Let's make a simple loop to extract out the topics and increment a sorted set
-in redis to count the frequency of the topics.
+in Redis to count the frequency of the topics.
 
 ```lua
 local jsonParse = require('json').parse
@@ -66,10 +71,9 @@ end
 write()
 ```
 
-The full script can be found at
-[process.lua][].
+The full script can be found at [process.lua][].
 
-To put some data in our redis we only need to run this with luvit.  Leave it
+To put some data in our Redis we only need to run this with Luvit.  Leave it
 running so we can see rankings change in real-time.
 
 ```sh
@@ -80,7 +84,7 @@ luvit process.lua
 ## Making the Web Server
 
 Luvit is also pretty good at creating web applications.  We'll be using the
-weblit framework again for http static file serving and websocket handling.
+WebLit framework again for http static file serving and WebSocket handling.
 
 ```lua
 require('weblit-websocket')
@@ -107,8 +111,8 @@ require('weblit-app')
 
 This creates a server at <http://localhost:3000/> that serves up our client-side
 JavaScript app.  We now need to write the `handleSocket` function that will
-proxy data between the websocket client in the browser and the redis server that
-luvit has access to.
+proxy data between the WebSocket client in the browser and the Redis server that
+Luvit has access to.
 
 ```lua
 local send
@@ -176,7 +180,7 @@ soon see colorful topics appear.
 
 I won't show all the HTML, CSS and JavaScript that make up the client, full
 source can be found at [www][], but the important part is how the client
-connects to the websocket endpoint.
+connects to the WebSocket endpoint.
 
 ```js
 window.onload = function () {
