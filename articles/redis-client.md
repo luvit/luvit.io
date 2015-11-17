@@ -7,6 +7,7 @@
     github = "creationix"
   },
   tags = { "redis", "websocket", "data" },
+  published = 1447718837
 }
 
 Have you ever wanted to use [Redis][] with Luvit?  Now you can with the new
