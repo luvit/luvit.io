@@ -162,7 +162,9 @@ local uv = require('uv')
 local wrapStream = require('coro-channel').wrapStream
 local split = require('coro-split')
 
-local function onSocket(req, read, write)
+-- This file is `app.lua` so it's what the server is 
+-- loading as the connection handler.
+return function (req, read, write)
   -- Process the parameters from the url pattern.
   local cols = tonumber(req.params.cols)
   local rows = tonumber(req.params.rows)
