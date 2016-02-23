@@ -71,7 +71,7 @@ The final binary will be at `build/luvi` on most platforms (cmake decides this p
 
 ```sh
 curl -L https://github.com/luvit/lit/archive/master.zip > lit.zip
-LUVI_APP=lit.zip ./build/luvi make lit.zip
+./build/luvi lit.zip -- make lit.zip
 ```
 
 This will create a `lit` executable in your current directory.  Then you can continue to build luvit normally with:
