@@ -70,7 +70,14 @@ The final binary will be at `build/luvi` on most platforms (cmake decides this p
 
 
 ```sh
-curl -L https://github.com/luvit/lit/archive/master.zip > lit.zip
+git clone --recursive https://github.com/luvit/lit.git lit-src
+./build/luvi lit-src -- make lit-src
+```
+
+Or if you want the latest lit release as a zip:
+
+```sh
+curl https://lit.luvit.io/packages/luvit/lit/latest.zip > lit.zip
 ./build/luvi lit.zip -- make lit.zip
 ```
 
