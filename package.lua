@@ -8,12 +8,12 @@ return {
     -- Web server framework
     "creationix/weblit-app@2.1.0",
     -- Core plugin for proper http headers
-    "creationix/weblit-auto-headers2.0.1",
+    "creationix/weblit-auto-headers@2.0.1",
     -- Serve static files from disk
-    "creationix/weblit-static2.0.0",
+    "creationix/weblit-static@2.0.0",
     -- In-memory caching of http responses
-    "creationix/weblit-etag-cache2.0.0",
+    "creationix/weblit-etag-cache@2.0.0",
     -- Basic logger to stdout
-    "creationix/weblit-logger2.0.0",
+    "creationix/weblit-logger@2.0.0",
   }
 }
