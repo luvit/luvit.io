@@ -137,6 +137,8 @@ We can install any other luvi-based apps in the same way now.
 ```sh
 lit make lit://luvit/luvit ~/bin/luvit prefix
 lit make lit://creationix/wscat ~/bin/wscat prefix
+lit make lit://creationix/simple-http-server ~/bin/simple-http-server prefix
+lit make lit://virgo-agent-toolkit/fife ~/bin/fife prefix
 ...
 ```
 
@@ -146,3 +148,6 @@ lit make lit://creationix/wscat ~/bin/wscat prefix
 [Busybox]: https://www.busybox.net/
 [pre-built luvi]: https://github.com/luvit/luvi/releases
 [apk]: http://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management
+[lit]: https://github.com/luvit/lit
+[luvit]: https://github.com/luvit/luvit
+[wscat]: https://github.com/creationix/wscat
