@@ -7,7 +7,7 @@
     github = "creationix"
   },
   tags = { "luvi", "luvi", "busybox" },
-  --published = 1447718837
+  published = 1460500392
 }
 
 Recently I've discovered a new Linux distribution called [Alpine Linux][].
