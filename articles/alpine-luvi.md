@@ -11,7 +11,7 @@
 }
 
 Recently I've discovered a new Linux distribution called [Alpine Linux][].
-It's basically just [Linux Kernel][] + [musl libc][] libc + [busybox][].  Or
+It's basically just [Linux Kernel][] + [musl libc][] + [busybox][].  Or
 in other words, it's super minimal and tiny.
 
 ## Compile Luvi From Source
@@ -65,7 +65,7 @@ containing the application itself.  This works because executables ignore extra
 data on the end and zip files ignore extra data at the front.  By combining them
 we get a file that is *both* a zip file and an executable.
 
-Lit does a little more by reading package.lua and synthesizing the dependencies
+Lit does a little more by reading `package.lua` and synthesizing the dependencies
 directly into the generated zip file.  Also it attempts to compile all lua files
 into bytecode to save space and skip files not meant to be included.  But in the
 end, it's still generating a custom zip file and then appending it to the
@@ -97,7 +97,7 @@ But keeping with the spirit of Alpine and BusyBox, BusyBox is a single binary
 where commands like `ls`, `cp`, `cat`, etc are just symlinks pointing to the
 same file, we want to share the same luvi binary across all our luvi-based apps.
 
-If you look at the built `lit` file in `~/bin`, you'll see it's just slight
+If you look at the built `lit` file in `~/bin`, you'll see it's just slightly
 bigger than the `luvi` binary itself.
 
 ```sh
