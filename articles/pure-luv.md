@@ -89,12 +89,11 @@ complete with websockets and static file asset loading.
 We'll pull in the `luv` and `bit` libraries from luarocks.
 
 ```sh
-# Install some global C modules using luarocks.
-luarocks install luv # You'll need cmake for this to compile
-luarocks install luabitop # Not needed if you're using LuaJit
+luarocks install luv        # You'll need cmake for this to compile
+luarocks install luabitop   # Not needed if you're using LuaJit
 ```
 
-And pull in `uv` and `weblit` libraries from lit's ecosystem.
+And pull in `weblit`, `pretty-print`, and `uv` from lit's ecosystem.
 
 ```sh
 mkdir myapp
@@ -105,8 +104,8 @@ lit install creationix/weblit creationix/uv luvit/pretty-print
 If all goes well, you will now have `luv` and `bit` built and installed to
 somewhere in lua's `package.cpath`. This is a system-wide install and is the
 default workflow for luarocks based applications.  Lit will have created a new
-`deps` folder in your application and install the two requested libraries as
-well as their dependencies recursively.
+`./deps` folder in your application and install the requested libraries as well
+as their dependencies recursively.
 
 Lua's require doesn't know how to find the lit packages, but we can teach it with
 a new require loader.  
@@ -114,6 +113,8 @@ a new require loader.
 ```sh
 curl -LO https://raw.githubusercontent.com/luvit/lit/master/luvit-loader.lua
 ```
+
+I will sometime publish this to luarocks to ease this bootstrapping step.
 
 Using this file, we should be able to require packages from either ecosystem
 using native require.  Create the following test file and run it with lua to
@@ -185,7 +186,7 @@ message in the browser.
 
 There is so much more to explore in what weblit can do, but that will be saved
 for another day.  The important thing to note here is we're using plain vanilla
-lua to consume unmodified lit packages from the luvit ecosystem mixed with
+`lua` to consume unmodified lit packages from the luvit ecosystem mixed with
 packages installed from luarocks.
 
 ## Remember Your Deps
