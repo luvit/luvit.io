@@ -7,7 +7,7 @@
     github = "creationix"
   },
   tags = { "lua", "luajit", "luarocks", "luv" },
-  -- published = 1435700462
+  published = 1460656378
 }
 
 I started the Luvit project a year ago as a reimplementation of [node.js][] for
