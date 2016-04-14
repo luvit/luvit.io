@@ -10,7 +10,7 @@
   published = 1460656378
 }
 
-I started the Luvit project a year ago as a reimplementation of [node.js][] for
+I started the Luvit project years ago as a reimplementation of [node.js][] for
 [LuaJit][]. The project has had great success within [Rackspace][] where it's
 used for the monitoring agent using the [virgo][] platform.
 
