@@ -10,14 +10,14 @@
   -- published = 1435700462
 }
 
-I started the Luvit project year ago as a reimplementation of [node.js][] for
+I started the Luvit project a year ago as a reimplementation of [node.js][] for
 [LuaJit][]. The project has had great success within [Rackspace][] where it's
 used for the monitoring agent using the [virgo][] platform.
 
 Luvit is a single binary that contains the lua vm, [libuv][], [openssl][],
 [miniz][] as well as a host of [standard libraries][] implemented in lua that
-closely resemble the public node.js APIs.  You give it a lua script to run and it
-runs it in the context of this system.
+closely resemble the public node.js APIs.  You give it a lua script to run and
+it runs it in the context of this system.
 
 ## Luvit was so Nodey
 
@@ -65,17 +65,17 @@ and primitives used by luvit available outside of luvit.
 
 The inline-metadata format of lit was changed to embed in a lua comment instead
 of assume a global `exports` table.  In fact, the whole [CJS][] style
-`module.exports` system is no longer used by and core libraries.  Instead they
+`module.exports` system is no longer used by the core libraries.  Instead they
 simply return their exports.
 
 This means that luvit libraries can be loaded by lua's native `require` function
 and not need any special globals injected into their namespace.
 
-Also work has been done to ensure that evert release of the [luv][] bindings are
-published to [luarocks][].
+Also, work has been done to ensure that every release of the [luv][] bindings
+are published to [luarocks][].
 
-I'm still trying to figure out how to get the [openssl bindings][] we use to work
-well in luarocks based workflows.  We may simply migrate to [luaossl][].
+I'm still trying to figure out how to get the [openssl bindings][] we use to
+work well in luarocks based workflows.  We may simply migrate to [luaossl][].
 
 The good news is that many webservers don't actually need openssl bindings as
 they are often deployed behind proxy servers that can do the TLS termination for
@@ -83,8 +83,8 @@ them.
 
 ## Mixing Module Ecosystems
 
-For a quick simple example, let's use stock Lua 5.3 on Linux to create a webserver
-complete with websockets and static file asset loading.
+For a quick simple example, let's use stock Lua 5.3 on Linux to create a
+webserver complete with websockets and static file asset loading.
 
 We'll pull in the `luv` and `bit` libraries from luarocks.
 
@@ -107,8 +107,8 @@ default workflow for luarocks based applications.  Lit will have created a new
 `./deps` folder in your application and install the requested libraries as well
 as their dependencies recursively.
 
-Lua's require doesn't know how to find the lit packages, but we can teach it with
-a new require loader.  
+Lua's require function doesn't know how to find the lit packages, but we can
+teach it with a new require loader.  
 
 ```sh
 curl -LO https://raw.githubusercontent.com/luvit/lit/master/luvit-loader.lua
@@ -139,9 +139,10 @@ redirects any requires to the luarocks version.
 
 ## Using Weblit for Fun and Profit
 
-[Weblit][] is a pretty fun little framework for creating coroutine-based webservers.
+[Weblit][] is a pretty fun little framework for creating coroutine-based
+webservers.
 
-Let's create a simple app using it's declarative configuration syntax.
+Let's create a simple app using its declarative configuration syntax.
 
 ```lua
 -- server.lua
@@ -211,7 +212,7 @@ return {
 
 Let me know what you think about this approach. I find that between luvi apps
 (single binaries) and normal lua or luajit apps, I have very little need for the
-actual `luvit` binary for anything other than playing with it's awesome repl and
+actual `luvit` binary for anything other than playing with its awesome repl and
 pretty-printer.  The node.js style APIs are great for people migrating existing
 systems from node, but when in Lua, I much prefer coroutines to callbacks.
 
