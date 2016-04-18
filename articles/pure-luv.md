@@ -83,7 +83,7 @@ them.
 
 ## Mixing Module Ecosystems
 
-For a quick simple example, let's use stock Lua 5.3 on Linux to create a
+For a quick simple example, let's use stock Lua 5.2 on Linux to create a
 webserver complete with websockets and static file asset loading.
 
 We'll pull in the `luv` and `bit` libraries from luarocks.
