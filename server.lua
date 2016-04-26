@@ -2,6 +2,8 @@ local pathJoin = require('luvi').path.join
 local static = require('weblit-static')
 local blog = require('controllers/blog')
 local env = require('env')
+local jsonStringify = require('json').stringify
+local uv = require('uv')
 
 require('weblit-app')
 
@@ -26,12 +28,19 @@ require('weblit-app')
 
   .route({ method = "GET", path = "/handles"}, function (req, res)
     local handles = {}
-    require('uv').walk(function (handle)
-      handles[#handles + 1] = tostring(handle)
+    uv.walk(function (handle)
+      local name = tostring(handle)
+      if name:match("^uv_tcp_t:") then
+        local peer = handle:getpeername()
+        local sock = handle:getsockname()
+
+        name = {name,sock,peer}
+      end
+      handles[#handles + 1] = name
     end)
     res.code = 200
-    res.headers["Content-Type"] = "text/plain"
-    res.body = table.concat(handles, '\n')
+    res.headers["Content-Type"] = "application/json"
+    res.body = jsonStringify(handles)
   end)
   .start()
 
