@@ -11,8 +11,6 @@ return {
     "creationix/weblit-auto-headers@2.0.1",
     -- Serve static files from disk
     "creationix/weblit-static@2.0.0",
-    -- In-memory caching of http responses
-    "creationix/weblit-etag-cache@2.0.0",
     -- Basic logger to stdout
     "creationix/weblit-logger@2.0.0",
   }
