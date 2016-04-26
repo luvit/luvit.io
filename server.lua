@@ -10,7 +10,6 @@ require('weblit-app')
   -- Configure weblit server
   .use(require('weblit-logger'))
   .use(require('weblit-auto-headers'))
-  .use(require('weblit-etag-cache'))
 
   .route({ method = "GET", path = "/snapshots"}, require('snapshots'))
   .route({ method = "GET", path = "/stats"}, require('stats'))
