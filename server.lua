@@ -4,6 +4,8 @@ local blog = require('controllers/blog')
 local env = require('env')
 local jsonStringify = require('json').stringify
 local uv = require('uv')
+local scandir = require('coro-fs').scandir
+local ffi = require('ffi')
 
 require('weblit-app')
 
@@ -26,7 +28,7 @@ require('weblit-app')
   .route({ method = "GET", path = "/blog/:path:"}, static(pathJoin(module.dir, "articles")))
   .use(static(pathJoin(module.dir, "static")))
 
-  .route({ method = "GET", path = "/handles"}, function (req, res)
+  .route({ method = "GET", path = "/stats"}, function (_, res)
     local handles = {}
     uv.walk(function (handle)
       local name = tostring(handle)
@@ -38,9 +40,30 @@ require('weblit-app')
       end
       handles[#handles + 1] = name
     end)
+
+    collectgarbage()
+    local memoryUsed = 1024 * collectgarbage("count")
+
+    -- Count file descriptors according to proc
+
+    local path = ({
+      Linux = "/proc/self/fd",
+      OSX = "/dev/fd"
+    })[ffi.os]
+
+    local entries = 0
+    local iter = scandir(path)
+    for _ in iter do
+      entries = entries + 1
+    end
+
+
     res.code = 200
     res.headers["Content-Type"] = "application/json"
-    res.body = jsonStringify(handles)
+    res.body = jsonStringify{
+      handles = handles,
+      lua_heap = memoryUsed,
+      fd_count = entries
+    }
   end)
   .start()
-
