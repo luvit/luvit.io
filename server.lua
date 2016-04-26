@@ -24,5 +24,14 @@ require('weblit-app')
   .route({ method = "GET", path = "/blog/:path:"}, static(pathJoin(module.dir, "articles")))
   .use(static(pathJoin(module.dir, "static")))
 
+  .route({ method = "GET", path = "/handles"}, function (req, res)
+    local handles = {}
+    require('uv').walk(function (handle)
+      handles[#handles + 1] = tostring(handle)
+    end)
+    res.code = 200
+    res.headers["Content-Type"] = "text/plain"
+    res.body = table.concat(handles, '\n')
+  end)
   .start()
 
