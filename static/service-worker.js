@@ -1,10 +1,6 @@
 self.importScripts('idb-keyval.js');
 
-var aliases = {
-  index: /^https?:\/\/[^/]+\/(index.html)?$/,
-};
-
-var configs;
+var hooks;
 var updateConfig = (function () {
   var updating;
   var recheck;
@@ -18,9 +14,13 @@ var updateConfig = (function () {
     return idbKeyval.get("hookConfigs").then(onConfig);
   }
 
-  function onConfig(newConfigs) {
-    if ((configs || newConfigs) && JSON.stringify(newConfigs) !== JSON.stringify(configs)) {
-      configs = newConfigs;
+  function onConfig(configs) {
+    if (configs || hooks) {
+      hooks = [];
+      for (var key in configs) {
+        hooks.push(new RegExp(key), configs[key]);
+      }
+      if (hooks.length === 0) hooks = undefined;
       console.log("Hook Configs Updated");
       console.log(configs);
     }
@@ -48,17 +48,15 @@ self.addEventListener('message', updateConfig);
 self.addEventListener('fetch', event => {
   updateConfig();
   // If there are no custom configs (default state in production), do nothing.
-  if (!configs) return;
+  if (!hooks) return;
 
   var url = event.request.url;
   console.log("fetch", event.request.url);
 
   // Look for matching configured hooks
-  var keys = Object.keys(configs);
-  for (var i = 0, l = keys.length; i < l; i++) {
-    var key = keys[i];
-    if (aliases[key] ? aliases[key].test(url) : key === url) {
-      var customUrl = configs[key];
+  for (var i = 0, l = hooks.length; i < l; i += 2) {
+    if (hooks[i].test(url)) {
+      var customUrl = url.replace(hooks[i], hooks[i + 1]);
       console.warn("URL override via custom hook", url, customUrl);
       return event.respondWith(fetch(customUrl));
     }
