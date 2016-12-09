@@ -5,9 +5,9 @@
 
 Installing Luvit is a multi-step process currently.  But fear not, it's still quite simple.
 
-## Get Lit
+## Get Lit and Luvit
 
-If you're on Linux, FreeBSD, or OSX, run the following command to download and package a `lit` binary for your platform:
+If you're on Linux, FreeBSD, or OSX, run the following script to download `luvi` and build `lit` and `luvit` for your platform:
 
 ```sh
 curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
@@ -18,24 +18,6 @@ If you're on windows, run the sister command in your `cmd.exe` command prompt.
 ```bat
 PowerShell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://github.com/luvit/lit/raw/master/get-lit.ps1'))"
 ```
-
-## Make Luvit
-
-Once you have lit, use it to build luvit.  This is the same for all platforms.
-
-The latest published lit release of luvit can be built with:
-
-```sh
-lit make lit://luvit/luvit
-```
-
-If you'd rather test the master branch on github, use:
-
-```sh
-lit make github://luvit/luvit
-```
-
-Both these commands will create a `luvit` executable in the current directory.
 
 Put both `lit` and `luvit` in your path somewhere.  We recommend `/usr/local/bin` or `$HOME/bin` if that's in your path.
 
