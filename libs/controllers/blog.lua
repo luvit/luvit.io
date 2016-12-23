@@ -2,6 +2,15 @@ local renderTemplate = require('render-template')
 local pathJoin = require('luvi').path.join
 local fs = require('coro-fs').chroot(pathJoin(module.dir, "../.."))
 local loadContent = require('load-content')
+local uv = require('uv')
+
+local articles = nil
+
+--When directory changed, notify to reload articles
+uv.new_fs_event():start("articles", {}, function (err, filename)
+  assert(not err, err)
+  articles = nil
+end)
 
 local function loadArticles()
   local articles = {}
@@ -31,7 +40,7 @@ local function loadArticles()
 end
 
 function exports.index(req, res, go)
-  local articles = loadArticles()
+  articles = loadArticles()
   if #articles == 0 then
     return renderTemplate(res, "empty", {
       title = "Blog - Luvit.io",
@@ -51,7 +60,10 @@ end
 
 function exports.article(req, res, go)
   local name = req.params.name
-  local articles = loadArticles()
+  
+  if not articles then
+    articles = loadArticles()
+  end
   local article = articles[name] or loadContent("articles", name)
   if not article then return go() end
   return renderTemplate(res, "article", {
