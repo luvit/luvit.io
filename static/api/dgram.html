@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> Datagram | UDP Luvit 2.5.6 Manual &amp; Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/sh.css">
+  <link rel="luvit contributors" href="https://luvit.io/api/dgram.html">
+</head>
+<body class="alt apidoc" id="api-section-dgram">
+  <div id="content" class="clearfix">
+    <div id="column2" class="interior">
+      <div id="intro" class="interior">
+        <a href="/" title="Go back to the home page">
+          Luvit (1)
+        </a>
+      </div>
+      <ul>
+<li><a class="nav-documentation" href="documentation.html">About these Docs</a></li>
+<li><a class="nav-synopsis" href="synopsis.html">Synopsis</a></li>
+<li><a class="nav-buffer" href="buffer.html">Buffer</a></li>
+<li><a class="nav-childprocess" href="childprocess.html">Child Process</a></li>
+<li><a class="nav-codec" href="codec.html">Codec</a></li>
+<li><a class="nav-core" href="core.html">Core</a></li>
+<li><a class="nav-dgram active" href="dgram.html">Datagram/UDP</a></li>
+<li><a class="nav-dns" href="dns.html">DNS</a></li>
+<li><a class="nav-fs" href="fs.html">File System</a></li>
+<li><a class="nav-helpful" href="helpful.html">Helpful</a></li>
+<li><a class="nav-http-codec" href="http-codec.html">HTTP Codec</a></li>
+<li><a class="nav-http" href="http.html">HTTP</a></li>
+<li><a class="nav-https" href="https.html">HTTPS</a></li>
+<li><a class="nav-json" href="json.html">JSON</a></li>
+<li><a class="nav-los" href="los.html">Light Operating System helper(los)</a></li>
+<li><a class="nav-net" href="net.html">Net</a></li>
+<li><a class="nav-path" href="path.html">Path</a></li>
+<li><a class="nav-pretty-print" href="pretty-print.html">Pretty print</a></li>
+<li><a class="nav-process" href="process.html">Process</a></li>
+<li><a class="nav-querystring" href="querystring.html">Query String</a></li>
+<li><a class="nav-readline" href="readline.html">Readline</a></li>
+<li><a class="nav-repl" href="repl.html">REPL</a></li>
+<li><a class="nav-require" href="require.html">Require</a></li>
+<li><a class="nav-stream" href="stream.html">Stream</a></li>
+<li><a class="nav-thread" href="thread.html">Thread</a></li>
+<li><a class="nav-timer" href="timer.html">Timer</a></li>
+<li><a class="nav-url" href="url.html">URL</a></li>
+<li><a class="nav-utils" href="utils.html">Utilities</a></li>
+</ul>
+
+    </div>
+
+    <div id="column1" data-id="dgram" class="interior">
+      <header>
+        <h1>Luvit 2.5.6 Documentation</h1>
+        <div id="gtoc">
+          <p>
+            <a href="index.html" name="toc">Index</a> |
+            <a href="all.html">View on single page</a> |
+            <a href="dgram.json">View as JSON</a>
+          </p>
+        </div>
+        <hr>
+      </header>
+
+      <div id="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+<li><a href="#dgram_datagram_udp">Datagram | UDP</a><ul>
+<li><a href="#dgram_dgram_createsocket_type_callback">dgram.createSocket(type, callback)</a></li>
+<li><a href="#dgram_class_dgram_socket">Class: dgram.Socket</a><ul>
+<li><a href="#dgram_socket_recvstart">Socket:recvStart()</a></li>
+<li><a href="#dgram_socket_recvstop">Socket:recvStop()</a></li>
+<li><a href="#dgram_socket_settimeout_msecs_callback">Socket:setTimeout(msecs, callback)</a></li>
+<li><a href="#dgram_socket_send_data_port_host_callback">Socket:send(data, port, host, callback)</a></li>
+<li><a href="#dgram_socket_bind_port_host_options">Socket:bind(port, host, options)</a></li>
+<li><a href="#dgram_socket_close_callback">Socket:close(callback)</a></li>
+<li><a href="#dgram_socket_address">Socket:address()</a></li>
+<li><a href="#dgram_socket_setbroadcast_status">Socket:setBroadcast(status)</a></li>
+<li><a href="#dgram_socket_setmembership_multicastaddress_multicastinterface_op">Socket:setMembership(multicastAddress[, multicastInterface], op)</a></li>
+<li><a href="#dgram_socket_addmembership_multicastaddress_interfaceaddress">Socket:addMembership(multicastAddress[, interfaceAddress])</a></li>
+<li><a href="#dgram_socket_dropmembership_multicastaddress_interfaceaddress">Socket:dropMembership(multicastAddress[, interfaceAddress])</a></li>
+<li><a href="#dgram_socket_setttl_ttl">Socket:setTTL(ttl)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+      <div id="apicontent">
+        <h1>Datagram | UDP<span><a class="mark" href="#dgram_datagram_udp" id="dgram_datagram_udp">#</a></span></h1>
+<p>Node-style udp module for luvit
+
+</p>
+<p><code>local dgram = require(&#39;dgram&#39;)</code>
+
+</p>
+<h2>dgram.createSocket(type, callback)<span><a class="mark" href="#dgram_dgram_createsocket_type_callback" id="dgram_dgram_createsocket_type_callback">#</a></span></h2>
+<p>Creates a new datagram socket
+Callback is triggered every time the &#39;message&#39; event gets emitted
+
+</p>
+<h2>Class: dgram.Socket<span><a class="mark" href="#dgram_class_dgram_socket" id="dgram_class_dgram_socket">#</a></span></h2>
+<p>Socket extends Emitter and inherits all the events thereof.
+The dgram Socket class encapsulates the datagram functionality. It should be created via dgram.createSocket(...)  
+
+</p>
+<h3>Socket:recvStart()<span><a class="mark" href="#dgram_socket_recvstart" id="dgram_socket_recvstart">#</a></span></h3>
+<p>Start receiving on socket
+
+</p>
+<h3>Socket:recvStop()<span><a class="mark" href="#dgram_socket_recvstop" id="dgram_socket_recvstop">#</a></span></h3>
+<p>Stop listening on socket
+
+</p>
+<h3>Socket:setTimeout(msecs, callback)<span><a class="mark" href="#dgram_socket_settimeout_msecs_callback" id="dgram_socket_settimeout_msecs_callback">#</a></span></h3>
+<p>Sets a socket timeout 
+
+</p>
+<h3>Socket:send(data, port, host, callback)<span><a class="mark" href="#dgram_socket_send_data_port_host_callback" id="dgram_socket_send_data_port_host_callback">#</a></span></h3>
+<p>Sends data down the udp socket
+
+</p>
+<h3>Socket:bind(port, host, options)<span><a class="mark" href="#dgram_socket_bind_port_host_options" id="dgram_socket_bind_port_host_options">#</a></span></h3>
+<p>Starts listening on the specified port and host. 
+
+</p>
+<h3>Socket:close(callback)<span><a class="mark" href="#dgram_socket_close_callback" id="dgram_socket_close_callback">#</a></span></h3>
+<p>Closes a socket instance and fires the callback after cleanup
+
+</p>
+<h3>Socket:address()<span><a class="mark" href="#dgram_socket_address" id="dgram_socket_address">#</a></span></h3>
+<p>Returns an object containing the address information for a socket. For UDP sockets, this object will contain address , family and port.
+
+</p>
+<h3>Socket:setBroadcast(status)<span><a class="mark" href="#dgram_socket_setbroadcast_status" id="dgram_socket_setbroadcast_status">#</a></span></h3>
+<div class="signature"><ul>
+<li>status - Boolean
+Sets or clears the SO_BROADCAST socket option. When this option is set, UDP packets may be sent to a local interface&#39;s broadcast address.</li>
+</div></ul>
+<h3>Socket:setMembership(multicastAddress[, multicastInterface], op)<span><a class="mark" href="#dgram_socket_setmembership_multicastaddress_multicastinterface_op" id="dgram_socket_setmembership_multicastaddress_multicastinterface_op">#</a></span></h3>
+<p>Sets membership status for a multicast group. Op can be &#39;join&#39; or &#39;leave&#39;.
+
+</p>
+<h3>Socket:addMembership(multicastAddress[, interfaceAddress])<span><a class="mark" href="#dgram_socket_addmembership_multicastaddress_interfaceaddress" id="dgram_socket_addmembership_multicastaddress_interfaceaddress">#</a></span></h3>
+<div class="signature"><ul>
+<li>multicastAddress String</li>
+<li>multicastInterface String, Optional
+Tells the kernel to join a multicast group with IP_ADD_MEMBERSHIP socket option.</li>
+</div></ul>
+<p>If multicastInterface is not specified, the OS will try to add membership to all valid interfaces.
+
+</p>
+<h3>Socket:dropMembership(multicastAddress[, interfaceAddress])<span><a class="mark" href="#dgram_socket_dropmembership_multicastaddress_interfaceaddress" id="dgram_socket_dropmembership_multicastaddress_interfaceaddress">#</a></span></h3>
+<div class="signature"><ul>
+<li>multicastAddress String</li>
+<li>multicastInterface String, Optional
+Opposite of addMembership - tells the kernel to leave a multicast group with IP_DROP_MEMBERSHIP socket option. This is automatically called by the kernel when the socket is closed or process terminates, so most apps will never need to call this.</li>
+</div></ul>
+<p>If multicastInterface is not specified, the OS will try to drop membership to all valid interfaces.
+
+</p>
+<h3>Socket:setTTL(ttl)<span><a class="mark" href="#dgram_socket_setttl_ttl" id="dgram_socket_setttl_ttl">#</a></span></h3>
+<div class="signature"><ul>
+<li>ttl Integer
+Sets the IP_TTL socket option. TTL stands for &quot;Time to Live,&quot; but in this context it specifies the number of IP hops that a packet is allowed to go through. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting.</li>
+</div></ul>
+<p>The argument to setTTL() is a number of hops between 1 and 255. The default on most systems is 64.
+
+</p>
+
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+  </div>
+
+  <script src="assets/sh_main.js"></script>
+  <script src="assets/sh_javascript.min.js"></script>
+  <script>highlight(undefined, undefined, 'pre');</script>
+</body>
+</html>
+

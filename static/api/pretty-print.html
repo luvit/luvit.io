@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> Pretty print Luvit 2.5.6 Manual &amp; Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/sh.css">
+  <link rel="luvit contributors" href="https://luvit.io/api/pretty-print.html">
+</head>
+<body class="alt apidoc" id="api-section-pretty-print">
+  <div id="content" class="clearfix">
+    <div id="column2" class="interior">
+      <div id="intro" class="interior">
+        <a href="/" title="Go back to the home page">
+          Luvit (1)
+        </a>
+      </div>
+      <ul>
+<li><a class="nav-documentation" href="documentation.html">About these Docs</a></li>
+<li><a class="nav-synopsis" href="synopsis.html">Synopsis</a></li>
+<li><a class="nav-buffer" href="buffer.html">Buffer</a></li>
+<li><a class="nav-childprocess" href="childprocess.html">Child Process</a></li>
+<li><a class="nav-codec" href="codec.html">Codec</a></li>
+<li><a class="nav-core" href="core.html">Core</a></li>
+<li><a class="nav-dgram" href="dgram.html">Datagram/UDP</a></li>
+<li><a class="nav-dns" href="dns.html">DNS</a></li>
+<li><a class="nav-fs" href="fs.html">File System</a></li>
+<li><a class="nav-helpful" href="helpful.html">Helpful</a></li>
+<li><a class="nav-http-codec" href="http-codec.html">HTTP Codec</a></li>
+<li><a class="nav-http" href="http.html">HTTP</a></li>
+<li><a class="nav-https" href="https.html">HTTPS</a></li>
+<li><a class="nav-json" href="json.html">JSON</a></li>
+<li><a class="nav-los" href="los.html">Light Operating System helper(los)</a></li>
+<li><a class="nav-net" href="net.html">Net</a></li>
+<li><a class="nav-path" href="path.html">Path</a></li>
+<li><a class="nav-pretty-print active" href="pretty-print.html">Pretty print</a></li>
+<li><a class="nav-process" href="process.html">Process</a></li>
+<li><a class="nav-querystring" href="querystring.html">Query String</a></li>
+<li><a class="nav-readline" href="readline.html">Readline</a></li>
+<li><a class="nav-repl" href="repl.html">REPL</a></li>
+<li><a class="nav-require" href="require.html">Require</a></li>
+<li><a class="nav-stream" href="stream.html">Stream</a></li>
+<li><a class="nav-thread" href="thread.html">Thread</a></li>
+<li><a class="nav-timer" href="timer.html">Timer</a></li>
+<li><a class="nav-url" href="url.html">URL</a></li>
+<li><a class="nav-utils" href="utils.html">Utilities</a></li>
+</ul>
+
+    </div>
+
+    <div id="column1" data-id="pretty-print" class="interior">
+      <header>
+        <h1>Luvit 2.5.6 Documentation</h1>
+        <div id="gtoc">
+          <p>
+            <a href="index.html" name="toc">Index</a> |
+            <a href="all.html">View on single page</a> |
+            <a href="pretty-print.json">View as JSON</a>
+          </p>
+        </div>
+        <hr>
+      </header>
+
+      <div id="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+<li><a href="#pretty_print_pretty_print">Pretty print</a><ul>
+<li><a href="#pretty_print_prettyprint_loadcolors_index">prettyPrint.loadColors([index])</a></li>
+<li><a href="#pretty_print_value_prettyprint_theme">Value: prettyPrint.theme</a></li>
+<li><a href="#pretty_print_prettyprint_print">prettyPrint.print(...)</a></li>
+<li><a href="#pretty_print_prettyprint_prettyprint">prettyPrint.prettyPrint(...)</a></li>
+<li><a href="#pretty_print_prettyprint_dump_value_recurse_nocolor">prettyPrint.dump(value, recurse, nocolor)</a></li>
+<li><a href="#pretty_print_prettyprint_color_colorname">prettyPrint.color(colorName)</a></li>
+<li><a href="#pretty_print_prettyprint_colorize_colorname_string_resetname">prettyPrint.colorize(colorName, string, resetName)</a></li>
+<li><a href="#pretty_print_prettyprint_strip_str">prettyPrint.strip(str)</a></li>
+<li><a href="#pretty_print_userdata_value_prettyprint_stdin">Userdata Value: prettyPrint.stdin</a></li>
+<li><a href="#pretty_print_userdata_value_prettyprint_stdout">Userdata Value: prettyPrint.stdout</a></li>
+<li><a href="#pretty_print_userdata_value_prettyprint_stderr">Userdata Value: prettyPrint.stderr</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+      <div id="apicontent">
+        <h1>Pretty print<span><a class="mark" href="#pretty_print_pretty_print" id="pretty_print_pretty_print">#</a></span></h1>
+<p>A lua value pretty printer and colorizer for terminals.  
+
+</p>
+<p><code>local prettyPrint = require(&#39;pretty-print&#39;)</code>
+
+</p>
+<h2>prettyPrint.loadColors([index])<span><a class="mark" href="#pretty_print_prettyprint_loadcolors_index" id="pretty_print_prettyprint_loadcolors_index">#</a></span></h2>
+<p>Index lets you optionally pick a theme, 16 or 256. 
+
+</p>
+<h2>Value: prettyPrint.theme<span><a class="mark" href="#pretty_print_value_prettyprint_theme" id="pretty_print_value_prettyprint_theme">#</a></span></h2>
+<p>Table of keys and values of the available themes
+
+</p>
+<h2>prettyPrint.print(...)<span><a class="mark" href="#pretty_print_prettyprint_print" id="pretty_print_prettyprint_print">#</a></span></h2>
+<p>Works like the default lua print function. We also override the default lua print function
+
+</p>
+<h2>prettyPrint.prettyPrint(...)<span><a class="mark" href="#pretty_print_prettyprint_prettyprint" id="pretty_print_prettyprint_prettyprint">#</a></span></h2>
+<h2>prettyPrint.dump(value, recurse, nocolor)<span><a class="mark" href="#pretty_print_prettyprint_dump_value_recurse_nocolor" id="pretty_print_prettyprint_dump_value_recurse_nocolor">#</a></span></h2>
+<h2>prettyPrint.color(colorName)<span><a class="mark" href="#pretty_print_prettyprint_color_colorname" id="pretty_print_prettyprint_color_colorname">#</a></span></h2>
+<h2>prettyPrint.colorize(colorName, string, resetName)<span><a class="mark" href="#pretty_print_prettyprint_colorize_colorname_string_resetname" id="pretty_print_prettyprint_colorize_colorname_string_resetname">#</a></span></h2>
+<h2>prettyPrint.strip(str)<span><a class="mark" href="#pretty_print_prettyprint_strip_str" id="pretty_print_prettyprint_strip_str">#</a></span></h2>
+<h2>Userdata Value: prettyPrint.stdin<span><a class="mark" href="#pretty_print_userdata_value_prettyprint_stdin" id="pretty_print_userdata_value_prettyprint_stdin">#</a></span></h2>
+<h2>Userdata Value: prettyPrint.stdout<span><a class="mark" href="#pretty_print_userdata_value_prettyprint_stdout" id="pretty_print_userdata_value_prettyprint_stdout">#</a></span></h2>
+<h2>Userdata Value: prettyPrint.stderr<span><a class="mark" href="#pretty_print_userdata_value_prettyprint_stderr" id="pretty_print_userdata_value_prettyprint_stderr">#</a></span></h2>
+
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+  </div>
+
+  <script src="assets/sh_main.js"></script>
+  <script src="assets/sh_javascript.min.js"></script>
+  <script>highlight(undefined, undefined, 'pre');</script>
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+{
+  "source": "doc/api/utils.markdown",
+  "modules": [
+    {
+      "textRaw": "Utils",
+      "name": "utils",
+      "desc": "<p>Wrapper around pretty-print with extra tools for luvit\n\n</p>\n<p><code>local utils = require(&#39;utils&#39;)</code>\n\n</p>\n<p>Everything in pretty-print is available under the utils namespace as well. \nAdditionally utils has the following available functions\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "utils.noop(err)",
+          "type": "method",
+          "name": "noop",
+          "desc": "<p>Used heavily within luvit to wrap luv methods and expose them.\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "c"
+                },
+                {
+                  "name": "fn"
+                },
+                {
+                  "name": "..."
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "err"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "utils.adapt(c, fn, ...)",
+          "type": "method",
+          "name": "adapt",
+          "desc": "<p>Used heavily within luvit to wrap luv methods and expose them.\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "c"
+                },
+                {
+                  "name": "fn"
+                },
+                {
+                  "name": "..."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Utils"
+    }
+  ]
+}

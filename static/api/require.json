@@ -1,0 +1,12 @@
+{
+  "source": "doc/api/require.markdown",
+  "modules": [
+    {
+      "textRaw": "Require",
+      "name": "require",
+      "desc": "<p>Luvit&#39;s custom require system with relative requires and sane search paths.<br>This allows us to have the convenience of having node style require statements to include libraries. \n</p>\n",
+      "type": "module",
+      "displayName": "Require"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "source": "doc/api/thread.markdown",
+  "modules": [
+    {
+      "textRaw": "Thread",
+      "name": "thread",
+      "desc": "<p>Thread module for luvit  \n\n</p>\n<p><code>local thread = require(&#39;thread&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "thread.queue(worker, ...)",
+          "type": "method",
+          "name": "queue",
+          "desc": "<p>Luvit threadpool\n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "Worker:queue(...)",
+              "type": "method",
+              "name": "Worker:queue",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "..."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "worker"
+                },
+                {
+                  "name": "..."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "textRaw": "Class: thread.Worker",
+          "type": "class",
+          "name": "thread.Worker",
+          "desc": "<p>Luvit threadpool\n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "Worker:queue(...)",
+              "type": "method",
+              "name": "Worker:queue",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "..."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Thread"
+    }
+  ]
+}

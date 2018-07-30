@@ -1,0 +1,59 @@
+{
+  "source": "doc/api/codec.markdown",
+  "modules": [
+    {
+      "textRaw": "Codec",
+      "name": "codec",
+      "desc": "<p>Utilities for working with luvit streams and codecs.\n\n</p>\n<p><code>local codec = require(&#39;codec&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "codec.wrapEmitter(emitter)",
+          "type": "method",
+          "name": "wrapEmitter",
+          "desc": "<p>Wraps an emitter with coroutines.\nReturns read and write functions. \n\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "emitter"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "codec.wrapStream(socket)",
+          "type": "method",
+          "name": "wrapStream",
+          "desc": "<p>Given a raw uv_stream_t userdara, return coro-friendly read/write functions.\n\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "socket"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "codec.chain(...)",
+          "type": "method",
+          "name": "chain",
+          "desc": "<p>Allows one to chain coroutines\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "..."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Codec"
+    }
+  ]
+}

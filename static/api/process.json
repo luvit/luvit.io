@@ -1,0 +1,24 @@
+{
+  "source": "doc/api/process.markdown",
+  "modules": [
+    {
+      "textRaw": "Process",
+      "name": "process",
+      "desc": "<p>Node-style global process table for luvit\n\n</p>\n<p><code>local process = require(&#39;process&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "process.globalProcess()",
+          "type": "method",
+          "name": "globalProcess",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Process"
+    }
+  ]
+}

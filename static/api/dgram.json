@@ -1,0 +1,291 @@
+{
+  "source": "doc/api/dgram.markdown",
+  "modules": [
+    {
+      "textRaw": "Datagram | UDP",
+      "name": "datagram_|_udp",
+      "desc": "<p>Node-style udp module for luvit\n\n</p>\n<p><code>local dgram = require(&#39;dgram&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "dgram.createSocket(type, callback)",
+          "type": "method",
+          "name": "createSocket",
+          "desc": "<p>Creates a new datagram socket\nCallback is triggered every time the &#39;message&#39; event gets emitted\n\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "callback"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "textRaw": "Class: dgram.Socket",
+          "type": "class",
+          "name": "dgram.Socket",
+          "desc": "<p>Socket extends Emitter and inherits all the events thereof.\nThe dgram Socket class encapsulates the datagram functionality. It should be created via dgram.createSocket(...)  \n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "Socket:recvStart()",
+              "type": "method",
+              "name": "Socket:recvStart",
+              "desc": "<p>Start receiving on socket\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            },
+            {
+              "textRaw": "Socket:recvStop()",
+              "type": "method",
+              "name": "Socket:recvStop",
+              "desc": "<p>Stop listening on socket\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            },
+            {
+              "textRaw": "Socket:setTimeout(msecs, callback)",
+              "type": "method",
+              "name": "Socket:setTimeout",
+              "desc": "<p>Sets a socket timeout \n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "msecs"
+                    },
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Socket:send(data, port, host, callback)",
+              "type": "method",
+              "name": "Socket:send",
+              "desc": "<p>Sends data down the udp socket\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "data"
+                    },
+                    {
+                      "name": "port"
+                    },
+                    {
+                      "name": "host"
+                    },
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Socket:bind(port, host, options)",
+              "type": "method",
+              "name": "Socket:bind",
+              "desc": "<p>Starts listening on the specified port and host. \n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "port"
+                    },
+                    {
+                      "name": "host"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Socket:close(callback)",
+              "type": "method",
+              "name": "Socket:close",
+              "desc": "<p>Closes a socket instance and fires the callback after cleanup\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Socket:address()",
+              "type": "method",
+              "name": "Socket:address",
+              "desc": "<p>Returns an object containing the address information for a socket. For UDP sockets, this object will contain address , family and port.\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            },
+            {
+              "textRaw": "Socket:setBroadcast(status)",
+              "type": "method",
+              "name": "Socket:setBroadcast",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "status - Boolean Sets or clears the SO_BROADCAST socket option. When this option is set, UDP packets may be sent to a local interface's broadcast address. ",
+                      "name": "status",
+                      "desc": "Boolean Sets or clears the SO_BROADCAST socket option. When this option is set, UDP packets may be sent to a local interface's broadcast address."
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "status"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>Sets membership status for a multicast group. Op can be &#39;join&#39; or &#39;leave&#39;.\n\n</p>\n"
+            },
+            {
+              "textRaw": "Socket:setMembership(multicastAddress[, multicastInterface], op)",
+              "type": "method",
+              "name": "Socket:setMembership",
+              "desc": "<p>Sets membership status for a multicast group. Op can be &#39;join&#39; or &#39;leave&#39;.\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "multicastAddress"
+                    },
+                    {
+                      "name": "multicastInterface",
+                      "optional": true
+                    },
+                    {
+                      "name": "op"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Socket:addMembership(multicastAddress[, interfaceAddress])",
+              "type": "method",
+              "name": "Socket:addMembership",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "multicastAddress String ",
+                      "name": "multicastAddress",
+                      "desc": "String"
+                    },
+                    {
+                      "textRaw": "multicastInterface String, Optional Tells the kernel to join a multicast group with IP_ADD_MEMBERSHIP socket option. ",
+                      "name": "multicastInterface",
+                      "desc": "String, Optional Tells the kernel to join a multicast group with IP_ADD_MEMBERSHIP socket option.",
+                      "optional": true
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "multicastAddress"
+                    },
+                    {
+                      "name": "interfaceAddress",
+                      "optional": true
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>If multicastInterface is not specified, the OS will try to add membership to all valid interfaces.\n\n</p>\n"
+            },
+            {
+              "textRaw": "Socket:dropMembership(multicastAddress[, interfaceAddress])",
+              "type": "method",
+              "name": "Socket:dropMembership",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "multicastAddress String ",
+                      "name": "multicastAddress",
+                      "desc": "String"
+                    },
+                    {
+                      "textRaw": "multicastInterface String, Optional Opposite of addMembership - tells the kernel to leave a multicast group with IP_DROP_MEMBERSHIP socket option. This is automatically called by the kernel when the socket is closed or process terminates, so most apps will never need to call this. ",
+                      "name": "multicastInterface",
+                      "desc": "String, Optional Opposite of addMembership - tells the kernel to leave a multicast group with IP_DROP_MEMBERSHIP socket option. This is automatically called by the kernel when the socket is closed or process terminates, so most apps will never need to call this.",
+                      "optional": true
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "multicastAddress"
+                    },
+                    {
+                      "name": "interfaceAddress",
+                      "optional": true
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>If multicastInterface is not specified, the OS will try to drop membership to all valid interfaces.\n\n</p>\n"
+            },
+            {
+              "textRaw": "Socket:setTTL(ttl)",
+              "type": "method",
+              "name": "Socket:setTTL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "ttl Integer Sets the IP_TTL socket option. TTL stands for \"Time to Live,\" but in this context it specifies the number of IP hops that a packet is allowed to go through. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting. ",
+                      "name": "ttl",
+                      "desc": "Integer Sets the IP_TTL socket option. TTL stands for \"Time to Live,\" but in this context it specifies the number of IP hops that a packet is allowed to go through. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting."
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "ttl"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>The argument to setTTL() is a number of hops between 1 and 255. The default on most systems is 64.\n\n</p>\n"
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Datagram | UDP"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "source": "doc/api/http.markdown",
+  "modules": [
+    {
+      "textRaw": "HTTP",
+      "name": "http",
+      "desc": "<p>Node-style http client and server module for luvit\n\n</p>\n<p><code>local http = require(&#39;http&#39;)</code>\n\n</p>\n",
+      "properties": [
+        {
+          "textRaw": "Value: http.headerMeta",
+          "name": "headerMeta",
+          "desc": "<p>Provide a nice case insensitive interface to headers.\nPulled from <a href=\"https://github.com/creationix/weblit/blob/master/libs/weblit-app.lua\">https://github.com/creationix/weblit/blob/master/libs/weblit-app.lua</a>\n\n</p>\n"
+        }
+      ],
+      "classes": [
+        {
+          "textRaw": "Class: http.IncomingMessage",
+          "type": "class",
+          "name": "http.IncomingMessage",
+          "desc": "<p>Incoming message class, extends net.Socket.  \n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "IncomingMessage:initialize(head, socket)",
+              "type": "method",
+              "name": "IncomingMessage:initialize",
+              "desc": "<p>Head is headers. \nHeaders declared in this child class, i.e. options expected in the head table:\n</p>\n<pre><code>- version - httpVersion\n// Server specific\n- method\n- path - url\n// Client specific\n- code - statusCode\n- reason - statusMessage</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "head"
+                    },
+                    {
+                      "name": "socket"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "IncomingMessage:_read()",
+              "type": "method",
+              "name": "IncomingMessage:_read",
+              "desc": "<p>Resumes self.socket\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "Class: http.ServerResponse",
+          "type": "class",
+          "name": "http.ServerResponse",
+          "methods": [
+            {
+              "textRaw": "ServerResponse:finish(chunk)",
+              "type": "method",
+              "name": "ServerResponse:finish",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "newStatusCode"
+                    },
+                    {
+                      "name": "newHeaders"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "chunk"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "ServerResponse:writeHead(newStatusCode, newHeaders)",
+              "type": "method",
+              "name": "ServerResponse:writeHead",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "newStatusCode"
+                    },
+                    {
+                      "name": "newHeaders"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "Class: http.ClientRequest",
+          "type": "class",
+          "name": "http.ClientRequest",
+          "methods": [
+            {
+              "textRaw": "ClientRequest:done(data, cb)",
+              "type": "method",
+              "name": "ClientRequest:done",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "msecs"
+                    },
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "data"
+                    },
+                    {
+                      "name": "cb"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "ClientRequest:setTimeout(msecs, callback)",
+              "type": "method",
+              "name": "ClientRequest:setTimeout",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "msecs"
+                    },
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "textRaw": "http.createServer(onRequest)",
+          "type": "method",
+          "name": "createServer",
+          "methods": [
+            {
+              "textRaw": "ClientRequest:done(data, cb)",
+              "type": "method",
+              "name": "ClientRequest:done",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "msecs"
+                    },
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "data"
+                    },
+                    {
+                      "name": "cb"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "ClientRequest:setTimeout(msecs, callback)",
+              "type": "method",
+              "name": "ClientRequest:setTimeout",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "msecs"
+                    },
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "onRequest"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "http.request(options, onResponse)",
+          "type": "method",
+          "name": "request",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "options"
+                },
+                {
+                  "name": "onResponse"
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "options"
+                },
+                {
+                  "name": "onResponse"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "http.get(options, onResponse)",
+          "type": "method",
+          "name": "get",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "options"
+                },
+                {
+                  "name": "onResponse"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "HTTP"
+    }
+  ]
+}

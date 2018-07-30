@@ -1,0 +1,32 @@
+{
+  "source": "doc/api/helpful.markdown",
+  "modules": [
+    {
+      "textRaw": "Helpful",
+      "name": "helpful",
+      "desc": "<p>Levenshtein distance for property-not-found hints in modules.\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "string.levenshtein(str1, str2)",
+          "type": "method",
+          "name": "levenshtein",
+          "desc": "<p>Adds a levenshtein distance function to luas native string library. The string library in luvit gets auto populated \nwith luas string library and inbuilt methods. You can use it by simply going\n<code>string.levenshtein(str1, str2)</code>. No require statements needed. \n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "str1"
+                },
+                {
+                  "name": "str2"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Helpful"
+    }
+  ]
+}

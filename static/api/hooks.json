@@ -1,0 +1,12 @@
+{
+  "source": "doc/api/hooks.markdown",
+  "modules": [
+    {
+      "textRaw": "Hooks",
+      "name": "hooks",
+      "desc": "<p>Core global event hooks for luvit.\n</p>\n",
+      "type": "module",
+      "displayName": "Hooks"
+    }
+  ]
+}

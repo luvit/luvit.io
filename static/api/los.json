@@ -1,0 +1,25 @@
+{
+  "source": "doc/api/los.markdown",
+  "modules": [
+    {
+      "textRaw": "Light operating system helper",
+      "name": "light_operating_system_helper",
+      "desc": "<p>Also known as los. \nIts&#39; a tiny helper to get os name in luvit.\n\n</p>\n<p><code>local los = require(&#39;los&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "los.type()",
+          "type": "method",
+          "name": "type",
+          "desc": "<p>Returns either Windows, Linux, OSX, BSD, POSIX or Other depending on the host operating system.\n</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Light operating system helper"
+    }
+  ]
+}

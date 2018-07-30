@@ -1,0 +1,60 @@
+{
+  "source": "doc/api/pretty-print.markdown",
+  "modules": [
+    {
+      "textRaw": "Pretty print",
+      "name": "pretty_print",
+      "desc": "<p>A lua value pretty printer and colorizer for terminals.  \n\n</p>\n<p><code>local prettyPrint = require(&#39;pretty-print&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "prettyPrint.loadColors([index])",
+          "type": "method",
+          "name": "loadColors",
+          "desc": "<p>Index lets you optionally pick a theme, 16 or 256. \n\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "index",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "prettyPrint.print(...)",
+          "type": "method",
+          "name": "print",
+          "desc": "<p>Works like the default lua print function. We also override the default lua print function\n\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "..."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "textRaw": "Value: prettyPrint.theme",
+          "name": "theme",
+          "desc": "<p>Table of keys and values of the available themes\n\n</p>\n"
+        },
+        {
+          "textRaw": "Userdata Value: prettyPrint.stdout",
+          "name": "stdout"
+        },
+        {
+          "textRaw": "Userdata Value: prettyPrint.stderr",
+          "name": "stderr"
+        }
+      ],
+      "type": "module",
+      "displayName": "Pretty print"
+    }
+  ]
+}

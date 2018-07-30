@@ -1,0 +1,36 @@
+{
+  "source": "doc/api/http-codec.markdown",
+  "modules": [
+    {
+      "textRaw": "HTTP Codec",
+      "name": "http_codec",
+      "desc": "<p>A simple pair of functions for converting between hex and raw strings.<br><code>local httpCodec = require(&#39;http-codec&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "httpCodec.encoder()",
+          "type": "method",
+          "name": "encoder",
+          "desc": "<p>Returns a function. See the source at <a href=\"https://github.com/luvit/luvit/blob/master/deps/http.lua#L113-L199\">http.lua:ServerResponse</a> for an example.  \n\n</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "httpCodec.decoder()",
+          "type": "method",
+          "name": "decoder",
+          "desc": "<p>Returns a function which takes one argument. See the source at <a href=\"https://github.com/luvit/luvit/blob/master/deps/http.lua#L251-L338\">http.lua</a> for an example.  \n</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "HTTP Codec"
+    }
+  ]
+}

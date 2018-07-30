@@ -1,0 +1,347 @@
+{
+  "source": "doc/api/stream.markdown",
+  "modules": [
+    {
+      "textRaw": "Stream",
+      "name": "stream",
+      "desc": "<p>A port of node.js&#39;s stream module for luvit.\n\n</p>\n<p><code> local Stream = require(&#39;Stream&#39;)</code>\n\n</p>\n",
+      "classes": [
+        {
+          "textRaw": "Class: Stream.Stream",
+          "type": "class",
+          "name": "Stream.Stream",
+          "desc": "<p>This is the stream core or base.\nExtends the emitter class described in Core.\n\n</p>\n<p>You will most likely not use this class. The only relevant part of this class, the pipe method, is overriden in Readable.\n\n</p>\n"
+        },
+        {
+          "textRaw": "Class: Stream.ReadableState",
+          "type": "class",
+          "name": "Stream.ReadableState",
+          "desc": "<p>Used to hold state by the Readable class\n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "ReadableState:initialize(options, stream)",
+              "type": "method",
+              "name": "ReadableState:initialize",
+              "desc": "<p>Options table:\n\n</p>\n<ul>\n<li>HighWaterMark - Defaults to 16, maxes out at 128MB. 128MB limit cannot be overwritten without modifying luvit/deps/stream/stream_readable</li>\n<li>objectMode - If false/nil then the highWaterMark is set to 16 * 1024</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "options"
+                    },
+                    {
+                      "name": "stream"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "Class: Stream.Readable",
+          "type": "class",
+          "name": "Stream.Readable",
+          "desc": "<p>Extends Stream.Stream, implements a readable stream interface. \nUses ReadableState to keep track of self._readableState\n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "Readable:push(chunk)",
+              "type": "method",
+              "name": "Readable:push",
+              "desc": "<p>Manually shove something into the read buffer. \nThis returns true if the highWaterMark has not been hit yet, similar to how Writable.write() returns true if you should write() some more.\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "chunk"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Readable:unshift(chunk)",
+              "type": "method",
+              "name": "Readable:unshift",
+              "desc": "<p>Unshift should <em>always</em> be something directly out of read()\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "chunk"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Readable:read(n)",
+              "type": "method",
+              "name": "Readable:read",
+              "desc": "<p>Reads and returns n chunk bytes\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Readable:_read(n)",
+              "type": "method",
+              "name": "Readable:_read",
+              "desc": "<p>Internal method executed by Readable:read. Can be overwritten in child classes. \n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Readable:unpipe(dest)",
+              "type": "method",
+              "name": "Readable:unpipe",
+              "desc": "<p>Removes pipes to dest\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "dest"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Readable:on(ev, fn)",
+              "type": "method",
+              "name": "Readable:on",
+              "desc": "<p>Triggers a callback <code>fn</code> when an event <code>ev</code> is triggered. \nE.g.\n</p>\n<pre><code>&gt; local child = require(&#39;stream&#39;).Readable\n&gt; child:on(&#39;foo&#39;, function() print(&#39;bar&#39;) end)\n&gt; child:emit(&#39;foo&#39;)\n&#39;bar&#39;\n&gt; child:on(&#39;bar&#39;, function(data) print(data) end)\n&gt; child:emit(&#39;bar&#39;, &#39;foo&#39;)\n&#39;foo&#39;</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "ev"
+                    },
+                    {
+                      "name": "fn"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Readable:resume()",
+              "type": "method",
+              "name": "Readable:resume",
+              "desc": "<p>Resumes a stream\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            },
+            {
+              "textRaw": "Readable:pause()",
+              "type": "method",
+              "name": "Readable:pause",
+              "desc": "<p>Pauses a stream\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "properties": [
+            {
+              "textRaw": "Readable.addListener",
+              "name": "addListener",
+              "desc": "<p>Alias for Readable:on<br>You can use Readable:addListener for an implicit self or use Readable.addListener(self, ...)\n\n</p>\n"
+            }
+          ]
+        },
+        {
+          "textRaw": "Class: Stream.WriteReq",
+          "type": "class",
+          "name": "Stream.WriteReq",
+          "desc": "<p>Used internally within the Writable class.  \n\n</p>\n"
+        },
+        {
+          "textRaw": "Class: Stream.WritableState",
+          "type": "class",
+          "name": "Stream.WritableState",
+          "desc": "<p>Used internally within the Writable class to hold state.  \n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "WritableState:initialize(options, stream)",
+              "type": "method",
+              "name": "WritableState:initialize",
+              "desc": "<p>Options table:\n\n</p>\n<ul>\n<li>HighWaterMark - Defaults to 16, maxes out at 128MB. 128MB limit cannot be overwritten without modifying luvit/deps/stream/stream_readable</li>\n<li>objectMode - If false/nil then the highWaterMark is set to 16 * 1024</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "options"
+                    },
+                    {
+                      "name": "stream"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "Class: Stream.Writable",
+          "type": "class",
+          "name": "Stream.Writable",
+          "desc": "<p>The writable stream class<br>Emits <code>end</code> when done  \n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "Writable:initialize(options)",
+              "type": "method",
+              "name": "Writable:initialize",
+              "desc": "<p>You can modify the writable state options here, or set them.\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Writable:write(chunk, cb)",
+              "type": "method",
+              "name": "Writable:write",
+              "desc": "<p>Manually write a chunk\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "chunk"
+                    },
+                    {
+                      "name": "cb"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Writable:cork()",
+              "type": "method",
+              "name": "Writable:cork",
+              "desc": "<p>Kind of like pause\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            },
+            {
+              "textRaw": "Writable:uncork()",
+              "type": "method",
+              "name": "Writable:uncork",
+              "desc": "<p>Kind of like resume\n\n</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "Class: Stream.Duplex",
+          "type": "class",
+          "name": "Stream.Duplex",
+          "desc": "<p>A Duplex stream is both readable and writable and inherits the functionality and methods of the aforementioned readable and writable classes.  \n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "Duplex:initialize(options)",
+              "type": "method",
+              "name": "Duplex:initialize",
+              "desc": "<p>These options are passed along to the initializers of the readable and writable streams this class uses.<br>Furthermore, we can have the following key values in the options table.\n\n</p>\n<ul>\n<li>readable - false/true</li>\n<li>writable - false/true</li>\n<li>allowHalfOpen - false/true</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "Class: Stream.Transform",
+          "type": "class",
+          "name": "Stream.Transform",
+          "desc": "<p>a transform stream is a readable/writable stream where you do\nsomething with the data.  Sometimes it&#39;s called a &quot;filter&quot;,\nbut that&#39;s not a great name for it, since that implies a thing where\nsome bits pass through, and others are simply ignored.  (That would\nbe a valid example of a transform, of course.)\n\n</p>\n<p>While the output is causally related to the input, it&#39;s not a\nnecessarily symmetric or synchronous transformation.  For example,\na zlib stream might take multiple plain-text writes(), and then\nemit a single compressed chunk some time in the future.\n\n</p>\n<p>Here&#39;s how this works:\n\n</p>\n<p>The Transform stream has all the aspects of the readable and writable\nstream classes.  When you write(chunk), that calls _write(chunk,cb)\ninternally, and returns false if there&#39;s a lot of pending writes\nbuffered up.  When you call read(), that calls _read(n) until\nthere&#39;s enough pending readable data buffered up.\n\n</p>\n<p>In a transform stream, the written data is placed in a buffer.  When\n_read(n) is called, it transforms the queued up data, calling the\nbuffered _write cb&#39;s as it consumes chunks.  If consuming a single\nwritten chunk would result in multiple output chunks, then the first\noutputted bit calls the readcb, and subsequent chunks just go into\nthe read buffer, and will cause it to emit &#39;readable&#39; if necessary.\n\n</p>\n<p>This way, back-pressure is actually determined by the reading side,\nsince _read has to be called to start processing a new chunk.  However,\na pathological inflate type of transform can cause excessive buffering\nhere.  For example, imagine a stream where every byte of input is\ninterpreted as an integer from 0-255, and then results in that many\nbytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in\n1kb of data being output.  In this case, you could write a very small\namount of input, and end up with a very large amount of output.  In\nsuch a pathological inflating mechanism, there&#39;d be no way to tell\nthe system to stop doing the transform.  A single 4MB write could\ncause the system to run out of memory.\n\n</p>\n<p>However, even in such a pathological case, only a single written chunk\nwould be consumed, and then the rest would wait (un-transformed) until\nthe results of the previous transformed chunk were consumed.\n\n</p>\n",
+          "methods": [
+            {
+              "textRaw": "Transform:initialize(options)",
+              "type": "method",
+              "name": "Transform:initialize",
+              "desc": "<p>Extendable initializer for the Transform class. \n\n</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Transform:_transform(chunk, cb)",
+              "type": "method",
+              "name": "Transform:_transform",
+              "desc": "<p>The internal transform method. You must define this in your child class. \nE.g. implement a passthrough filter aka a very fancy way to print hello world\n</p>\n<pre><code>local Transform = require(&#39;stream&#39;).Transform\nlocal Transformer = Transform:extend()\nfunction Transformer:initialize()\n  Transform.initialize(self, {objectMode = true})\nend\n\nfunction Transformer:_transform(line, cb)\n  self:push(line)\n  return cb()\nend\n\nlocal transformer = Transformer:new()\ntransformer:on(&#39;data&#39;, print)\ntransformer:write(&#39;hello world&#39;)</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "chunk"
+                    },
+                    {
+                      "name": "cb"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "Class: Stream.PassThrough",
+          "type": "class",
+          "name": "Stream.PassThrough",
+          "desc": "<p>An extension of the transform stream class with the transform method declared.<br>Basically just the most minimal sort of Transform stream. \nEvery written chunk gets output as-is.\n\n</p>\n"
+        },
+        {
+          "textRaw": "Class: Stream.Observable",
+          "type": "class",
+          "name": "Stream.Observable",
+          "desc": "<p>Observable is a stream that can be observed outside the pipeline. observe() \nreturns a new Readable stream that emits all data that passes through this \nstream. Streams created by observe() do not affect back-pressure.\n</p>\n"
+        }
+      ],
+      "type": "module",
+      "displayName": "Stream"
+    }
+  ]
+}

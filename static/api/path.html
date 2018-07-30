@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> Path Luvit 2.5.6 Manual &amp; Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/sh.css">
+  <link rel="luvit contributors" href="https://luvit.io/api/path.html">
+</head>
+<body class="alt apidoc" id="api-section-path">
+  <div id="content" class="clearfix">
+    <div id="column2" class="interior">
+      <div id="intro" class="interior">
+        <a href="/" title="Go back to the home page">
+          Luvit (1)
+        </a>
+      </div>
+      <ul>
+<li><a class="nav-documentation" href="documentation.html">About these Docs</a></li>
+<li><a class="nav-synopsis" href="synopsis.html">Synopsis</a></li>
+<li><a class="nav-buffer" href="buffer.html">Buffer</a></li>
+<li><a class="nav-childprocess" href="childprocess.html">Child Process</a></li>
+<li><a class="nav-codec" href="codec.html">Codec</a></li>
+<li><a class="nav-core" href="core.html">Core</a></li>
+<li><a class="nav-dgram" href="dgram.html">Datagram/UDP</a></li>
+<li><a class="nav-dns" href="dns.html">DNS</a></li>
+<li><a class="nav-fs" href="fs.html">File System</a></li>
+<li><a class="nav-helpful" href="helpful.html">Helpful</a></li>
+<li><a class="nav-http-codec" href="http-codec.html">HTTP Codec</a></li>
+<li><a class="nav-http" href="http.html">HTTP</a></li>
+<li><a class="nav-https" href="https.html">HTTPS</a></li>
+<li><a class="nav-json" href="json.html">JSON</a></li>
+<li><a class="nav-los" href="los.html">Light Operating System helper(los)</a></li>
+<li><a class="nav-net" href="net.html">Net</a></li>
+<li><a class="nav-path active" href="path.html">Path</a></li>
+<li><a class="nav-pretty-print" href="pretty-print.html">Pretty print</a></li>
+<li><a class="nav-process" href="process.html">Process</a></li>
+<li><a class="nav-querystring" href="querystring.html">Query String</a></li>
+<li><a class="nav-readline" href="readline.html">Readline</a></li>
+<li><a class="nav-repl" href="repl.html">REPL</a></li>
+<li><a class="nav-require" href="require.html">Require</a></li>
+<li><a class="nav-stream" href="stream.html">Stream</a></li>
+<li><a class="nav-thread" href="thread.html">Thread</a></li>
+<li><a class="nav-timer" href="timer.html">Timer</a></li>
+<li><a class="nav-url" href="url.html">URL</a></li>
+<li><a class="nav-utils" href="utils.html">Utilities</a></li>
+</ul>
+
+    </div>
+
+    <div id="column1" data-id="path" class="interior">
+      <header>
+        <h1>Luvit 2.5.6 Documentation</h1>
+        <div id="gtoc">
+          <p>
+            <a href="index.html" name="toc">Index</a> |
+            <a href="all.html">View on single page</a> |
+            <a href="path.json">View as JSON</a>
+          </p>
+        </div>
+        <hr>
+      </header>
+
+      <div id="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+<li><a href="#path_path">Path</a><ul>
+<li><a href="#path_path_getroot_filepath">path.getRoot([filePath])</a></li>
+<li><a href="#path_path_getsep">path.getSep()</a></li>
+<li><a href="#path_path_pathequals_a_b">path.pathEquals(a, b)</a></li>
+<li><a href="#path_path_normalize_filepath">path.normalize(filepath)</a></li>
+<li><a href="#path_path_join">path.join(...)</a></li>
+<li><a href="#path_path_resolve_from_to">path.resolve([from ...], to)</a></li>
+<li><a href="#path_path_relative_from_to">path.relative(from, to)</a></li>
+<li><a href="#path_path_dirname_filepath">path.dirname(filepath)</a></li>
+<li><a href="#path_path_basename_filepath_expected_ext">path.basename(filepath, expected_ext)</a></li>
+<li><a href="#path_path_extname_filepath">path.extname(filepath)</a></li>
+<li><a href="#path_path_isabsolute_filepath">path.isAbsolute(filepath)</a></li>
+<li><a href="#path_path_isunc_filepath">path.isUNC(filepath)</a></li>
+<li><a href="#path_path_isdriverelative_filepath">path.isDriveRelative(filepath)</a></li>
+<li><a href="#path_path_normalizeseparators_filepath">path.normalizeSeparators(filepath)</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+      <div id="apicontent">
+        <h1>Path<span><a class="mark" href="#path_path" id="path_path">#</a></span></h1>
+<p>This module contains utilities for handling and transforming file paths. 
+Almost all these methods perform only string transformations. The file system is not consulted to check whether paths are valid.
+Supports both windows and posix.  
+
+</p>
+<p>Use <code>require(&#39;path&#39;)</code> to use this module. The following methods are provided:
+
+</p>
+<h2>path.getRoot([filePath])<span><a class="mark" href="#path_path_getroot_filepath" id="path_path_getroot_filepath">#</a></span></h2>
+<p>Gets the filesystems root path. 
+
+</p>
+<h2>path.getSep()<span><a class="mark" href="#path_path_getsep" id="path_path_getsep">#</a></span></h2>
+<p>Gets the filesystems default path seperator
+
+</p>
+<h2>path.pathEquals(a, b)<span><a class="mark" href="#path_path_pathequals_a_b" id="path_path_pathequals_a_b">#</a></span></h2>
+<p>Checks if path a is equal to b
+
+</p>
+<h2>path.normalize(filepath)<span><a class="mark" href="#path_path_normalize_filepath" id="path_path_normalize_filepath">#</a></span></h2>
+<p>Normalize a string path, taking care of &#39;..&#39; and &#39;.&#39; parts.
+
+</p>
+<p>When multiple slashes are found, they&#39;re replaced by a single one; when the path contains a trailing slash, it is preserved. On Windows backslashes are used.
+
+</p>
+<h2>path.join(...)<span><a class="mark" href="#path_path_join" id="path_path_join">#</a></span></h2>
+<p>Joins a splat of different strings together with the default seperator to form a valid path
+
+</p>
+<h2>path.resolve([from ...], to)<span><a class="mark" href="#path_path_resolve_from_to" id="path_path_resolve_from_to">#</a></span></h2>
+<p>Works backwards, joining the arguments until it resolves to an absolute path. 
+If an absolute path is not resolved, then the current working directory is prepended
+
+</p>
+<p>E.g.
+
+</p>
+<pre><code>&gt; path.resolve(&#39;/foo/bar&#39;, &#39;/tmp/file/&#39;)
+&#39;/tmp/file/&#39;</code></pre>
+<h2>path.relative(from, to)<span><a class="mark" href="#path_path_relative_from_to" id="path_path_relative_from_to">#</a></span></h2>
+<p>Returns the relative path from &#39;from&#39; to &#39;to&#39; 
+If no relative path can be solved, then &#39;to&#39; is returned
+
+</p>
+<h2>path.dirname(filepath)<span><a class="mark" href="#path_path_dirname_filepath" id="path_path_dirname_filepath">#</a></span></h2>
+<p>Return the directory name of a path. Similar to the Unix dirname command.
+
+</p>
+<h2>path.basename(filepath, expected_ext)<span><a class="mark" href="#path_path_basename_filepath_expected_ext" id="path_path_basename_filepath_expected_ext">#</a></span></h2>
+<p>Return the last portion of a path. Similar to the Unix basename command.
+
+</p>
+<h2>path.extname(filepath)<span><a class="mark" href="#path_path_extname_filepath" id="path_path_extname_filepath">#</a></span></h2>
+<p>Return the extension of the path, from the last &#39;.&#39; to end of string in the last portion of the path. If there is no &#39;.&#39; in the last portion of the path or the first character of it is &#39;.&#39;, then it returns an empty string. Examples:
+
+</p>
+<h2>path.isAbsolute(filepath)<span><a class="mark" href="#path_path_isabsolute_filepath" id="path_path_isabsolute_filepath">#</a></span></h2>
+<p>Checks if filepath is absolute
+
+</p>
+<h2>path.isUNC(filepath)<span><a class="mark" href="#path_path_isunc_filepath" id="path_path_isunc_filepath">#</a></span></h2>
+<p>Checks if the path follows Microsofts universal naming convention
+
+</p>
+<h2>path.isDriveRelative(filepath)<span><a class="mark" href="#path_path_isdriverelative_filepath" id="path_path_isdriverelative_filepath">#</a></span></h2>
+<p>Drive-relative paths are unique to Windows and use the format &lt;letter&gt;:filepath
+
+</p>
+<h2>path.normalizeSeparators(filepath)<span><a class="mark" href="#path_path_normalizeseparators_filepath" id="path_path_normalizeseparators_filepath">#</a></span></h2>
+<p>Returns file path with posix seperators
+</p>
+
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+  </div>
+
+  <script src="assets/sh_main.js"></script>
+  <script src="assets/sh_javascript.min.js"></script>
+  <script>highlight(undefined, undefined, 'pre');</script>
+</body>
+</html>
+

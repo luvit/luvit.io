@@ -1,0 +1,124 @@
+{
+  "source": "doc/api/readline.markdown",
+  "modules": [
+    {
+      "textRaw": "Readline",
+      "name": "readline",
+      "desc": "<p>A readline interface for terminals in pure lua.\n\n</p>\n<p><code>local readline = require(&#39;readline&#39;)</code>\n\n</p>\n",
+      "classes": [
+        {
+          "textRaw": "Class: readline.History",
+          "type": "class",
+          "name": "readline.History",
+          "methods": [
+            {
+              "textRaw": "History:dump()",
+              "type": "method",
+              "name": "History:dump",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "line"
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ]
+            },
+            {
+              "textRaw": "History:updateLastLine(line)",
+              "type": "method",
+              "name": "History:updateLastLine",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "line"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "textRaw": "Class readline.Editor",
+          "name": "Editor",
+          "methods": [
+            {
+              "textRaw": "Editor:onKey(key)",
+              "type": "method",
+              "name": "Editor:onKey",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "prompt"
+                    },
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "key"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "Editor:readLine(prompt, callback)",
+              "type": "method",
+              "name": "Editor:readLine",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "prompt"
+                    },
+                    {
+                      "name": "callback"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "methods": [
+        {
+          "textRaw": "readline.readLine(prompt[, options], callback)",
+          "type": "method",
+          "name": "readLine",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "prompt"
+                },
+                {
+                  "name": "options",
+                  "optional": true
+                },
+                {
+                  "name": "callback"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Readline"
+    }
+  ]
+}

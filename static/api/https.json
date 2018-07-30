@@ -1,0 +1,58 @@
+{
+  "source": "doc/api/https.markdown",
+  "modules": [
+    {
+      "textRaw": "HTTPS",
+      "name": "https",
+      "desc": "<p>Node-style https client and server module for luvit.\nHTTPS is the HTTP protocol over TLS/SSL.  \n\n</p>\n<p><code>local https = require(&#39;https&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "https.request(options, callback)",
+          "type": "method",
+          "name": "request",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "options"
+                },
+                {
+                  "name": "onResponse"
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "options"
+                },
+                {
+                  "name": "callback"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "https.get(options, onResponse)",
+          "type": "method",
+          "name": "get",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "options"
+                },
+                {
+                  "name": "onResponse"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "HTTPS"
+    }
+  ]
+}

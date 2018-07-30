@@ -1,0 +1,104 @@
+{
+  "source": "doc/api/timer.markdown",
+  "modules": [
+    {
+      "textRaw": "Timer",
+      "name": "timer",
+      "desc": "<p>Javascript style setTimeout and setInterval for luvit  \n\n</p>\n<p><code>local timer = require(&#39;timer&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "timer.clearInterval(timer)",
+          "type": "method",
+          "name": "clearInterval",
+          "desc": "<p>Alias for clearInterval\n\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "timer"
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "timer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "timer.clearTimeout(timer)",
+          "type": "method",
+          "name": "clearTimeout",
+          "desc": "<p>Alias for clearInterval\n\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "timer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "timer.clearTimer(timer)",
+          "type": "method",
+          "name": "clearTimer",
+          "desc": "<p>Alias for clearTimeout\n\n</p>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "timer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "timer.enroll(time, msecs)",
+          "type": "method",
+          "name": "enroll",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "time"
+                },
+                {
+                  "name": "msecs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "timer.active(item)",
+          "type": "method",
+          "name": "active",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "item"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "Timer"
+    }
+  ]
+}

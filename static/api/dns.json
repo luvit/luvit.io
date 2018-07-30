@@ -1,0 +1,69 @@
+{
+  "source": "doc/api/dns.markdown",
+  "modules": [
+    {
+      "textRaw": "DNS",
+      "name": "dns",
+      "desc": "<p>Node-style dns module for luvit\n\n</p>\n<p><code>local dns = require(&#39;dns&#39;)</code>\n\n</p>\n",
+      "methods": [
+        {
+          "textRaw": "dns.setTimeout(timeout)",
+          "type": "method",
+          "name": "setTimeout",
+          "desc": "<p>Sets the timeout to the default timeout of 2 seconds\n\n</p>\n",
+          "signatures": [
+            {
+              "params": []
+            },
+            {
+              "params": [
+                {
+                  "name": "timeout"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "dns.setDefaultTimeout()",
+          "type": "method",
+          "name": "setDefaultTimeout",
+          "desc": "<p>Sets the timeout to the default timeout of 2 seconds\n\n</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "dns.setDefaultServers()",
+          "type": "method",
+          "name": "setDefaultServers",
+          "desc": "<p>Sets the list of servers to the default list \n\n</p>\n<pre><code>{\n  {\n    [&#39;host&#39;] = &#39;8.8.8.8&#39;,\n    [&#39;port&#39;] = 53,\n    [&#39;tcp&#39;] = false\n  },\n  {\n    [&#39;host&#39;] = &#39;8.8.4.4&#39;,\n    [&#39;port&#39;] = 53,\n    [&#39;tcp&#39;] = false\n  },\n}</code></pre>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "dns.loadResolver(options)",
+          "type": "method",
+          "name": "loadResolver",
+          "desc": "<p>Options is a table with key file. E,g\n</p>\n<pre><code>{file = &#39;/etc/resolv.conf&#39;}</code></pre>\n",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "name": "options"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "module",
+      "displayName": "DNS"
+    }
+  ]
+}

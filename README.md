@@ -14,3 +14,5 @@ luvit server
 ```
 
 Then point your browser to <http://localhost:8080/>
+
+The contents of `static/api` comes from the `luvit-docs` repo.  
