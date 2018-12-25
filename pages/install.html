@@ -13,7 +13,7 @@ If you're on Linux, FreeBSD, or OSX, run the following script to download `luvi`
 curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
 ```
 
-If you're on windows, run the sister command in your `cmd.exe` command prompt.
+If you're on windows, run the sister command in your `cmd.exe` command prompt (requires Powershell >= 3.0).
 
 ```bat
 PowerShell -NoProfile -ExecutionPolicy unrestricted -Command "[Net.ServicePointManager]::SecurityProtocol = 'Tls12'; iex ((new-object net.webclient).DownloadString('https://github.com/luvit/lit/raw/master/get-lit.ps1'))"
