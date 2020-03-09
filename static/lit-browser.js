@@ -277,9 +277,11 @@ function Person() {
           name: match[1],
           email: match[2],
         };
+      } else {
+        return ["span", person];
       }
     }
-    var line = person.name;
+    var line = person.name || person.url || person.email;
     if (person.email && !person.url) {
       person.url = "mailto:" + person.email;
     }
