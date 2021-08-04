@@ -77,7 +77,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright ©2015-${new Date().getFullYear()} The Luvit Authors`,
     },
     colorMode: {
       disableSwitch: true,
