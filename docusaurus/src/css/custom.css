@@ -15,7 +15,27 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  --ifm-navbar-background-color: #0594bd;
 }
+
+/* Navigation Bar */
+.navbar__title {
+  display: none;
+}
+
+.navbar__logo {
+  height: 12pt;
+}
+
+.navbar__brand {
+  height: 48px;
+  padding: 10px;
+}
+
+.navbar__brand:hover {
+  background-color: #239dc0;
+}
+
 
 /* Can't override this in root since they defined it here... */
 .footer--dark {

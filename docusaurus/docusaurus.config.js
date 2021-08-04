@@ -14,10 +14,10 @@ module.exports = {
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Luvit',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Luvit Logo',
+        src: 'img/luvit-logo-tiny-white.svg',
       },
       items: [
         {
