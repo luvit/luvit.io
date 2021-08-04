@@ -5,7 +5,7 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Luvit.io Theme */
 :root {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: rgb(33, 175, 144);
@@ -17,6 +17,16 @@
   --ifm-code-font-size: 95%;
 }
 
+/* Can't override this in root since they defined it here... */
+.footer--dark {
+  --ifm-footer-background-color: #FFBF28;
+  --ifm-footer-color: #000000;
+  font-weight: 600;
+  --ifm-footer-padding-vertical: 1em;
+  --ifm-footer-padding-horizontal: 1em;
+}
+
+/* Docusaurus Defaults */
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
