@@ -79,6 +79,10 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
+    colorMode: {
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
+    },
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
