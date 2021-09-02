@@ -63,6 +63,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/luvit/luvit.io/edit/master/website/',
+          routeBasePath: "/",
         },
         blog: {
           showReadingTime: true,
