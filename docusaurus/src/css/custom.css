@@ -88,6 +88,7 @@ a, a:hover, a:active, a:focus {
   padding: 5pt 10pt;
   margin-top: 20px;
   transition: all 0.25s;
+  width: 15em;
 }
 
 .hero-button:hover {
