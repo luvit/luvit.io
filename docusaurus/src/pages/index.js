@@ -13,13 +13,28 @@ function HomepageHeader() {
       <div className="hero__container">
         <h1 className="hero__title"><img src="../../static/img/luvit-logo-white.svg"/></h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+        <div className="hero-buttons-container">
+        <Link
+            className="hero-button"
+            to="https://github.com/truemedian/luvit-bin/releases/download/2021-08-22/luvit-bin-Windows-x86_64.zip">
+            Download for Windows (x64)
+          </Link>
           <Link
             className="hero-button"
-            to="/docs/intro">
-            Install
+            to="https://github.com/truemedian/luvit-bin/releases/download/2021-08-22/luvit-bin-Linux-x86_64.tar.gz">
+            Download for Linux (x64)
           </Link>
         </div>
+        <Link
+          className="hero-text"
+          to="https://github.com/truemedian/luvit-bin/releases/">
+            Other Platforms
+        </Link>
+        <Link
+          className="hero-text"
+          to="https://github.com/luvit/luvit/blob/master/ChangeLog">
+            Changelog
+        </Link>
       </div>
     </header>
   );

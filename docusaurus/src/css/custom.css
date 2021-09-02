@@ -82,7 +82,6 @@ a, a:hover, a:active, a:focus {
 
 .hero-button {
   color: white;
-  text-transform: uppercase;
   display: inline-block;
   border: 2px solid white;
   border-radius: 2px;
@@ -96,6 +95,22 @@ a, a:hover, a:active, a:focus {
   text-decoration: none;
   border-color: #ffbf28;
   border-width: 2px;
+  color: #ffbf28;
+}
+
+.hero-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-text {
+  color: white;
+  font-size: 12pt;
+  margin: 0px 10px;
+}
+
+.hero-text:hover, .hero-text:active {
   color: #ffbf28;
 }
 
