@@ -16,6 +16,9 @@
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
   --ifm-navbar-background-color: #0594bd;
+  --ifm-navbar-link-color: white;
+  --ifm-navbar-link-active-color: white;
+  --ifm-navbar-link-hover-color: white;
 }
 
 /* Navigation Bar */
@@ -32,10 +35,28 @@
   padding: 10px;
 }
 
-.navbar__brand:hover {
-  background-color: #239dc0;
+.navbar__link:hover {
+  border-color: #ffbf28;
+  border-width: 2px;
+  color: #ffbf28;
 }
 
+.navbar__link {
+  text-transform: uppercase;
+  font-size: 12pt;
+  font-weight: normal;
+  border: 2px solid white;
+  display: inline-block;
+  border-radius: 2px;
+  padding: 5px 10px;
+  margin: 0 0.5em;
+  transition: all 0.25s;
+}
+
+.navbar__items--right > :last-child {
+  /* The default template removes it, but that doesn't work with borders at all... */
+  padding: 5px 10px;
+}
 
 /* Can't override this in root since they defined it here... */
 .footer--dark {
