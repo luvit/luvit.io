@@ -4,46 +4,60 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Familiar API',
     // Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Luvit implements the same APIs as <a href="https://nodejs.org" target="_blank">Node.js</a>, but in Lua!
+        <br/><br/>
+        This helps teams migrate without having to learn a new way of programming.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Async Choice',
     // Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Choose your async model; we don’t mind; we encourage experimentation.
+        <br/><br/>
+        If you don’t like callbacks and event emitters, use coroutines and write blocking style code without actually blocking your event loop!
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Modular Core',
     // Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+      The various projects in the luvit ecosystem can be mixed and matched to build the ideal runtime for your application.
+      <br/>
+      <br/>
+      <ul>
+        <li>
+          Use luv directly in luajit
+        </li>
+        <li>
+          Use lit without node apis
+        </li>
+        <li>
+          The possibilities are endless
+        </li>
+        </ul>
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({title, description}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+        {/* <Svg className={styles.featureSvg} alt={title} /> */}
       </div>
-      <div className="text--center padding-horiz--md">
+      <div className="text--left padding-horiz--md">
         <h3>{title}</h3>
-        <p>{description}</p>
+        <div>{description}</div>
       </div>
     </div>
   );
@@ -54,10 +68,9 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          TODO
-          {/* {FeatureList.map((props, idx) => ( */}
-            {/* // // <Feature key={idx} {...props} /> */}
-          {/* ))} */}
+          {FeatureList.map((props, idx) => (
+            <Feature key={idx} {...props} />
+          ))}
         </div>
       </div>
     </section>
