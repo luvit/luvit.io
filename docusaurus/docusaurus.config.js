@@ -3,7 +3,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Luvit',
+  title: 'Luvit.io',
   tagline: 'Asynchronous I/O for Lua',
   url: 'https://luvit.io/',
   baseUrl: '/',

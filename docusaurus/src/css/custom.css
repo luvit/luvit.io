@@ -19,6 +19,7 @@
   --ifm-navbar-link-color: white;
   --ifm-navbar-link-active-color: white;
   --ifm-navbar-link-hover-color: white;
+  --ifm-color-primary: #0594bd;
 }
 
 /* Navigation Bar */
@@ -56,6 +57,39 @@
 .navbar__items--right > :last-child {
   /* The default template removes it, but that doesn't work with borders at all... */
   padding: 5px 10px;
+}
+
+.navbar {
+  border-bottom: 1px solid white;
+  align-items: center;
+}
+
+/* Hero container (landing page) */
+.hero__container {
+  text-align: center;
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 10% 0;
+  font-size: 20pt;
+}
+
+.hero-button {
+  color: white;
+  text-transform: uppercase;
+  display: inline-block;
+  border: 2px solid white;
+  border-radius: 2px;
+  padding: 5pt 10pt;
+  margin-top: 20px;
+  transition: all 0.25s;
+}
+
+.hero-button:hover {
+  background-color: #239dc0;
+  text-decoration: none;
+  border-color: #ffbf28;
+  border-width: 2px;
+  color: #ffbf28;
 }
 
 /* Can't override this in root since they defined it here... */
