@@ -20,6 +20,14 @@
   --ifm-navbar-link-active-color: white;
   --ifm-navbar-link-hover-color: white;
   --ifm-color-primary: #0594bd;
+  --ifm-link-hover-color: #ff4528;
+  --ifm-link-active-color: #ff4528;
+}
+
+a, a:hover, a:active, a:focus {
+  transition: all 0.5s;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 /* Navigation Bar */
