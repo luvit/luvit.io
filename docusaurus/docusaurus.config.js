@@ -26,7 +26,7 @@ module.exports = {
           position: 'left',
           label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/blog', label: 'News', position: 'left'},
         {
           label: 'Discord',
           href: 'https://discord.gg/luvit',
