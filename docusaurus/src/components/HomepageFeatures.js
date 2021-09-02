@@ -65,14 +65,24 @@ function Feature({title, description}) {
 
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+    <div>
+      <div className="hero-summary-blurb">
+        <p>
+          Luvit is a Lua runtime built on <a href="http://luajit.org/luajit.html" target="_blank">Mike Pall's LuaJIT engine</a>.
+          It combines the asynchronous I/O library <a href="https://docs.libuv.org" target="_blank">libuv</a>,
+          which also powers JavaScript's <a href="https://nodejs.org/">NodeJS</a>,
+          with useful general-purpose libraries and tools that can help you create complex Lua-based applications with ease.
+        </p>
       </div>
-    </section>
+      <section className={styles.features}>
+        <div className="container">
+          <div className="row">
+            {FeatureList.map((props, idx) => (
+              <Feature key={idx} {...props} />
+              ))}
+          </div>
+        </div>
+      </section>
+    </div>   
   );
 }

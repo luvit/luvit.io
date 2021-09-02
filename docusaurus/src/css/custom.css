@@ -114,6 +114,19 @@ a, a:hover, a:active, a:focus {
   color: #ffbf28;
 }
 
+.hero-summary-blurb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid #239dc0;
+}
+
+.hero-summary-blurb p {
+  padding: 10px 10px;
+  margin: 0px;
+}
+
 /* Can't override this in root since they defined it here... */
 .footer--dark {
   --ifm-footer-background-color: #FFBF28;
