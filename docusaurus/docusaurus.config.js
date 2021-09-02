@@ -28,6 +28,11 @@ module.exports = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
+          label: 'Discord',
+          href: 'https://discord.gg/luvit',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/luvit/',
           label: 'GitHub',
           position: 'right',
