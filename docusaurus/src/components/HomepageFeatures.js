@@ -5,7 +5,7 @@ import styles from './HomepageFeatures.module.css';
 const FeatureList = [
   {
     title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    // Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
         Docusaurus was designed from the ground up to be easily installed and
@@ -15,7 +15,7 @@ const FeatureList = [
   },
   {
     title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    // Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
@@ -25,7 +25,7 @@ const FeatureList = [
   },
   {
     title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    // Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
         Extend or customize your website layout by reusing React. Docusaurus can
@@ -54,9 +54,10 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
+          TODO
+          {/* {FeatureList.map((props, idx) => ( */}
+            {/* // // <Feature key={idx} {...props} /> */}
+          {/* ))} */}
         </div>
       </div>
     </section>
