@@ -8,20 +8,21 @@ const FeatureList = [
     // Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Luvit implements the same APIs as <a href="https://nodejs.org" target="_blank">Node.js</a>, but in Lua!
+        Luvit implements many of the same APIs as <a href="https://nodejs.org" target="_blank">Node.js</a>, which can help teams get started quickly if they're already familiar with the JavaScript ecosystem.
         <br/><br/>
-        This helps teams migrate without having to learn a new way of programming.
+        Coroutine-based libraries have been created for those who prefer an approach closer to the Lua way of writing asynchronous code sequentially.
       </>
     ),
   },
   {
-    title: 'Async Choice',
+    title: 'Packaging Made Easy',
     // Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Choose your async model; we don’t mind; we encourage experimentation.
+        The Luvit ecosystem comes with its own packaging toolset, allowing you to bundle your Lua-based applications into self-contained executables.
         <br/><br/>
-        If you don’t like callbacks and event emitters, use coroutines and write blocking style code without actually blocking your event loop!
+        You can easily install packages created by the community or publish your own,
+        and libraries for many common use cases will get you started quickly.
       </>
     ),
   },
@@ -30,20 +31,10 @@ const FeatureList = [
     // Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-      The various projects in the luvit ecosystem can be mixed and matched to build the ideal runtime for your application.
+      The various components of the Luvit project can be used together or in isolation, enabling you to build the ideal environment for your application.
       <br/>
       <br/>
-      <ul>
-        <li>
-          Use luv directly in luajit
-        </li>
-        <li>
-          Use lit without node apis
-        </li>
-        <li>
-          The possibilities are endless
-        </li>
-        </ul>
+      From high-level application frameworks and APIs, to low-level bindings for the asynchronous I/O facilities, you decide on your prefered level of abstraction.
       </>
     ),
   },
