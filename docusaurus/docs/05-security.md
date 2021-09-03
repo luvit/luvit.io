@@ -37,4 +37,4 @@ All packages published under the ``creationix/X`` user are semi-official in the 
 
 ## Reporting Issues with Third-Party Packages
 
-For other packages, you can try and ask on the Discord server since their authors might be active there. However, when in doubt check out the package's GitHub repository to find out if any security policies or contact information has been published there.
+For other packages, you can try and ask on the Discord server since their authors might be present. However, when in doubt check out the package's GitHub repository to find out if any security policies or contact information has been published there.
