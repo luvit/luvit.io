@@ -32,6 +32,11 @@ function HomepageHeader() {
         </Link>
         <Link
           className="hero-text"
+          to="/downloads">
+            All Downloads
+        </Link>
+        <Link
+          className="hero-text"
           to="https://github.com/luvit/luvit/blob/master/ChangeLog">
             Changelog
         </Link>
