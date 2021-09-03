@@ -121,6 +121,7 @@ a, a:hover, a:active, a:focus {
 
 .hero-summary-blurb {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
