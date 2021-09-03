@@ -24,7 +24,7 @@ module.exports = {
         {to: '/about', label: 'About', position: 'left'},
         {to: '/docs', label: 'Docs', position: 'left'},
         {to: '/downloads', label: 'Downloads', position: 'left'},
-        {to: '/get-involved', label: 'Get Involved', position: 'left'},
+        {to: '/contributing', label: 'Contributing', position: 'left'},
         {to: '/security', label: 'Security', position: 'left'},
         {to: '/blog', label: 'News', position: 'left'},
         {
