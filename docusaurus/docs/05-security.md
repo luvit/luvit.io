@@ -5,6 +5,13 @@ slug: /security
 
 # Security
 
+:::info
+This section was entirely improvised by the humble author of these pages, and requires input from the Luvit community authors.
+
+*Reason: There's no official vulnerability disclosure policy that I'm aware of, so I just made something up.*
+:::
+
+
 ## Reporting Vulnerabilities in Luvit Components
 
 There currently aren't any official disclosure policies in place. If you encounter a security-critical issue the following is recommended:
