@@ -142,6 +142,15 @@ a, a:hover, a:active, a:focus {
   --ifm-footer-padding-horizontal: 1em;
 }
 
+/* Admonitions (info/notice/warning boxes) */
+.alert a {
+  color: var(--ifm-alert-border-color);
+}
+
+.alert a:hover {
+  color: #ff4528;
+}
+
 /* Docusaurus Defaults */
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
