@@ -97,7 +97,6 @@ a, a:hover, a:active, a:focus {
 }
 
 .hero-button:hover {
-  background-color: #239dc0;
   text-decoration: none;
   border-color: #ffbf28;
   border-width: 2px;
