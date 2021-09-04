@@ -10,7 +10,7 @@ const FeatureList = [
       <>
         Luvit implements many of the same APIs as <a href="https://nodejs.org" target="_blank">Node.js</a>, which can help teams get started quickly if they're already familiar with the JavaScript ecosystem.
         <br/><br/>
-        Coroutine-based libraries have been created for those who prefer an approach closer to the Lua way of writing asynchronous code sequentially.
+        Coroutine-based libraries have been created for those who instead prefer an approach closer to the Lua way of writing asynchronous code sequentially.
       </>
     ),
   },
