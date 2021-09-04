@@ -133,6 +133,10 @@ a, a:hover, a:active, a:focus {
   margin: 0px;
 }
 
+#hero-banner {
+  padding: 2rem 0;
+}
+
 /* Can't override this in root since they defined it here... */
 .footer--dark {
   --ifm-footer-background-color: #FFBF28;

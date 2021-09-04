@@ -9,7 +9,7 @@ import HomepageFeatures from '../components/HomepageFeatures';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero hero--primary', styles.heroBanner)} id="hero-banner">
       <div className="hero__container">
         <h1 className="hero__title"><img src="../../static/img/luvit-logo-white.svg"/></h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
