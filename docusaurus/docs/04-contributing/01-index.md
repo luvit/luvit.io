@@ -31,7 +31,9 @@ If you're looking to take on specific responsibilities or help improve the Luvit
 
 If you've found something that seems like a problem with one of the Luvit components, please don't hesitate to open an issue on the GitHub project. Ideally, you should attach a reproducible test case, i.e., a minimal code sample without external dependencies, which clearly demonstrates the problem. This will make it easy for community contributors to quickly understand and resolve your issue.
 
-Additionally, you should include as much relevant information as you can regarding your environment:
+Note: If you aren't sure how this could look, [StackOverflow](https://stackoverflow.com/help/minimal-reproducible-example) has some guidelines that may help you get a better idea.
+
+Additionally, you should include as much relevant information as you can regarding your execution environment:
 
 * The version of all Luvit components used, as is printed by the respective application when called without arguments
 * Your operating system and processor architecture (e.g., Windows 10 on a 64-bit CPU, Ubuntu 20.04 LTS on x86, etc.)
