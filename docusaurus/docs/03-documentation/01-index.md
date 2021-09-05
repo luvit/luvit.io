@@ -7,7 +7,7 @@ slug: /docs
 
 There are several types of documentation available on this website:
 
-* An [introductory tutorial](/docs/tutorial) to help new users get started developing Luvit applications (*when in doubt, start here*)
+* An [introductory tutorial](/docs/tutorial/getting-started) to help new users get started developing Luvit applications (*when in doubt, start here*)
 * [Guides](/docs/guides) written by the community can show you how to solve problems that are commonly encountered
 * Explanations of [important concepts](/docs/concepts), intended for those who want to dive deeper and understand how things work in detail
 * [References](/docs/references) for all of the Luvit core components and the functionality that they make available via APIs or other means
@@ -19,7 +19,7 @@ If what you're looking for isn't included here, please open an issue or let us k
 
 TBD: The custom require handler should be mentioned. But where?
 
-* Getting Started: Introduction to the Luvit Ecosystem
+* [Getting Started](/docs/tutorial/getting-started): Introduction to the Luvit Ecosystem
 * Quickstart: Your First Luvi App (Might Confuse You)
 * Event Loop Fundamentals: Making the Most of LibUV
 * Phenomenal Cosmic Powers: Luvit APIs and How to Wield Them
