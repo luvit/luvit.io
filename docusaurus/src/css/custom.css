@@ -137,6 +137,20 @@ a, a:hover, a:active, a:focus {
   padding: 2rem 0;
 }
 
+.hero__quickstart-button {
+  border: 2px solid #0594bd;
+  color: #0594bd;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.hero__quickstart-button:hover, .hero__quickstart-button:active {
+  border-color: #ffbf28;
+  color: #ffbf28;
+}
+
 /* Can't override this in root since they defined it here... */
 .footer--dark {
   --ifm-footer-background-color: #FFBF28;

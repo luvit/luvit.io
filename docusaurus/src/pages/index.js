@@ -45,6 +45,14 @@ function HomepageHeader() {
   );
 }
 
+function QuickstartButton() {
+  return (
+    <div className="hero__container">
+      <a className="hero-button hero__quickstart-button" href="/docs/tutorial/getting-started">Get Started in Minutes</a>
+    </div>
+  )
+}
+
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -54,6 +62,7 @@ export default function Home() {
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <QuickstartButton/>
       </main>
     </Layout>
   );
