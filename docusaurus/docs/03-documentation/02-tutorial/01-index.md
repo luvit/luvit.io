@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-slug: /docs/tutorials
+slug: /docs/tutorial/getting-started
 ---
 
-# Table of Contents
+# Getting Started
 
 TODO
 
