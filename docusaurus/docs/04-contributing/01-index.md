@@ -36,7 +36,7 @@ Note: If you aren't sure how this could look, [StackOverflow](https://stackoverf
 Additionally, you should include as much relevant information as you can regarding your execution environment:
 
 * The version of all Luvit components used, as is printed by the respective application when called without arguments
-* Your operating system and processor architecture (e.g., Windows 10 on a 64-bit CPU, Ubuntu 20.04 LTS on x86, etc.)
+* Your operating system and processor architecture (e.g., Windows 10 on an x64 CPU, Ubuntu 20.04 LTS on x86, etc.)
 * Whether or not you have made any custom changes to the component, no matter how trivial they seem
 
 The Luvit project is managed across [several GitHub repositories](https://github.com/luvit/), each with their own separate issues tracker.
