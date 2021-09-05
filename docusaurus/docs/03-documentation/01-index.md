@@ -17,10 +17,8 @@ If what you're looking for isn't included here, please open an issue or let us k
 
 ## Tutorial
 
-TBD: The custom require handler should be mentioned. But where?
-
 * [Getting Started](/docs/tutorial/getting-started): Introduction to the Luvit Ecosystem
-* Quickstart: Your First Luvi App (Might Confuse You)
+* [Quickstart](/docs/tutorial/hello-world): Your First Luvi App (Might Confuse You)
 * Event Loop Fundamentals: Making the Most of LibUV
 * Phenomenal Cosmic Powers: Luvit APIs and How to Wield Them
 * Lit Packaging 101: Bundling Your App
