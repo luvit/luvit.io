@@ -5,13 +5,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'Luvit.io',
   tagline: 'Asynchronous I/O for Lua',
-  url: 'https://luvit.io/',
+  url: 'https://unofficialluvitexperiments.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  organizationName: 'luvit', // Usually your GitHub org/user name.
-  projectName: 'luvit', // Usually your repo name.
+  trailingSlash: true, // Required for GitHub pages
+  organizationName: 'UnofficialLuvitExperiments', // Usually your GitHub org/user name.
+  projectName: 'unofficialluvitexperiments.github.io', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'Luvit',
