@@ -47,6 +47,16 @@ If you'd like to contribute bugfixes or new features to the Luvit core component
 
 In case you're unsure where to start, please see the [First-time Contributor's Guide](/docs/guides/how-to-start-contributing), or (as always) simply ask on the [Luvit Discord](https://discord.gg/luvit).
 
+## Other Ways of Contributing
+
+Even if you're not a developer, you can help with any (or all) of the following:
+
+* Documentation
+* Design
+* Testing
+* Discord Community
+* Anything else you can think of
+
 ## Becoming a Collaborator
 
 :::info
