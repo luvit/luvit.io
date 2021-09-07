@@ -21,9 +21,9 @@ If what you're looking for isn't included here, please open an issue or let us k
 * [Quickstart](/docs/tutorial/hello-world): Your First Luvi App (Might Confuse You)
 * [Enter the Event Loop](/docs/tutorial/asynchronous-event-loop): Making the Most of libuv
 * [Phenomenal Cosmic Powers](/docs/tutorial/luvit-webserver): Luvit APIs and How to Wield Them
-* Lit Packaging 102: Using Community Packages
-* Things WILL Break: Troubleshooting and Finding Help
-* [Lit Packaging 101](/docs/tutorial/packages-and-bundles): Bundling Your App
+* [Lit Packaging 101](/docs/tutorial/bundles): Bundling Your App
+* [Lit Packaging 102](/docs/tutorial/packaging): All About Packages
+* [Things WILL Break](/docs/tutorial/first-aid): Troubleshooting and Finding Help
 
 ## Guides
 
