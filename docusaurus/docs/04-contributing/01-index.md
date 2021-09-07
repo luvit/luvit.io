@@ -3,7 +3,7 @@ sidebar_position: 1
 slug: /contributing
 ---
 
-# Overview
+# Contributing to the Luvit Project 
 
 Thank you for your interest in getting involved with the Luvit project! This article will help you get started contributing quickly.
 
