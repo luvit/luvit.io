@@ -15,15 +15,6 @@ Here's a few ways of going about it:
 
 * Recommended: Simply hop into the [Luvit Discord](https://discord.gg/luvit) and ask away! You should get a response quickly since it's reasonably active
 * You can also open an issue in any of the [organization's GitHub repositories](https://github.com/luvit/). This won't always get you an answer as fast, but it may be better-suited for extended technical discussions or complex problems that can't be taken care of right away
-* If you know who is responsible or simply most experienced in working with the area your problem relates to (see below), simply ping (mention) them on Discord or any GitHub issue and they'll hopefully get back to you as soon as they're able to
-
-Please note that responsibilities aren't assigned formally as the project is maintained fully by volunteers, who are doing what they can.
-
-Regardless, the following guidelines apply:
-
-* [Creationix](https://github.com/creationix) is the original creator of Luvit and will be most knowledgeable about its internals, and the official [lit package registry](https://lit.luvit.io/)
-* Anyone with a Discord role of Collaborator or Contributor will likely have published some packages and can answer questions related to them specifically. They'll often also have information on Luvit internals, but it's best to just ask in Discord generally
-* [RDW](https://github.com/Duckwhale/) (that's me, the "humble writer of these pages") is determined to make the Luvit documentation great. If something's missing, not working as expected, or at all unclear, please don't hesitate to contact me and it will get sorted out within short notice
 
 If you're looking to take on specific responsibilities or help improve the Luvit ecosystem, the community will be happy to guide you!
 
