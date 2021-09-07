@@ -11,7 +11,7 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)} id="hero-banner">
       <div className="hero__container">
-        <h1 className="hero__title"><img src="../../static/img/luvit-logo-white.svg"/></h1>
+        <h1 className="hero__title"><img src="/img/luvit-logo-white.svg"/></h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className="hero-buttons-container">
         <Link
