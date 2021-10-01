@@ -46,7 +46,7 @@ function Feature({title, description}) {
       <div className="text--center">
         {/* <Svg className={styles.featureSvg} alt={title} /> */}
       </div>
-      <div className="text--left padding-horiz--md">
+      <div className="text--left padding-horiz--md padding-vert--md">
         <h3>{title}</h3>
         <div>{description}</div>
       </div>
@@ -76,6 +76,6 @@ export default function HomepageFeatures() {
           </div>
         </div>
       </section>
-    </div>   
+    </div>
   );
 }

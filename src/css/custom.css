@@ -83,6 +83,13 @@ a, a:hover, a:active, a:focus {
   max-width: 60%;
   margin: 0 auto;
   font-size: 20pt;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hero__container div {
+  margin: 0 1rem;
 }
 
 .hero-button {
