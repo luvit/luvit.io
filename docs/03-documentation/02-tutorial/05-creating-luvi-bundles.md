@@ -41,7 +41,7 @@ One way to get around this problem is by manually downloading the ``http`` scrip
 
 ## Adding Luvit Packages to the Luvi Bundle
 
-Lit is Luvit's package manager, and as such it can help us install packages. And it just so happens that ``http`` is available as such a package. We'll be able to include it in our bundle by typing the following in the folder that contains the bundle's entry point, ``main.lua``: 
+Lit is Luvit's package manager, and as such it can help us install packages. And it just so happens that ``http`` is available as such a package. We'll be able to include it in our bundle by typing the following in the folder that contains the bundle's entry point, ``main.lua``:
 
 > lit install luvit/http
 
@@ -51,7 +51,7 @@ When running ``luvi .`` again, surely it will now work... *or will it*? (Spoiler
 
 ### Require-ception
 
-If we recall that [Luvit comes with a special ``require`` handler for resolving import paths](docs/tutorial/hello-world#relative-imports), this makes a lot more sense: ``luvi`` doesn't include this ``require`` handler as it's yet another Luvit package, which we will now install by making Lit download it, too:
+If we recall that [Luvit comes with a special ``require`` handler for resolving import paths](/docs/tutorial/hello-world#relative-imports), this makes a lot more sense: ``luvi`` doesn't include this ``require`` handler as it's yet another Luvit package, which we will now install by making Lit download it, too:
 
 > lit install luvit/require
 
@@ -63,7 +63,7 @@ At long last, we're able to execute our echo server with ``luvi .``, only to see
 
 ### Manually Starting the Event Loop
 
-What has happened is that our server has indeed been started; the TCP socket has been created and incoming connections would be accepted... if we hadn't forgotten to start the ``libuv`` event loop. In [The Asynchronous Event Loop](docs/tutorial/asynchronous-event-loop#the-asynchronous-event-loop) it was briefly mentioned that ``luvit`` automatically starts the event loop for us, by running ``uv.run()`` at the end. But ``luvi`` doesn't do that (and I've no idea why).
+What has happened is that our server has indeed been started; the TCP socket has been created and incoming connections would be accepted... if we hadn't forgotten to start the ``libuv`` event loop. In [The Asynchronous Event Loop](/docs/tutorial/asynchronous-event-loop#the-asynchronous-event-loop) it was briefly mentioned that ``luvit`` automatically starts the event loop for us, by running ``uv.run()`` at the end. But ``luvi`` doesn't do that (and I've no idea why).
 
 Since ``libuv`` handles the socket connection, but only when it's running the event loop, our script simply exited after initializing the server because ``uv`` wasn't there to pick up the slack. We never got to the part where socket connections are handled asynchronously.
 

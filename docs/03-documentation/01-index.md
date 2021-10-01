@@ -11,7 +11,7 @@ There are several types of documentation available on this website:
 * [Guides](/docs/guides) written by the community can show you how to solve problems that are commonly encountered
 * Explanations of [important concepts](/docs/concepts), intended for those who want to dive deeper and understand how things work in detail
 * [References](/docs/references) for all of the Luvit core components and the functionality that they make available via APIs or other means
-* A list of libraries that are incorporated in the Luvit core can be found [below](docs#dependencies), in case you want to learn more about their use
+* A list of libraries that are incorporated in the Luvit core can be found [below](/docs#dependencies), in case you want to learn more about their use
 
 If what you're looking for isn't included here, please open an issue or let us know in the [Discord server](https://discord.gg/luvit)!
 
