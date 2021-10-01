@@ -23,7 +23,7 @@ If what you're looking for isn't included here, please open an issue or let us k
 * [Phenomenal Cosmic Powers](/docs/tutorial/luvit-webserver): Luvit APIs and How to Wield Them
 * [Lit Packaging 101](/docs/tutorial/bundles): Bundling Your App
 * [Lit Packaging 102](/docs/tutorial/packaging): All About Packages
-* [Things WILL Break](/docs/tutorial/first-aid): Troubleshooting and Finding Help
+* [Things WILL Break](/docs/tutorial/troubleshooting): Troubleshooting and Finding Help
 
 ## Guides
 
