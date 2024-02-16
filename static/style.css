@@ -173,13 +173,6 @@ ul code {
   float: right;
 }
 footer {
-  /* height: 56px; */
-  /* overflow-x: auto;
-  overflow-y: hidden;
-  background-color: #FFBF28;
-  text-align: center;
-  color: #000000;
-  font-weight: 600; */
   display: flex;
   align-items: center;
   justify-content: center;
