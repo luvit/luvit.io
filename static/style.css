@@ -173,13 +173,44 @@ ul code {
   float: right;
 }
 footer {
-  height: 56px;
-  overflow-x: auto;
+  /* height: 56px; */
+  /* overflow-x: auto;
   overflow-y: hidden;
   background-color: #FFBF28;
   text-align: center;
   color: #000000;
-  font-weight: 600;
+  font-weight: 600; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFBF28;
+  padding: 20px;
+}
+footer div {
+  display: flex;
+  flex-direction: column;
+}
+footer div p, footer div a {
+  width: fit-content;
+  margin: 0;
+}
+footer h3 {
+  margin-top: 0;
+}
+footer a:hover {
+  color: #48acc8;
+}
+.authors {
+  font-weight: normal;
+}
+.footer-contain {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  width: 860px;
+  padding: 0 30px;
 }
 .page-header {
   background-color: #0594bd;
