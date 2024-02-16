@@ -35,8 +35,12 @@ function SearchApp(emit, refresh) {
       ["form", { onsubmit: handleSubmit },
         ["input", {
           onchange: onChange,
-          value: text
-        }], ["button", "Search"],
+          value: text,
+          class: "browser-bar",
+          placeholder: "Search Packages"
+        }], ["button", {
+          class: "browser-button"
+        }, "Search"],
       ]
     ];
     var summary = ["section.single", query.map(function (term, i) {
