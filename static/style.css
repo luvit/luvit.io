@@ -212,6 +212,11 @@ footer a:hover {
   width: 860px;
   padding: 0 30px;
 }
+@media (max-width: 800px) {
+  .main-footer-info {
+    width: 100%;
+  }
+}
 .page-header {
   background-color: #0594bd;
   color: #fff;
