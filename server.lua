@@ -25,7 +25,6 @@ require('weblit-app')
 
   .route({ method = "GET", path = "/blog/:path:"}, static(pathJoin(module.dir, "articles")))
 
-
   .use(static(pathJoin(module.dir, "static")))
 
   .start()

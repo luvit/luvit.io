@@ -1,0 +1,16 @@
+# flyctl launch added from .gitignore
+**/deps
+
+# flyctl launch added from articles/pure-luv/.gitignore
+articles/pure-luv/**/deps
+
+# flyctl launch added from static/cm/.gitignore
+static/cm/node_modules
+static/cm/npm-debug.log
+static/cm/test*.html
+static/cm/**/.tern-*
+static/cm/**/*~
+static/cm/**/*.swp
+static/cm/**/.idea
+static/cm/**/*.iml
+fly.toml

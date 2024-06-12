@@ -4,7 +4,7 @@ return {
   private = true,
   dependencies = {
     -- hoedown ffi bindings for fast markdown compiling
-    "creationix/hoedown@1.1.2",
+    "creationix/hoedown@1.1.5",
     -- Web server framework
     "creationix/weblit-app@3.2.1",
     -- Core plugin for proper http headers
